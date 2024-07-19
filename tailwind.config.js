@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors:{
-        herocolor:"#7A9FD0"
+        herocolor:"#7A9FD0",
+        aboutbg:"#001A3E"
       }
 
     },
