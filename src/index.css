@@ -6,7 +6,39 @@
     background-image:url("/images/pexels-godisable-jacob-226636-784371 2.png");
     background-repeat:no-repeat;
     background-size:contain;
-    background-position:center;
+    background-position:80% center;
     margin:0 auto;
     width:100%;
+}
+@media (min-width: 200px) { /* sm */
+    .hero-section {
+        background-position: 60% top;
+        background-size:cover;
+    }
+}
+
+@media (min-width: 768px) { /* md */
+    .hero-section {
+        background-position: 60% center;
+    }
+}
+
+@media (min-width: 1024px) { /* lg */
+    .hero-section {
+        background-position: 90% center;
+        background-size:contain;
+    }
+}
+@media (min-width: 1280px) { /* xl */
+    .hero-section {
+        background-position: 90% center;
+        background-size:contain;
+    }
+}
+
+@media (min-width: 1536px) { /* 2xl */
+    .hero-section {
+        background-position: 70% center;
+        background-size:contain;
+    }
 }
