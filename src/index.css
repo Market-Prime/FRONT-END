@@ -12,35 +12,3 @@
     background-blend-mode:overlay;
     background-color:rgba(0,0,0,.3);
 }
-@media (min-width: 200px) { /* sm */
-    .hero-section {
-        background-position: 60% top;
-        background-size:cover;
-    }
-}
-
-@media (min-width: 768px) { /* md */
-    .hero-section {
-        background-position: 60% center;
-    }
-}
-
-@media (min-width: 1024px) { /* lg */
-    .hero-section {
-        background-position: 90% center;
-        background-size:contain;
-    }
-}
-@media (min-width: 1280px) { /* xl */
-    .hero-section {
-        background-position: 90% center;
-        background-size:contain;
-    }
-}
-
-@media (min-width: 1536px) { /* 2xl */
-    .hero-section {
-        background-position: 70% center;
-        background-size:contain;
-    }
-}
