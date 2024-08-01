@@ -6,6 +6,7 @@ import HoomeProduct from './HomeProduct/HomeProduct';
 import Footer from './Footer/Footer'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Cart from './Cart/Cart';
 function App() {
     useEffect(() => {
         AOS.init({
@@ -18,6 +19,7 @@ function App() {
             <About />
             <HoomeProduct />
             <Footer />
+            <Cart />
         </div>
     )
 }
