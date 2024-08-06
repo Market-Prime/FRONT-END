@@ -1,12 +1,11 @@
 import React , {useEffect} from 'react';
-import './App.css'
-import Hero from './Header/Hero';
-import About from './About/About';
-import HoomeProduct from './HomeProduct/HomeProduct';
-import Footer from './Footer/Footer'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Cart from './pages/Cart/Cart'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Cart from './Cart/Cart';
+
 function App() {
     useEffect(() => {
         AOS.init({
@@ -15,11 +14,13 @@ function App() {
       }, [])
     return(
         <div>
-            <Hero />
-            <About />
-            <HoomeProduct />
-            <Footer />
-            <Cart />
+             <BrowserRouter>
+            <Routes>
+                <Route path='/' index element={<Home />}></Route>
+                <Route path='Shop' element={<Shop />}></Route>
+                <Route path='Cart' element={<Cart />}></Route>
+            </Routes>
+            </BrowserRouter>
         </div>
     )
 }

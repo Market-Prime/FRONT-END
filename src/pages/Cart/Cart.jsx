@@ -1,5 +1,10 @@
-import React from 'react';
-import './Cart.css'; // Create a CSS file for styling
+import Navbar from '../../components/Navbar/navbar'
+import './Cart.css'; 
+import cart from '../../assets/cart.png'
+import cart2 from '../../assets/cart2.png'
+import cart3 from '../../assets/cart3.png'
+import { useState } from 'react'
+
 
 const Cart = () => {
   const cartItems = [
@@ -9,7 +14,7 @@ const Cart = () => {
       price: 50000,
       size: 'M',
       color: 'White',
-      imageUrl: 'link-to-image', // replace with actual image URL
+      imageUrl: cart,
     },
     {
       id: 2,
@@ -17,7 +22,7 @@ const Cart = () => {
       price: 20000,
       size: 'M',
       color: 'White',
-      imageUrl: 'link-to-image', // replace with actual image URL
+      imageUrl: cart2, // replace with actual image URL
     },
     {
       id: 3,
@@ -25,25 +30,19 @@ const Cart = () => {
       price: 30000,
       size: 'M',
       color: 'Blue',
-      imageUrl: 'link-to-image', // replace with actual image URL
+      imageUrl: cart3
     },
   ];
 
   const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
 
+  const [count, setCount] = useState(0)
+
   return (
+    
     <div className="cart-page">
-      <header className="header">
-        <h1>MARKET PRIME</h1>
-        <div className="search-bar">
-          <input type="text" placeholder="Search products, brands and categories" />
-          <button>Search</button>
-        </div>
-        <div className="account-cart">
-          <span>Account</span>
-          <span>Cart</span>
-        </div>
-      </header>
+      <Navbar />
+      
       <div className="main-container">
         <div className="cart-container">
           <h2>Cart ({cartItems.length})</h2>
@@ -51,27 +50,32 @@ const Cart = () => {
             <div className="cart-item" key={item.id}>
               <img src={item.imageUrl} alt={item.name} />
               <div className="item-details">
-                <p>{item.name}</p>
-                <p>#{item.price}</p>
+                <div className="item-text">
+                <p className='name'>{item.name}</p>
+                <p className='price'>₦{item.price}</p>
+                <p className='price2'>₦{item.price}</p>
                 <p>Size: {item.size}</p>
                 <p>Color: {item.color}</p>
+                </div>
                 <div className="item-actions">
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
+                  <button className='subtract' onClick={() => setCount(count - 1)}>-</button>
+                  <span>{count}</span>
+                  <button className='add' onClick={() => setCount(count + 1)}>+</button>
                   <button>REMOVE</button>
                 </div>
               </div>
             </div>
           ))}
-          <button className="add-more">+ Add more items</button>
+          
         </div>
         <div className="order-summary">
           <h3>Order Summary</h3>
-          <p>Subtotal: #{totalAmount}</p>
-          <button className="checkout">CHECKOUT (#{totalAmount})</button>
+          <hr />
+          <p>Subtotal <span> ₦{totalAmount}</span></p>
+          <button className="checkout">CHECKOUT (₦{totalAmount})</button>
         </div>
       </div>
+      <button className="add-more">+ Add more items</button>
     </div>
   );
 };
