@@ -11,10 +11,12 @@
 .logo-box{
     display: flex;
 }
-.logo-box h1{
+.navbar h1{
     font-size: 25px;
     font-weight: 400;
     font-family: "Roboto Mono", monospace;
+    display: flex;
+    cursor: pointer;
 }
 .logo{
     height: 40px;

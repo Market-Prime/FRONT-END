@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Shop.css'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/navbar'
@@ -18,6 +19,11 @@ import bags from '../assets/bags.png'
 const Shop = () => {
   return (
     <div>
+        <motion.div
+       initial={{scaleY: 0}}
+       animate={{scaleY:1}}
+        exit={{scaleY:0}}
+        transition={{duration: 0.5}}>
       <Navbar /> 
       <div className="wrapper">
           <div className="wrapper-text">
@@ -93,12 +99,13 @@ const Shop = () => {
 
         </div>
         <div className="btn2">
-        <button className='bn2'>Proceed To Cart</button>
+        <Link to="/Cart"><button className='bn2'>Proceed To Cart</button></Link>
 
         </div>
         </div>
 
         <Footer />
+        </motion.div>
     </div>
   )
 }

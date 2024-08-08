@@ -1,9 +1,11 @@
-import Navbar from '../../components/Navbar/navbar'
+import Navbar from '../../components/Navbar/navbar';
 import './Cart.css'; 
-import cart from '../../assets/cart.png'
-import cart2 from '../../assets/cart2.png'
-import cart3 from '../../assets/cart3.png'
-import { useState } from 'react'
+import cart from '../../assets/cart.png';
+import cart2 from '../../assets/cart2.png';
+import cart3 from '../../assets/cart3.png';
+import deletebtn from '../../assets/deletebtn.svg'
+import plusbtn from '../../assets/plus-solid.svg'
+import { useState } from 'react';
 
 
 const Cart = () => {
@@ -22,7 +24,7 @@ const Cart = () => {
       price: 20000,
       size: 'M',
       color: 'White',
-      imageUrl: cart2, // replace with actual image URL
+      imageUrl: cart2,
     },
     {
       id: 3,
@@ -30,52 +32,97 @@ const Cart = () => {
       price: 30000,
       size: 'M',
       color: 'Blue',
-      imageUrl: cart3
+      imageUrl: cart3,
+    },
+    {
+      id: 3,
+      name: 'Women Sweat Top',
+      price: 30000,
+      size: 'M',
+      color: 'Blue',
+      imageUrl: cart3,
+    },
+    {
+      id: 3,
+      name: 'Women Sweat Top',
+      price: 30000,
+      size: 'M',
+      color: 'Blue',
+      imageUrl: cart3,
     },
   ];
 
-  const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+  const [counts, setCounts] = useState(cartItems.reduce((acc, item) => {
+    acc[item.id] = 1; // Start each item with a count of 1
+    return acc;
+  }, {}));
 
-  const [count, setCount] = useState(0)
+  const handleIncrement = (id) => {
+    setCounts(prevCounts => ({
+      ...prevCounts,
+      [id]: prevCounts[id] + 1,
+    }));
+  };
+
+  const handleDecrement = (id) => {
+    setCounts(prevCounts => ({
+      ...prevCounts,
+      [id]: Math.max(prevCounts[id] - 1, 1), // Ensure count doesn't go below 1
+    }));
+  };
+
+  const calculateTotal = (item) => {
+    return item.price * counts[item.id];
+  };
+
+  const totalAmount = cartItems.reduce((total, item) => total + calculateTotal(item), 0);
 
   return (
-    
     <div className="cart-page">
       <Navbar />
       
       <div className="main-container">
         <div className="cart-container">
           <h2>Cart ({cartItems.length})</h2>
+          <hr />
+
           {cartItems.map(item => (
             <div className="cart-item" key={item.id}>
-              <img src={item.imageUrl} alt={item.name} />
+              <div className="image">
+              <img src={item.imageUrl} alt={item.name} className="item-image" />
+
+              <button className="remove-button"><img src={deletebtn} alt="" /><h3>REMOVE</h3></button>
+
+              </div>
               <div className="item-details">
-                <div className="item-text">
                 <p className='name'>{item.name}</p>
                 <p className='price'>₦{item.price}</p>
-                <p className='price2'>₦{item.price}</p>
-                <p>Size: {item.size}</p>
-                <p>Color: {item.color}</p>
-                </div>
-                <div className="item-actions">
-                  <button className='subtract' onClick={() => setCount(count - 1)}>-</button>
-                  <span>{count}</span>
-                  <button className='add' onClick={() => setCount(count + 1)}>+</button>
-                  <button>REMOVE</button>
-                </div>
+                <p className='size'>Size: {item.size}</p>
+                <p className='color'>Color: {item.color}</p>
+
               </div>
+
+              <hr />
+              <div className="item-actions">
+             
+                <p className='price'>₦{calculateTotal(item).toLocaleString()}</p>
+                <button className='subtract' onClick={() => handleDecrement(item.id)}>-</button>
+                <span>{counts[item.id]}</span>
+                <button className='add' onClick={() => handleIncrement(item.id)}>+</button>
+               
+              </div>
+              
             </div>
           ))}
-          
         </div>
         <div className="order-summary">
           <h3>Order Summary</h3>
           <hr />
-          <p>Subtotal <span> ₦{totalAmount}</span></p>
-          <button className="checkout">CHECKOUT (₦{totalAmount})</button>
+          <p>Subtotal <span>₦{totalAmount.toLocaleString()}</span></p>
+          <button className="checkout">CHECKOUT (₦{totalAmount.toLocaleString()})</button>
         </div>
       </div>
-      <button className="add-more">+ Add more items</button>
+      <button className="add-more"><img src={plusbtn} alt="" /> Add more items</button>
     </div>
   );
 };
