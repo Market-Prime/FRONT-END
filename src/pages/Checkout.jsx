@@ -16,7 +16,7 @@ const Checkout = () => {
         </h1>
 
         <div className="title">
-          <h3>Payment</h3>
+          <h3>PAYEMENT</h3>
         </div>
 
         <div className="others">
