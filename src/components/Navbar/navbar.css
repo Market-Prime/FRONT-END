@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+.navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0 50px;
+    padding: 15px 8%;
+    background-color: #C1CFE3;
+}
+.logo-box{
+    display: flex;
+}
+.navbar h1{
+    font-size: 25px;
+    font-weight: 400;
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    cursor: pointer;
+}
+.logo{
+    height: 40px;
+    cursor: pointer;
+}
+.search-box{
+   display: flex;
+   gap: 0 10px;
+}
+.search-box input{
+    padding: 10px 65px;
+    border-radius: 10px;
+    width: 450px;
+    border: none;
+    outline: none;
+    background: #ffff
+}
+.search-box button{
+    background-color: #004AAD;
+    padding: 5px 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 150px;
+    color: #ffff;
+    margin-left: 7px;
+    
+}
+button h2{
+    font-size: 22px;
+}
+.others ul{
+   display: flex;
+   gap: 0 80px;
+}
+.others ul li{
+    display: flex;
+    gap: 0 10px;
+}
+.profile, .cart, .dropdown{
+    height: 20px;
+}
+.profile{
+    background-color: white;
+    
+}
+.dropdown{
+    height: 15px;
+    margin-top: 5px;
+}

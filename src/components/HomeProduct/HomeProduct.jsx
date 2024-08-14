@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from 'react-router-dom';
 
 const HomeProduct = () =>{
     const product = [
@@ -19,7 +19,7 @@ const HomeProduct = () =>{
     return(
         <div className="py-16 xl:px-40 lg:px-28 md:px-20">
             <div className="flex items-center justify-between sm:flex-col xl:flex-row lg:flex-row md:flex-row flex-wrap">{productList}</div>
-            <button className="mt-6 w-full bg-aboutbg block py-2 text-white">See all Products</button>
+            <Link to="/Shop"> <button className="mt-6 w-full bg-aboutbg block py-2 text-white">See all Products</button></Link>
         </div>
     )
 }

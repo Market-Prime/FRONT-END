@@ -20,7 +20,7 @@ const About = () => {
         className="font-normal text-xl text-white text-justify"
         data-aos="zoom-in"
         data-aos-duration="1000"
-        data-aos-delay="2000"
+        data-aos-delay="1000"
       >
         <span className="block mt-5">
           Our innovative platform utilizes advanced AI technology to provide a personalized shopping experience, allowing customers to visualize how items look on them through virtual try-ons before making a purchase.
