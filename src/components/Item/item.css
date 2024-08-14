@@ -1,26 +1,25 @@
-.container{
-    width: 100%;
-    display: flex;
+.container {
+  width: 100%;
+  display: flex;
 }
-.item{
-    width: 250px;
-    margin: 10px 0;
+.item {
+  width: 250px;
+  margin: 10px 0;
 }
-.item:hover{
-    transition: 0.4s;
-    transform: scale(1.1,1.1)
-  }
-.item p{
-
-    margin: 6px 0px;
-    font-size: 18px;
-    font-weight: 600;
+.item:hover {
+  transition: 0.4s;
+  transform: scale(1.1, 1.1);
 }
-.emoji{
-    height: 20px;
-    position: relative;
-    left: 175px;
-    bottom: 60px;
+.item p {
+  margin: 6px 0px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.emoji {
+  height: 20px;
+  position: relative;
+  left: 175px;
+  bottom: 60px;
 }
 /* .item:hover{
     transform: scale(1.05);
