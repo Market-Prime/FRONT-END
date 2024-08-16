@@ -8,7 +8,9 @@ export default {
     extend: {
       colors:{
         herocolor:"#7A9FD0",
-        aboutbg:"#001A3E"
+        aboutbg:"#001A3E",
+        cartcolor:"#001A3E",
+        cartbg:"#3D74BF"
       }
 
     },

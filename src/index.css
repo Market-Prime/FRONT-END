@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-heading{
-    background-image:url("/images/pexels-godisable-jacob-226636-784371 2.png");
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center;
-    margin:0 auto;
-    width:100%;
-    background-blend-mode:overlay;
-    background-color:rgba(0,0,0,.3);
+* {
+  margin: 0;
+}
+.main-heading {
+  background-image: url("/images/pexels-godisable-jacob-226636-784371 2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  width: 100%;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.3);
 }
