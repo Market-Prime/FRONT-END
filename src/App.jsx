@@ -7,6 +7,7 @@ import Cart from "./pages/Cart/Cart";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Checkout from "./pages/Checkout";
+import VirtualTryOn from "./pages/VirtualTryOn";
 
 function App() {
   useEffect(() => {
@@ -35,6 +36,7 @@ function AnimatedRoutes() {
         <Route path="Shop" element={<Shop />} />
         <Route path="Cart" element={<Cart />} />
         <Route path="Cart/Checkout" element={<Checkout />} />
+        <Route path="VirtualTryOn" element={<VirtualTryOn />} />
       </Routes>
     </AnimatePresence>
   );

@@ -95,8 +95,7 @@ const Shop = () => {
       </div>
       <div className="buttons">
         <div className="btn1">
-        <button>Virtual Try-On</button>
-
+          <Link to="/VirtualTryOn"><button>Virtual Try-On</button></Link>
         </div>
         <div className="btn2">
         <Link to="/Cart"><button className='bn2'>Proceed To Cart</button></Link>
