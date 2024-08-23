@@ -10,7 +10,8 @@ export default {
         herocolor:"#7A9FD0",
         aboutbg:"#001A3E",
         cartcolor:"#001A3E",
-        cartbg:"#3D74BF"
+        cartbg:"#3D74BF",
+        homebgshadow:"RGBA(109,151,207,.5)"
       }
 
     },

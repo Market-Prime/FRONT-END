@@ -11,17 +11,17 @@ const VirtualTryOn = () =>{
                     <IoIosArrowRoundBack className="text-4xl" />
                     <p className="pl-2">Back</p>
                 </div>
-                <div className="flex items-start justify-between mt-12 w-full">
+                <div className="flex items-start justify-between 2xl:mt-5 xl:mt-5 lg:mt-10  w-full">
                     {/* First half */}
-                    <div className="pl-24 flex items-center justify-start w-1/2">
-                        <img src="/images/Rectangle 365.png" />
-                        <div className="pl-10">
-                            <p className="text-3xl font-extralight">Lady's sweat <br />top</p>
+                    <div className="xl:pl-10 lg:pl-10 flex items-center justify-start w-1/2">
+                        <img src="/images/Rectangle 365.png" className="xl:w-2/3" />
+                        <div className="pl-10 xl:pl-2">
+                            <p className="xl:w-full lg:w-full xl:text-2xl text-3xl font-extralight">Lady's sweat <br />top</p>
                             <p className="uppercase mt-10 font-bold">color: <span className="lowercase font-extralight">blue</span></p>
                             <p className="uppercase mt-5">Select size:</p>
                             <div className="flex items-center justify-start mt-10">
                                 <img src="/images/IMAGE ICON.png" className="w-9"/>
-                                <p className="pl-2">Upload Full photograph.</p>
+                                <p className="pl-2 xl:text-xs">Upload Full photograph.</p>
                             </div>
                         </div>
                     </div>
