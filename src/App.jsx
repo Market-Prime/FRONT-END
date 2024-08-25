@@ -8,6 +8,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Checkout from "./pages/Checkout";
 import VirtualTryOn from "./pages/VirtualTryOn";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   useEffect(() => {
@@ -37,6 +39,8 @@ function AnimatedRoutes() {
         <Route path="Cart" element={<Cart />} />
         <Route path="Cart/Checkout" element={<Checkout />} />
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="Register" element={<Signup />} />
       </Routes>
     </AnimatePresence>
   );
