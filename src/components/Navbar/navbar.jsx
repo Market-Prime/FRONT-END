@@ -1,50 +1,10 @@
-// import { Link } from 'react-router-dom';
-// import './navbar.css'
-// import logo from '../../assets/Logo 1.png'
-// import profile from '../../assets/user-solid.svg'
-// import dropdown from '../../assets/chevron-down-solid.svg'
-// import cart from '../../assets/cart-shopping-solid.svg'
-
-// const navbar = () => {
-
-
-//   return (
-//     <div className='navbar'>
-      
-//         <h1> <Link to='/Home'> MARKET PRIME</Link> <img src={logo} alt="" className='logo'/></h1>
-      
-
-//       <div className="search-box">
-//         <form action="">
-//         <input type="text" placeholder='Search products, brands and categories' />
-//         <button><h2>Search</h2></button>
-//         </form>
-//       </div>
-
-//       <div className="others">
-//         <ul>
-        
-//             <li><img src={profile} alt="" className='profile'/><Link to="Login">Account</Link><img src={dropdown} alt="" className='dropdown'/></li>
-//             <li><Link to="/cart">Cart</Link><img src={cart} alt="" className='cart'/></li>
-//         </ul>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default navbar
-
-
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './navbar.css';
-import logo from '../../assets/Logo 1.png';
-import profile from '../../assets/user-solid.svg';
-import dropdown from '../../assets/chevron-down-solid.svg';
-import cart from '../../assets/cart-shopping-solid.svg';
-// import LoginModal from '../../pages/Login';
-import Login from '../../pages/Login';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/Logo 1.png";
+import profile from "../../assets/user-solid.svg";
+import dropdown from "../../assets/chevron-down-solid.svg";
+import cart from "../../assets/cart-shopping-solid.svg";
+import Login from "../../pages/Login";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -54,29 +14,43 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar'>
-      <h1>
-        <Link to='/Home'> MARKET PRIME</Link>
-        <img src={logo} alt="" className='logo'/>
-      </h1>
+    <div className="flex items-center p-4 bg-[#E6F7FF]">
+      <div>
+        <h1 className="flex items-center gap-4 text-lg font-medium font-verdana cursor-pointer">
+          <img src={logo} alt="Logo" className="w-18 h-18" />
+          <Link to="/Home" className="text-xl">
+            MARKET <br />
+            <span className="block text-lg">PRIME</span>
+          </Link>
+        </h1>
+      </div>
 
-      <div className="search-box">
-        <form action="">
-          <input type="text" placeholder='Search products, brands and categories' />
-          <button><h2>Search</h2></button>
+      <div className="flex flex-1 justify-center">
+        <form className="flex items-center gap-2">
+          <input
+            type="text"
+            placeholder="Search products, brands and categories"
+            className="px-4 py-2 rounded-lg border-none outline-none w-96 bg-white"
+          />
+          <button className="bg-blue-800 text-white px-4 py-2 rounded-lg text-lg">
+            Search
+          </button>
         </form>
       </div>
 
-      <div className="others">
-        <ul>
-          <li onClick={toggleModal}>
-            <img src={profile} alt="" className='profile'/>
+      <div className="flex items-center gap-8">
+        <ul className="flex items-center gap-8">
+          <li
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={toggleModal}
+          >
+            <img src={profile} alt="Profile" className="w-5 h-5 bg-white" />
             <Link to="#">Account</Link>
-            <img src={dropdown} alt="" className='dropdown'/>
+            <img src={dropdown} alt="Dropdown" className="w-4 h-4 mt-1" />
           </li>
-          <li>
+          <li className="flex items-center gap-2">
             <Link to="/cart">Cart</Link>
-            <img src={cart} alt="" className='cart'/>
+            <img src={cart} alt="Cart" className="w-5 h-5" />
           </li>
         </ul>
       </div>

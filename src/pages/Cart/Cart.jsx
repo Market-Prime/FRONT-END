@@ -2,12 +2,13 @@ import Navbar from "../../components/Navbar/navbar";
 import "./Cart.css";
 import deletebtn from "../../assets/deletebtn.svg";
 import plusbtn from "../../assets/plus-solid.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import cart from "../../assets/cart.png";
 import cart2 from "../../assets/cart2.png";
 import cart3 from "../../assets/cart3.png";
 
+// Sample cartItems data
 const cartItems = [
   {
     id: 1,
@@ -34,7 +35,7 @@ const cartItems = [
     imageUrl: cart3,
   },
   {
-    id: 4, // Fixed duplicate IDs (was 3 before)
+    id: 4, // Adjusted ID to avoid duplication
     name: "Women Sweat Top",
     price: 30000,
     size: "M",
@@ -42,7 +43,7 @@ const cartItems = [
     imageUrl: cart3,
   },
   {
-    id: 5, // Fixed duplicate IDs (was 3 before)
+    id: 5, // Adjusted ID to avoid duplication
     name: "Women Sweat Top",
     price: 30000,
     size: "M",
@@ -50,20 +51,22 @@ const cartItems = [
     imageUrl: cart3,
   },
 ];
+
+// Function to calculate total amount per item
 const calculateTotal = (item, counts) => {
   return item.price * counts[item.id];
 };
 
 const Cart = () => {
-  // State for keeping track of item counts
+  // State for item counts
   const [counts, setCounts] = useState(
     cartItems.reduce((acc, item) => {
-      acc[item.id] = 1; // Start each item with a count of 1
+      acc[item.id] = 1; // Initialize each item's count to 1
       return acc;
     }, {})
   );
 
-  // Function to calculate the total amount for all items
+  // Function to calculate the total amount for all items in the cart
   const calculateTotalAmount = (cartItems, counts) => {
     return cartItems.reduce(
       (total, item) => total + calculateTotal(item, counts),
@@ -71,8 +74,15 @@ const Cart = () => {
     );
   };
 
-  // Calculate total amount using the utility function
+  // Calculate the total amount
   const totalAmount = calculateTotalAmount(cartItems, counts);
+
+  const navigate = useNavigate();
+
+  // Handle checkout and navigate to Checkout page with totalAmount
+  const handleCheckout = () => {
+    navigate("/cart/checkout", { state: { totalAmount } });
+  };
 
   const handleIncrement = (id) => {
     setCounts((prevCounts) => ({
@@ -91,12 +101,10 @@ const Cart = () => {
   return (
     <div className="cart-page">
       <Navbar />
-
       <div className="main-container">
         <div className="cart-container">
           <h2>Cart ({cartItems.length})</h2>
           <hr />
-
           {cartItems.map((item) => (
             <div className="cart-item" key={item.id}>
               <div className="image">
@@ -105,7 +113,6 @@ const Cart = () => {
                   alt={item.name}
                   className="item-image"
                 />
-
                 <button className="remove-button">
                   <img src={deletebtn} alt="" />
                   <h3>REMOVE</h3>
@@ -113,11 +120,10 @@ const Cart = () => {
               </div>
               <div className="item-details">
                 <p className="name">{item.name}</p>
-                <p className="price">₦{item.price}</p>
+                <p className="price">₦{item.price.toLocaleString()}</p>
                 <p className="size">Size: {item.size}</p>
                 <p className="color">Color: {item.color}</p>
               </div>
-
               <hr />
               <div className="item-actions">
                 <p className="price">
@@ -146,11 +152,10 @@ const Cart = () => {
           <p>
             Subtotal <span>₦{totalAmount.toLocaleString()}</span>
           </p>
-          <Link to="/Cart/Checkout">
-            <button className="checkout">
-              CHECKOUT (₦{totalAmount.toLocaleString()})
-            </button>
-          </Link>
+
+          <button className="checkout" onClick={handleCheckout}>
+            CHECKOUT (₦{totalAmount.toLocaleString()})
+          </button>
         </div>
       </div>
       <button className="add-more">
