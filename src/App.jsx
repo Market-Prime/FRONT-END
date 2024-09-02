@@ -43,6 +43,7 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Signup />} />
+        <Route path="Register/Emailverification" element={<Emailverification />} />
       </Routes>
     </AnimatePresence>
   );
