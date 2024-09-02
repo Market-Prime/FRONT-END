@@ -10,6 +10,7 @@ import Checkout from "./pages/Checkout";
 import VirtualTryOn from "./pages/VirtualTryOn";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Emailverification from "./pages/Emailverification";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Signup />} />
+        <Route path="Register/Emailverification" element={<Emailverification />} />
       </Routes>
     </AnimatePresence>
   );
