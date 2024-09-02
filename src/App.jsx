@@ -10,6 +10,7 @@ import Checkout from "./pages/Checkout";
 import VirtualTryOn from "./pages/VirtualTryOn";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import SearchFilter from "./pages/SearchFilter/SearchFilter";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Signup />} />
+        <Route path="Search" element={<SearchFilter />} />
       </Routes>
     </AnimatePresence>
   );
