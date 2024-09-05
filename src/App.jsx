@@ -11,6 +11,8 @@ import VirtualTryOn from "./pages/VirtualTryOn";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SearchFilter from "./pages/SearchFilter/SearchFilter";
+import Emailverification from "./pages/Emailverification";
+import EmailConfirmation from "./pages/EmailConfirmation";
 
 function App() {
   useEffect(() => {
@@ -42,7 +44,8 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Signup />} />
-        <Route path="Search" element={<SearchFilter />} />
+        <Route path="Register/Emailverification" element={<Emailverification />} />
+        <Route path="Register/Emailverification/EmailConfirmation" element={<EmailConfirmation />} />
       </Routes>
     </AnimatePresence>
   );

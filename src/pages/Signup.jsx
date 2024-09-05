@@ -20,7 +20,7 @@ const Signup = () => {
                     <label className='block text-cartbg font-medium text-base mt-2'>Re-Enter Password</label> 
                     <input type="password" className='py-1 outline-none px-3 border-2 rounded-xl w-full mt-2' required />
                 </form>
-                <a href="#" className="block bg-aboutbg py-2 text-center text-white mt-5 w-1/2 mx-auto rounded-full">Create Account</a>
+                <Link to="EmailVerification" className="block bg-aboutbg py-2 text-center text-white mt-5 w-1/2 mx-auto rounded-full">Create Account</Link>
                 <p className="mt-3 text-xs">Already have an account? <Link to="/" className="text-base text-cartbg">Sign In</Link></p>
             </div>
             <div className="flex items-center justify-between xl:w-1/3 2xl:w-1/3 lg:w-1/3 md:w-2/3 sm:w-full sm:px-3 md:px-0 lg:px-0 xl:px-0 2xl:px-0 mx-auto mt-3">

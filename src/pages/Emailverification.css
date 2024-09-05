@@ -1,0 +1,82 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .card {
+    width: 420px;
+    padding: 60px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .title {
+    font-size: 23px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    margin: 10px 5px;
+    text-align:left;
+    color: #004AAD;
+    
+  }
+  
+  .message {
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000;;
+    line-height: 1.5;
+    
+  }
+  
+  .verify-button {
+    width: 150px;
+    padding: 12px;
+    margin: 20px 0;
+    background-color: #012a5f;
+    color: white;
+    border:none;
+    border-radius: 17px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .resend-text {
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .resend-link {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .footer {
+    font-size: 12px;
+    color: #3D74BF;
+    margin-top: 20px;
+    justify-content: space-around;
+    
+  }
+  
+  .footer-link {
+    color: #3D74BF;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
