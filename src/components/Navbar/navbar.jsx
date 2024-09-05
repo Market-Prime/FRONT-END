@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo 1.png";
-import profile from "../../assets/user-solid.svg";
-import dropdown from "../../assets/chevron-down-solid.svg";
-import cart from "../../assets/cart-shopping-solid.svg";
-import Login from "../../pages/Login";
+import { CiSearch } from "react-icons/ci";
+import { AiOutlineUser } from "react-icons/ai";
+import { IoCartOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,49 +14,99 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center p-4 bg-[#E6F7FF]">
-      <div>
-        <h1 className="flex items-center gap-4 text-lg font-medium font-verdana cursor-pointer">
-          <img src={logo} alt="Logo" className="w-18 h-18" />
-          <Link to="/Home" className="text-xl">
-            MARKET <br />
-            <span className="block text-lg">PRIME</span>
+    <>
+      <div className="header bg-white py-5 px-10 flex items-center justify-between ">
+        {/* Logo */}
+        <div className="logo-sec flex items-center gap-2">
+          <Link to="/">
+            <img src={logo} alt="MarketPrime Logo" className="h-10" />
           </Link>
-        </h1>
-      </div>
+        </div>
 
-      <div className="flex flex-1 justify-center">
-        <form className="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Search products, brands and categories"
-            className="px-4 py-2 rounded-lg border-none outline-none w-96 bg-white"
-          />
-          <button className="bg-blue-800 text-white px-4 py-2 rounded-lg text-lg">
-            Search
-          </button>
-        </form>
-      </div>
-
-      <div className="flex items-center gap-8">
-        <ul className="flex items-center gap-8">
-          <li
-            className="flex items-center gap-2 cursor-pointer"
+        {/* Search Icon and Hamburger Menu (only for screens < 768px) */}
+        <div className="flex md:hidden items-center gap-4">
+          <Link to="/search">
+            <div className="scon h-10 w-10 ml- rounded-full flex items-center justify-center bg-transparent hover:bg-gray-400">
+              <CiSearch className="text-2xl" />
+            </div>
+          </Link>
+          <RxHamburgerMenu
+            className="ham text-2xl cursor-pointer"
             onClick={toggleModal}
-          >
-            <img src={profile} alt="Profile" className="w-5 h-5 bg-white" />
-            <Link to="#">Account</Link>
-            <img src={dropdown} alt="Dropdown" className="w-4 h-4 mt-1" />
-          </li>
-          <li className="flex items-center gap-2">
-            <Link to="/cart">Cart</Link>
-            <img src={cart} alt="Cart" className="w-5 h-5" />
-          </li>
+          />
+        </div>
+
+        {/* Categories and Other Icons (hidden for screens < 768px) */}
+        <ul className="hidden md:flex gap-10 text-lg">
+          <li className="cursor-pointer">Men</li>
+          <li className="cursor-pointer">Women</li>
+          <li className="cursor-pointer">Shoes</li>
+          <li className="cursor-pointer">Bags & Belt</li>
+          <li className="cursor-pointer">Jewelries</li>
         </ul>
+
+        <div className="search-bar hidden md:flex items-center relative">
+          <Link to="/search">
+            <div
+              className="scon h-10 w-10 rounded-full flex items-center justify-center transition ease-in-out duration-400
+ bg-transparent hover:bg-gray-400"
+            >
+              <CiSearch className="text-2xl" />
+            </div>
+          </Link>
+          <div className="bar ml-2 w-48 p-2 rounded-full bg-white hover:bg-gray-300 text-center">
+            Search
+          </div>
+
+          <div className="others flex items-center gap-4 ml-4">
+            <Link to="/login">
+              <div
+                className="account h-10 w-10 flex items-center justify-center transition ease-in-out duration-400
+ rounded-full hover:bg-gray-300"
+              >
+                <AiOutlineUser className="text-2xl" />
+              </div>
+            </Link>
+
+            <Link to="/cart">
+              <div
+                className="cart h-10 w-10 flex items-center justify-center transition ease-in-out duration-400
+ rounded-full hover:bg-gray-300"
+              >
+                <IoCartOutline className="text-2xl" />
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
 
-      {showModal && <Login toggleModal={toggleModal} />}
-    </div>
+      {/* Dropdown Menu for small screens */}
+      {showModal && (
+        <div className="md:hidden flex flex-col items-center bg-white py-5">
+          <ul className="flex flex-col gap-4 text-lg">
+            <li className="cursor-pointer">Men</li>
+            <li className="cursor-pointer">Women</li>
+            <li className="cursor-pointer">Shoes</li>
+            <li className="cursor-pointer">Bags & Belt</li>
+            <li className="cursor-pointer">Jewelries</li>
+          </ul>
+
+          <div className="flex items-center gap-4 mt-5">
+            <Link to="/login">
+              <div className="account h-10 w-10 flex items-center justify-center rounded-full hover:bg-gray-300">
+                <AiOutlineUser className="text-2xl" />
+              </div>
+            </Link>
+
+            <Link to="/cart">
+              <div className="cart h-10 w-10 flex items-center justify-center rounded-full hover:bg-gray-300">
+                <IoCartOutline className="text-2xl" />
+              </div>
+            </Link>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

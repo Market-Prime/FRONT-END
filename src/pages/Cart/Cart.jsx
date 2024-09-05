@@ -99,69 +99,71 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-page">
+    <>
       <Navbar />
-      <div className="main-container">
-        <div className="cart-container">
-          <h2>Cart ({cartItems.length})</h2>
-          <hr />
-          {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <div className="image">
-                <img
-                  src={item.imageUrl}
-                  alt={item.name}
-                  className="item-image"
-                />
-                <button className="remove-button">
-                  <img src={deletebtn} alt="" />
-                  <h3>REMOVE</h3>
-                </button>
+      <div className="cart-page">
+        <div className="main-container">
+          <div className="cart-container">
+            <h2>Cart ({cartItems.length})</h2>
+            <hr />
+            {cartItems.map((item) => (
+              <div className="cart-item" key={item.id}>
+                <div className="image">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.name}
+                    className="item-image"
+                  />
+                  <button className="remove-button">
+                    <img src={deletebtn} alt="" />
+                    <h3>REMOVE</h3>
+                  </button>
+                </div>
+                <div className="item-details">
+                  <p className="name">{item.name}</p>
+                  <p className="price">₦{item.price.toLocaleString()}</p>
+                  <p className="size">Size: {item.size}</p>
+                  <p className="color">Color: {item.color}</p>
+                </div>
+                <hr />
+                <div className="item-actions">
+                  <p className="price">
+                    ₦{calculateTotal(item, counts).toLocaleString()}
+                  </p>
+                  <button
+                    className="subtract"
+                    onClick={() => handleDecrement(item.id)}
+                  >
+                    -
+                  </button>
+                  <span>{counts[item.id]}</span>
+                  <button
+                    className="add"
+                    onClick={() => handleIncrement(item.id)}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-              <div className="item-details">
-                <p className="name">{item.name}</p>
-                <p className="price">₦{item.price.toLocaleString()}</p>
-                <p className="size">Size: {item.size}</p>
-                <p className="color">Color: {item.color}</p>
-              </div>
-              <hr />
-              <div className="item-actions">
-                <p className="price">
-                  ₦{calculateTotal(item, counts).toLocaleString()}
-                </p>
-                <button
-                  className="subtract"
-                  onClick={() => handleDecrement(item.id)}
-                >
-                  -
-                </button>
-                <span>{counts[item.id]}</span>
-                <button
-                  className="add"
-                  onClick={() => handleIncrement(item.id)}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="order-summary">
-          <h3>Order Summary</h3>
-          <hr />
-          <p>
-            Subtotal <span>₦{totalAmount.toLocaleString()}</span>
-          </p>
+            ))}
+          </div>
+          <div className="order-summary">
+            <h3>Order Summary</h3>
+            <hr />
+            <p>
+              Subtotal <span>₦{totalAmount.toLocaleString()}</span>
+            </p>
 
-          <button className="checkout" onClick={handleCheckout}>
-            CHECKOUT (₦{totalAmount.toLocaleString()})
-          </button>
+            <button className="checkout" onClick={handleCheckout}>
+              CHECKOUT (₦{totalAmount.toLocaleString()})
+            </button>
+          </div>
         </div>
+        <button className="add-more">
+          <img src={plusbtn} alt="" /> Add more items
+        </button>
       </div>
-      <button className="add-more">
-        <img src={plusbtn} alt="" /> Add more items
-      </button>
-    </div>
+    </>
   );
 };
 
