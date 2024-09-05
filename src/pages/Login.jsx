@@ -18,8 +18,8 @@ const Login = ({ toggleModal }) => {
     //     </form>
     //   </div>
     // </div>
-    <div className="modal-backdrop bg-homebgshadow">
-        <div className="bg-white rounded-xl relative px-5 py-5 w-1/3">
+    <div className="modal-backdrop bg-homebgshadow sm:px-5 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
+        <div className="bg-white rounded-xl relative px-5 py-5 2xl:w-1/3 xl:w-1/3 lg:w-1/2 md:w-2/3 sm:w-full">
             <button className="close-modal" onClick={toggleModal}>X</button>
             <h4 className="text-cartbg text-2xl font-medium">Welcome</h4>
             <p className='text-xl text-cartbg font-medium mt-6'>Type your email and password to Log in</p>
