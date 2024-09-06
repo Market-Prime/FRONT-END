@@ -54,6 +54,7 @@ function AnimatedRoutes() {
           element={<EmailConfirmation />}
         />
         <Route path="/Search" element={<SearchFilter />} />
+        <Route path="/ProductDescription" element={<ProductDescription />} />
       </Routes>
     </AnimatePresence>
   );
