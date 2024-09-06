@@ -44,7 +44,7 @@ function AnimatedRoutes() {
         <Route path="Cart/Checkout" element={<Checkout />} />
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
-        <Route path="Login/Register" element={<Signup />} />
+        <Route path="Register" element={<Signup />} />
         <Route
           path="Register/Emailverification"
           element={<Emailverification />}
@@ -53,8 +53,7 @@ function AnimatedRoutes() {
           path="Register/Emailverification/EmailConfirmation"
           element={<EmailConfirmation />}
         />
-        <Route path="/search" element={<SearchFilter />} />
-        <Route path="/ProductDescription" element={<ProductDescription />} />
+        <Route path="/Search" element={<SearchFilter />} />
       </Routes>
     </AnimatePresence>
   );
