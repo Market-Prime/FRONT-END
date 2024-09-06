@@ -46,6 +46,7 @@ function AnimatedRoutes() {
         <Route path="Register" element={<Signup />} />
         <Route path="Register/Emailverification" element={<Emailverification />} />
         <Route path="Register/Emailverification/EmailConfirmation" element={<EmailConfirmation />} />
+        <Route path="/Search" element={<SearchFilter />}  />
       </Routes>
     </AnimatePresence>
   );

@@ -11,7 +11,12 @@ export default {
         aboutbg:"#001A3E",
         cartcolor:"#001A3E",
         cartbg:"#3D74BF",
-        homebgshadow:"RGBA(109,151,207,.5)"
+        seamlessbg:'#004AAD',
+        shopcolor:'#002366',
+        topdeal:'#333333',
+        topdealbg:"#E6F7FF",
+        homebgshadow:"RGBA(109,151,207,.5)",
+        tryonecolor:'#0A51D0'
       }
 
     },
