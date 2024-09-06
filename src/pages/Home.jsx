@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar/navbar";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import HoomeProduct from "../components/HomeProduct/HomeProduct";
 import About from "../components/About/About";

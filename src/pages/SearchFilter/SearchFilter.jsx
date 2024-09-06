@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import Navbar from "../../components/Navbar/navbar";
+import { Link } from "react-router-dom";
+
+import Navbar from "../../components/Navbar";
 import AnimatedRating from "../../components/AnimatedRating";
 import Bg1 from "../../assets/Filtered-Images/Spl3.png";
 import Bg2 from "../../assets/Filtered-Images/Spl10.png";
@@ -16,6 +18,10 @@ import Bg12 from "../../assets/Filtered-Images/Spl15.png";
 import Bg13 from "../../assets/Filtered-Images/Spl16.png";
 import Bg14 from "../../assets/Filtered-Images/Spl16.png";
 import Bg15 from "../../assets/Filtered-Images/Spl18.png";
+import { IoCartOutline } from "react-icons/io5";
+import PropTypes from "prop-types";
+import { RxEyeOpen } from "react-icons/rx";
+
 // Example products array, you can replace it with dynamic data or fetch it from an API
 const products = [
   {
@@ -26,7 +32,8 @@ const products = [
     discount: "25% off",
     rating: 4.5,
     reviews: "100+",
-    colors: ["#A52A2A", "#5F9EA0", "#FF4500"], // Example color codes
+    colors: ["#A52A2A", "#5F9EA0", "#FF4500"],
+    // Example color codes
   },
   {
     image: Bg2,
@@ -173,6 +180,9 @@ const products = [
 const ProductCard = ({ product }) => (
   <div className="bg-white rounded-lg shadow p-4 m-2">
     <img src={product.image} alt={product.title} className="rounded-t-lg" />
+    <Link to="/ProductDescription">
+      <RxEyeOpen />
+    </Link>
     <div className="p-4">
       <h3 className="font-bold text-lg">{product.title}</h3>
       <p className="text-lg font-semibold text-blue-500">{product.price}</p>
@@ -189,6 +199,8 @@ const ProductCard = ({ product }) => (
           ))}
         </div>
         <span className="text-sm text-gray-500 ml-2">{product.reviews}</span>
+
+        <IoCartOutline className="border-2 border-blue-600 " />
       </div>
       <div className="flex mt-2 space-x-2">
         {product.colors.map((color, index) => (
@@ -203,8 +215,20 @@ const ProductCard = ({ product }) => (
   </div>
 );
 
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    originalPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    discount: PropTypes.string,
+    rating: PropTypes.number.isRequired,
+    reviews: PropTypes.string.isRequired,
+    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+};
+
 const SearchFilter = () => {
-  // State to manage the visibility of the filters
   const [showFilter, setShowFilter] = useState(false);
 
   return (

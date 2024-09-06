@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Shop.css";
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/navbar";
+import Navbar from "../components/Navbar";
 import bg from "../assets/Rectangle 354.png";
 import Item from "../components/Item/item";
 import productList from "../assets/data";

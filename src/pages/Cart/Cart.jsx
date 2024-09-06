@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar/navbar";
+import Navbar from "../../components/Navbar";
 import "./Cart.css";
 import deletebtn from "../../assets/deletebtn.svg";
 import plusbtn from "../../assets/plus-solid.svg";

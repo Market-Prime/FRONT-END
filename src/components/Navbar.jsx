@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/Logo 1.png";
+import logo from "../assets/Logo 1.png";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
@@ -26,7 +26,7 @@ const Navbar = () => {
         {/* Search Icon and Hamburger Menu (only for screens < 768px) */}
         <div className="flex md:hidden items-center gap-4">
           <Link to="/search">
-            <div className="scon h-10 w-10 ml- rounded-full flex items-center justify-center bg-transparent hover:bg-gray-400">
+            <div className="scon h-10 w-10 rounded-full flex items-center justify-center bg-transparent hover:bg-gray-400">
               <CiSearch className="text-2xl" />
             </div>
           </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
 
         {/* Categories and Other Icons (hidden for screens < 768px) */}
         <ul className="hidden md:flex gap-10 text-lg">
-          <li className="cursor-pointer">Men</li>
+          <li className="cursor-pointer ">Men</li>
           <li className="cursor-pointer">Women</li>
           <li className="cursor-pointer">Shoes</li>
           <li className="cursor-pointer">Bags & Belt</li>
@@ -46,33 +46,23 @@ const Navbar = () => {
         </ul>
 
         <div className="search-bar hidden md:flex items-center relative">
-          <Link to="/search">
-            <div
-              className="scon h-10 w-10 rounded-full flex items-center justify-center transition ease-in-out duration-400
- bg-transparent hover:bg-gray-400"
-            >
-              <CiSearch className="text-2xl" />
-            </div>
-          </Link>
-          <div className="bar ml-2 w-48 p-2 rounded-full bg-white hover:bg-gray-300 text-center">
-            Search
+          <div className="relative w-64">
+            <input
+              type="text"
+              placeholder="Search Products"
+              className="bar w-full pl-10 p-2 rounded-full bg-white focus:bg-gray-200"
+            />
+            <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-2xl" />
           </div>
-
           <div className="others flex items-center gap-4 ml-4">
             <Link to="/login">
-              <div
-                className="account h-10 w-10 flex items-center justify-center transition ease-in-out duration-400
- rounded-full hover:bg-gray-300"
-              >
+              <div className="account h-10 w-10 flex items-center justify-center transition ease-in-out duration-400 rounded-full hover:bg-gray-300">
                 <AiOutlineUser className="text-2xl" />
               </div>
             </Link>
 
             <Link to="/cart">
-              <div
-                className="cart h-10 w-10 flex items-center justify-center transition ease-in-out duration-400
- rounded-full hover:bg-gray-300"
-              >
+              <div className="cart h-10 w-10 flex items-center justify-center transition ease-in-out duration-400 rounded-full hover:bg-gray-300">
                 <IoCartOutline className="text-2xl" />
               </div>
             </Link>
