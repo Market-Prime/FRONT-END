@@ -44,13 +44,13 @@ function AnimatedRoutes() {
         <Route path="Cart/Checkout" element={<Checkout />} />
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
-        <Route path="Register" element={<Signup />} />
+        <Route path="Login/Register" element={<Signup />} />
         <Route
-          path="Register/Emailverification"
+          path="Login/Register/Emailverification"
           element={<Emailverification />}
         />
         <Route
-          path="Register/Emailverification/EmailConfirmation"
+          path="Login/Register/Emailverification/EmailConfirmation"
           element={<EmailConfirmation />}
         />
         <Route path="/Search" element={<SearchFilter />} />
