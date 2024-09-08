@@ -14,6 +14,7 @@ import SearchFilter from "./pages/SearchFilter/SearchFilter";
 import Emailverification from "./pages/Emailverification";
 import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
+import PaymentModal from "./pages/PaymentModal";
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Login/Register" element={<Signup />} />
+        <Route path="Cart/Checkout/Payement" element={<PaymentModal />} />
         <Route
           path="Login/Register/Emailverification"
           element={<Emailverification />}
