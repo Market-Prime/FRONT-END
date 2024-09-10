@@ -1,5 +1,6 @@
 import React from 'react';
 import './Emailverification.css';
+import { Link } from 'react-router-dom';
 
 
 const Emailverification = () => {
@@ -18,7 +19,8 @@ const Emailverification = () => {
           Hey Fola, Thank you for signing up. <br />
           Use the link below to verify your email.
         </p>
-        <button className="verify-button">Verify</button>
+        {/* <button className="verify-button">Verify</button> */}
+        <Link className='verify-button' to="/EmailConfirmation">Verify</Link>
         <p className="resend-text">
           Didn’t get the mail? <span className="resend-link">Resend Email</span>
         </p>

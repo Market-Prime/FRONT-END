@@ -28,7 +28,7 @@
 
 // export default Home;
 import React from "react";
-import Navbar from "../components/Navbar/navbar";
+import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Best, ExploreData, Topdealdata } from "../data/Topdealdata";
@@ -37,7 +37,7 @@ import Footer from "../components/Footer/Footer";
 const Home = () => {
   const topdeal = Topdealdata.map((item, i) => {
     return (
-      <div className="mx-auto  mb-8" key={i}>
+      <div className="mx-auto  mb-8 w-1/6" key={i}>
         <img src={item.image} className="w-full mx-auto" />
         <p className="text-sm text-topdeal font-light -mt-10 ml-5">
           {item.name}
@@ -99,8 +99,8 @@ const Home = () => {
     <div>
       <Navbar />
       {/* Hero Image */}
-      <div className="w-full px-5 py-5">
-        <img src="/images/Frame 6.png" className="w-full h-screen" />
+      <div className="w-full py-5">
+        <img src="/images/Frame 6.png" className="w-full h-screen" data-aos="fade-right" data-aos-duration="4000" />
       </div>
 
       {/* Seamless Fashion */}

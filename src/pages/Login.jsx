@@ -41,12 +41,10 @@ const Login = ({ toggleModal }) => {
 
             <p className='mt-5 text-xs'>Don't have an account? 
                 {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
-                <Link to="Register" className='inline text-sm text-cartbg font-medium ml-1'>Register</Link>
+                <Link to="/Signup" className='inline text-sm text-cartbg font-medium ml-1'>Register</Link>
             </p>
         </div>
     </div>
   );
 };
-
-
 export default Login;

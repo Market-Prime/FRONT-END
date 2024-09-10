@@ -149,7 +149,7 @@ export const ExploreData = [
         width:"16%"
     },
     {
-        image:"/images/Image Icon.png",
+        image:"src/assets/Shoes.png",
         name:"Leather",
         width:"16%"
     }
