@@ -28,6 +28,19 @@ export default {
         homebgshadow: "RGBA(109,151,207,.5)",
         tryonecolor: "#0A51D0",
       },
+      screens: {
+        'sm': '300px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1750px',
+      },
+      widths:{
+        extralarge2xl:"15.5%",
+        large:"30%",
+        medium:"50%"
+        
+      }
     },
   },
   plugins: [],

@@ -60,7 +60,7 @@ const Checkout = () => {
               <button>APPLY</button>
             </div>
             <br />
-            <button className="confirm">CONFIRM ORDER</button>
+            <Link to="PaymentModal"> <button className="confirm">CONFIRM ORDER</button></Link>
           </div>
           <div className="paym">
             <h2 className="pay-text">CHOOSE A PAYMENT METHOD</h2>
