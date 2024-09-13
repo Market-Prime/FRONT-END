@@ -1,3 +1,4 @@
+import "/src/index.css"
 export const Topdealdata = [
     {
         image:"/images/Rectangle 4020.png",
@@ -101,57 +102,57 @@ export const ExploreData = [
     {
         image:"/images/Rectangle 356.png",
         name:"Clothes",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Rectangle 357.png",
         name:"Shoes",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Rectangle 358.png",
         name:"Bags",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Rectangle 359.png",
         name:"Accessories",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Rectangle 361.png",
         name:"New Arrival",
-        width:"33%"
+        width:"explore2"
     },
     {
         image:"/images/Price (2).png",
         name:"Corporate",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Price (4).png",
         name:"Casual Outfits",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Price (1).png",
         name:"Headwraps",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Price (3).png",
         name:"Lingeries",
-        width:"15.5%"
+        width:"explore1"
     },
     {
         image:"/images/Price.png",
         name:"Sportwear",
-        width:"16%"
+        width:"explore3"
     },
     {
-        image:"src/assets/Shoes.png",
+        image:"/images/Price.png",
         name:"Leather",
-        width:"16%"
+        width:"explore3"
     }
 ]
 
