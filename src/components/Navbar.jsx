@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="header bg-white py-5 px-10 flex items-center justify-between ">
+      <div className="header bg-white py-5 px-3 flex items-center justify-between w-full">
         {/* Logo */}
         <div className="logo-sec flex items-center gap-2">
           <Link to="/">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Icon and Hamburger Menu (only for screens < 768px) */}
-        <div className="flex md:hidden items-center gap-4">
+        <div className="flex md:hidden items-center justify-center gap-4">
           <Link to="/search">
             <div className="scon h-10 w-10 rounded-full flex items-center justify-center bg-transparent hover:bg-gray-400">
               <CiSearch className="text-2xl" />
@@ -52,7 +52,9 @@ const Navbar = () => {
               placeholder="Search Products"
               className="bar w-full pl-10 p-2 rounded-full bg-white focus:bg-gray-200"
             />
-            <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-2xl" />
+            <Link to="/search">
+              <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-2xl" />
+            </Link>
           </div>
           <div className="others flex items-center gap-4 ml-4">
             <Link to="/login">

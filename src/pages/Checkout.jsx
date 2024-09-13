@@ -5,37 +5,18 @@ import dropdown from "../assets/chevron-down-solid.svg";
 import { Link } from "react-router-dom";
 import "./Checkout.css";
 import { useLocation } from "react-router-dom";
-
+import { BsShop } from "react-icons/bs";
+import { IoCalculatorOutline } from "react-icons/io5";
+import { RiMastercardLine } from "react-icons/ri";
+import { SiVisa } from "react-icons/si";
+import Navbar from "../components/Navbar";
 const Checkout = () => {
   const location = useLocation();
   const { totalAmount } = location.state || { totalAmount: 0 }; // Fetch totalAmount from state
 
   return (
     <div>
-      <div className="navbar">
-        <h1>
-          <Link to="/Home"> MARKET PRIME</Link>{" "}
-          <img src={logo} alt="" className="logo" />
-        </h1>
-
-        <div className="title">
-          <h3>PAYEMENT</h3>
-        </div>
-
-        <div className="others">
-          <ul>
-            <li>
-              <img src={profile} alt="" className="profile" />
-              <a href="">Account</a>
-              <img src={dropdown} alt="" className="dropdown" />
-            </li>
-            <li>
-              <Link to="/cart">Cart</Link>
-              <img src={cart} alt="" className="cart" />
-            </li>
-          </ul>
-        </div>
-      </div>
+      <Navbar />
 
       <div className="wrap">
         <div className="container2">
@@ -88,11 +69,15 @@ const Checkout = () => {
             <div className="pay1">
               <input type="radio" />
               <label htmlFor="">Pay with USSD or Bank Transfer</label>
+              <BsShop />
+              <IoCalculatorOutline />
             </div>
             <hr />
             <div className="pay2">
               <input type="radio" name="" id="" />
               <label htmlFor="">Pay with MasterCard or Visa Card</label>
+              <RiMastercardLine />
+              <SiVisa />
               <br />
             </div>
           </div>

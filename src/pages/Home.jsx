@@ -1,34 +1,5 @@
-// import { motion } from "framer-motion";
-// import Navbar from "../components/Navbar/navbar";
-// import Hero from "../components/Hero";
-// import HoomeProduct from "../components/HomeProduct/HomeProduct";
-// import About from "../components/About/About";
-// import Footer from "../components/Footer/Footer";
-// import { useState } from "react";
-
-// const Home = () => {
-//   const [searchValue, setSearchValue] = useState("");
-//   return (
-//     <div>
-//       <motion.div
-//         initial={{ scaleY: 0 }}
-//         animate={{ scaleY: 1 }}
-//         exit={{ scaleY: 0 }}
-//         transition={{ duration: 0.5 }}
-//       >
-//         <Navbar />
-//         <Hero />
-//         <About />
-//         <HoomeProduct />
-//         <Footer />
-//       </motion.div>
-//     </div>
-//   );
-// };
-
-// export default Home;
 import React from "react";
-import Navbar from "../components/Navbar/navbar";
+import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Best, ExploreData, Topdealdata } from "../data/Topdealdata";
@@ -111,7 +82,7 @@ const Home = () => {
             shopping experience
           </p>
           <Link
-            to="Shop"
+            to="Search"
             className="block mt-10 bg-white  py-6 mx-auto font-bold w-2/3 text-center rounded-3xl text-4xl text-shopcolor"
           >
             Shop now
@@ -194,7 +165,7 @@ const Home = () => {
             Shop with Market Prime for an outfit that fits.
           </p>
           <Link
-            to="Shop"
+            to="Search"
             className="block mt-10 bg-white  py-6 mx-0 font-bold w-2/3 text-center rounded-3xl text-4xl text-shopcolor"
           >
             Shop now
