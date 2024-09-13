@@ -1,7 +1,6 @@
 import React from 'react';
 import './Emailverification.css';
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const Emailverification = () => {
   return (
@@ -21,6 +20,7 @@ const Emailverification = () => {
         </p>
         {/* <button className="verify-button">Verify</button> */}
         <Link className='verify-button' to="/EmailConfirmation">Verify</Link>
+       <Link to="Emailconfirmation"><button   className="verify-button">Verify</button></Link>
         <p className="resend-text">
           Didn’t get the mail? <span className="resend-link">Resend Email</span>
         </p>
