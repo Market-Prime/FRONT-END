@@ -33,24 +33,31 @@ const ProductDescription = () => {
     { label: "Quick delivery", percentage: 95 },
   ];
 
-  const topdeal = Topdealdata.map((item, i) => (
-    <div className="mx-auto w-1/6 mb-8" key={i}>
-      <img src={item.image} className="w-full mx-auto" />
-      <p className="text-sm text-topdeal font-light -mt-10 ml-5">{item.name}</p>
-      <span className="text-base text-topdeal font-bold ml-5">
-        {item.price}
-      </span>
-      <div className="flex items-center justify-start w-full ml-5 mx-auto">
-        <Link
-          to={item.link}
-          className="bg-seamlessbg py-2 text-white font-bold w-6s/12 text-start px-2 rounded-xl"
-        >
-          {item.button}
-        </Link>
-        <img src={item.cart} className="ml-5" />
+  const topdeal = Topdealdata.map((item, i) => {
+    return (
+      <div
+        className="mx-auto  mb-8 2xl:w-6/6 xl:w-4/6 lg:w-6/6 md:w-2/2 sm:w-[90%]"
+        key={i}
+      >
+        <img src={item.image} className="w-full mx-auto" />
+        <p className="text-sm text-topdeal font-light 2xl:-mt-10 xl:-mt-10 lg:mt-0 md:mt-0 sm:mt-0 ml-5">
+          {item.name}
+        </p>
+        <span className="text-base text-topdeal font-bold ml-5">
+          {item.price}
+        </span>
+        <div className="flex items-center justify-start w-full ml-5 mx-auto">
+          <Link
+            to={item.link}
+            className="bg-seamlessbg py-2 text-white font-bold text-sm 2xl:w-7/12 xl:w-7/12 lg:w-[55%] md:w-2/3 text-start px-2  rounded-xl"
+          >
+            {item.button}
+          </Link>
+          <img src={item.cart} className="ml-2" />
+        </div>
       </div>
-    </div>
-  ));
+    );
+  });
 
   return (
     <div>
@@ -95,7 +102,7 @@ const ProductDescription = () => {
               className="w-full h-auto object-cover"
             />
           </div>
-          <div className="product-info w-full bg-aboutbg md:w-[30%] flex flex-col gap-4">
+          <div className="product-info w-full md:w-[30%] flex flex-col gap-4">
             <div className="product-info-text">
               <p className="inline-block">
                 Plain color Slit Off Shoulder Dress, for dinner & wedding party,
@@ -143,8 +150,8 @@ const ProductDescription = () => {
               </button>
             </div>
             <div className="image-options flex gap-2">
-              <img src={image7} alt="" className="w-1/2 h-auto" />
-              <img src={image8} alt="" className="w-1/2 h-auto" />
+              <img src={image7} alt="" className="w-2/2 h-auto" />
+              <img src={image8} alt="" className="w-2/2 h-auto" />
             </div>
           </div>
         </div>
@@ -180,6 +187,19 @@ const ProductDescription = () => {
       <div className="comments-section">
         <Reviews />
       </div>
+      <div className="2xl:px-5 xl:px-5 lg:px-0 md:px-0 sm:px-0">
+        <div className="bg-topdealbg px-5 py-5 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-0 sm:mt-0">
+          <p className="text-topdeal text-4xl font-semibold">
+            Today's Top Deal
+          </p>
+
+          {/* Grid layout for responsive columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mx-auto mt-5">
+            {topdeal}
+          </div>
+        </div>
+      </div>
+
       <div className="h-[120px] relative flex items-center justify-center">
         <button
           className="bg-[#004AAD] w-48 h-14 md:w-72 flex items-center justify-center rounded-full text-white"

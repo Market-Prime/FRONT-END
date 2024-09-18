@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@babel/types": "^7.25.6",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "aos": "^2.3.4",
     "clsx": "^2.1.1",
