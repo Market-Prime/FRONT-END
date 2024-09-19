@@ -10,12 +10,61 @@ import { LuBox } from "react-icons/lu";
 import { FaRegMessage } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import order_icon from "../../assets/Filtered-Images/tder.png";
+import vendors_icon from "../../assets/Filtered-Images/vendors.png";
+import users from "../../assets/Filtered-Images/users.png";
+import sales_icon from "../../assets/Filtered-Images/sales.png";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const Dashboard = () => {
+  const orders = [
+    {
+      id: "MP1010",
+      item: "Women Classy Top",
+      date: "13/09/24",
+      price: "#20,000",
+      category: "Women",
+      seller: "SB Empire",
+      status: "Delivered",
+    },
+    {
+      id: "MP1012",
+      item: "Men Classy Set",
+      date: "12/09/24",
+      price: "#150,000",
+      category: "Men",
+      seller: "Market Prime",
+      status: "Delivered",
+    },
+    {
+      id: "MP1014",
+      item: "Custom-made Ring Set",
+      date: "12/09/24",
+      price: "#200,000",
+      category: "Unisex",
+      seller: "FashionLot",
+      status: "Pending",
+    },
+    {
+      id: "MP1016",
+      item: "WomenBaggy Jean",
+      date: "11/09/24",
+      price: "#20,000",
+      category: "Women",
+      seller: "Ola Boutique",
+      status: "Delivered",
+    },
+  ];
   return (
     <div className="h-screen w-screen ">
       {/* Navigation Bar */}
-      <div className="h-[60px] w-[85%] absolute right-0 flex justify-between items-center px-52 border border-gray-400 bg-slate-100 ">
+      <div className="h-[60px] w-[85%] absolute right-0 flex flex-row justify-between items-center px-52 border border-gray-400 bg-slate-100 ">
         <div className="flex relative">
           <input
             type="text"
@@ -25,18 +74,18 @@ const Dashboard = () => {
         </div>
         <div className="flex">
           <img src={profile} alt="" className="w-12 h-12" />
-          <div className="flex flex-col gap-1">
-            <p className="flex text-">
-              Akpan David <FaAngleDown />
+          <div className="flex flex-col">
+            <p className="flex text-md">
+              Akpan David <FaAngleDown className="mt-1" />
             </p>
-            <p>Super Admin </p>
+            <p className="text- text-blue-600">Super Admin </p>
           </div>
         </div>
       </div>
 
       {/* Side-bar */}
-      <div className="flex h-screen">
-        <div className="w-[25%] border border-gray-400 bg-white shadow-xl relative">
+      <div className="flex justify-between h-screen w-full relative">
+        <div className="min-w-[310px] h-full border border-gray-400 bg-white shadow-xl relative">
           <div className="flex items-center justify-center mt-9">
             <img src={logo} alt="" className="w-14" />
             <h1 className="text-xl font-bold text-blue-900">
@@ -87,21 +136,111 @@ const Dashboard = () => {
             </li>
           </div>
         </div>
-        {/* Inner content */}
-        <div className="w-[80%] h-full bg-[#E6F7FF]">
+        {/* Inner content  #E6F7FF*/}
+        <div className="w-[80%] h-[91.7%] mt-[60px] bg-[#E6F7FF]">
           {/* Analytics Card */}
-          <div className="flex bg-herocolor pt-4 justify-evenly items-center px-3 h-[30%] w-full ">
-            <div className="h-[70%] w-[20%] mt-12 bg-shopcolor rounded-3xl"></div>
-            <div className="h-[70%] w-[20%] mt-12 rounded-3xl bg-shopcolor"></div>
-            <div className="h-[70%] w-[20%] mt-12 rounded-3xl bg-shopcolor"></div>
-            <div className="h-[70%] w-[20%] mt-12 rounded-3xl bg-shopcolor"></div>
+          <div className="flex justify-around items-center  h-[25%]  min-w-full ">
+            <div className="h-[70%] w-[20%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center">
+              <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                <p className="text-xl">Total Orders</p>
+                <div className="flex w-[85%] justify-between">
+                  <h1 className="text-xl font-bold">10720</h1>
+                  <img src={order_icon} alt="" />
+                </div>
+                <p>From yesterday</p>
+              </div>
+            </div>
+            <div className="h-[70%] w-[20%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center">
+              <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                <p className="text-xl">Total Sales</p>
+                <div className="flex w-[85%] justify-between">
+                  <h1 className="text-xl font-bold">N1,800,309</h1>
+                  <img src={sales_icon} alt="" />
+                </div>
+                <p>From yesterday</p>
+              </div>
+            </div>
+            <div className="h-[70%] w-[20%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center">
+              <div className="ml-7  flex flex-col items-start justify-center w-full">
+                <p className="text-xl">Active Vendors</p>
+                <div className="flex w-[85%] justify-between">
+                  <h1 className="text-xl font-bold">10720</h1>
+                  <img src={vendors_icon} alt="" />
+                </div>
+                <p>From yesterday</p>
+              </div>
+            </div>
+            <div className="h-[70%] w-[20%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center">
+              <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
+                <p className="text-xl">Total Users</p>
+                <div className="flex w-[85%] justify-between">
+                  <h1 className="text-xl font-bold">10720</h1>
+                  <img src={users} alt="" />
+                </div>
+                <p>From yesterday</p>
+              </div>
+            </div>
           </div>
 
           {/* Charts */}
-          <div className="h-[40%] bg-emerald-400"></div>
+          <div className="h-[40%] rounded-3xl"></div>
 
           {/* Recent Orders */}
-          <div className="h-[30%] bg-seamlessbg"></div>
+          <div className="h-[35%] flex justify-around items-center  bg-red-800 min-w-full">
+            <div className="w-[70%] h-full border-2 rounded-md bg-white">
+              <div className="flex justify-between mb-2 px-5">
+                <div className="flex items-center space-x-2 ">
+                  <span className="text-gray-700 text-lg">Recent Orders</span>
+                  {/* <button className="bg-blue-100 text-blue-600 py-1 px-2 rounded-lg flex items-center">
+                    <i className="fas fa-filter mr-1"></i> Filters
+                  </button> */}
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-gray-500">Sort By:</span>
+                  <select className="bg-blue-100 py-1 px-2 rounded-lg">
+                    <option>Recent Orders</option>
+                  </select>
+                </div>
+              </div>
+              <div className="overflow-y-hidden">
+                <table className="min-w-full h-full table-auto border-collapse border border-gray-200">
+                  <thead>
+                    <tr className="">
+                      <th className="px-4 py-1  text-left">Order ID</th>
+                      <th className="px-4 py-1 text-left">Item</th>
+                      <th className="px-4 py-1  text-left">Date</th>
+                      <th className="px-4 py-1 text-left">Price</th>
+                      <th className="px-4 py-1  text-left">Category</th>
+                      <th className="px-4 py-1  text-left">Seller</th>
+                      <th className="px-4 py-1  text-left">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders.map((order, index) => (
+                      <tr key={index} className="bg-white">
+                        <td className="px-4 py-[8px] ">{order.id}</td>
+                        <td className="px-4 py-[8px]">{order.item}</td>
+                        <td className="px-4 py-[8px] ">{order.date}</td>
+                        <td className="px-4 py-[8px] ">{order.price}</td>
+                        <td className="px-4 py-[8px]">{order.category}</td>
+                        <td className="px-4 py-[8px]">{order.seller}</td>
+                        <td
+                          className={`px-4 py-1 border  ${
+                            order.status === "Pending"
+                              ? "text-yellow-500"
+                              : "text-blue-800"
+                          }`}
+                        >
+                          {order.status}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="w-[20%] h-full border-2 rounded-md bg-white"></div>
+          </div>
         </div>
       </div>
     </div>
