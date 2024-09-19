@@ -57,7 +57,7 @@ const Dashboard = () => {
   return (
     <div className="h-screen w-screen ">
       {/* Navigation Bar */}
-      <div className="h-[60px] w-[85%] absolute right-0 flex flex-row justify-between items-center px-52 border border-gray-400 bg-slate-100 ">
+      <div className="h-[60px] w-[79.8%] absolute right-0 flex items-center justify-end gap-80 px-4 border border-gray-400 bg-slate-100 ">
         <div className="flex relative">
           <input
             type="text"
@@ -179,11 +179,11 @@ const Dashboard = () => {
           <div className="h-[40%] rounded-3xl"></div>
 
           {/* Recent Orders */}
-          <div className="h-[35%] flex justify-around items-center  bg-red-800 min-w-full">
+          <div className="h-[34%] flex justify-around items-center min-w-full">
             <div className="w-[70%] h-full border-2 rounded-md bg-white">
               <div className="flex justify-between mb-2 px-5">
                 <div className="flex items-center space-x-2 ">
-                  <span className="text-gray-700 text-lg">Recent Orders</span>
+                  <span className="text-gray-700 text-xls">Recent Orders</span>
                   {/* <button className="bg-blue-100 text-blue-600 py-1 px-2 rounded-lg flex items-center">
                     <i className="fas fa-filter mr-1"></i> Filters
                   </button> */}
@@ -192,11 +192,15 @@ const Dashboard = () => {
                   <span className="text-gray-500">Sort By:</span>
                   <select className="bg-blue-100 py-1 px-2 rounded-lg">
                     <option>Recent Orders</option>
+                    <option>Pending Orders</option>
+                    <option>Out of Stock</option>
+                    <option>Recently added producsts</option>
+                    <option>Delivered Items</option>
                   </select>
                 </div>
               </div>
               <div className="overflow-y-hidden">
-                <table className="min-w-full h-full table-auto border-collapse border border-gray-200">
+                <table className="min-w-full table-auto border-collapse border border-gray-200">
                   <thead>
                     <tr className="">
                       <th className="px-4 py-1  text-left">Order ID</th>
@@ -218,7 +222,7 @@ const Dashboard = () => {
                         <td className="px-4 py-[8px]">{order.category}</td>
                         <td className="px-4 py-[8px]">{order.seller}</td>
                         <td
-                          className={`px-4 py-1 border  ${
+                          className={`px-4 py-1  ${
                             order.status === "Pending"
                               ? "text-yellow-500"
                               : "text-blue-800"
@@ -232,7 +236,10 @@ const Dashboard = () => {
                 </table>
               </div>
             </div>
-            <div className="w-[20%] h-full border-2 rounded-md bg-white"></div>
+            <div className="w-[20%] h-full border-2 rounded-md bg-white">
+              <p className="text-center">Customers</p>
+              <p>Overall ratings of 200 customer's reviews</p>
+            </div>
           </div>
         </div>
       </div>

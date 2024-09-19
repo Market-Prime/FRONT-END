@@ -1,5 +1,4 @@
 import React from "react";
-import "./Checkout.css";
 import "./Login.css";
 import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -57,11 +56,17 @@ const Login = ({ toggleModal }) => {
           Login
         </Link>
 
-            <p className='mt-5 text-xs'>Don't have an account? 
-                {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
-                <Link to="/Signup" className='inline text-sm text-cartbg font-medium ml-1'>Register</Link>
-            </p>
-        </div>
+        <p className="mt-5 text-xs">
+          Don't have an account?
+          {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
+          <Link
+            to="/Signup"
+            className="inline text-sm text-cartbg font-medium ml-1"
+          >
+            Register
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
