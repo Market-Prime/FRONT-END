@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Icon and Hamburger Menu (only for screens < 768px) */}
-        <div className="flex md:hidden items-center justify-center gap-4">
+        <div className="flex md:flex lg:hidden items-center justify-center gap-4">
           <Link to="/search">
             <div className="scon h-10 w-10 rounded-full flex items-center justify-center bg-transparent hover:bg-gray-400">
               <CiSearch className="text-2xl" />
@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
 
         {/* Categories and Other Icons (hidden for screens < 768px) */}
-        <ul className="hidden md:flex gap-10 text-lg">
+        <ul className="hidden md:hidden lg:flex gap-10 text-lg">
           <li className="cursor-pointer ">Men</li>
           <li className="cursor-pointer">Women</li>
           <li className="cursor-pointer">Shoes</li>
@@ -45,7 +45,7 @@ const Navbar = () => {
           <li className="cursor-pointer">Jewelries</li>
         </ul>
 
-        <div className="search-bar hidden md:flex items-center relative">
+        <div className="search-bar hidden md:hidden lg:flex items-center relative">
           <div className="relative w-64">
             <input
               type="text"
