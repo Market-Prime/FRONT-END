@@ -15,6 +15,7 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -45,15 +46,14 @@ function AnimatedRoutes() {
         <Route path="VirtualTryOn" element={<VirtualTryOn />} />
         <Route path="Login" element={<Login />} />
         <Route path="Signup" element={<Signup />} />
-        <Route
-          path="/Emailverification"
-          element={<Emailverification />}
-        />
-        <Route
-          path="/EmailConfirmation" />
+        <Route path="/Emailverification" element={<Emailverification />} />
+        <Route path="/EmailConfirmation" />
         <Route path="Login/Register" element={<Signup />} />
         <Route path="Cart/Checkout/PaymentModal" element={<PaymentModal />} />
-        <Route path="Cart/Checkout/PaymentModal/PaymentConfirmation" element={<PaymentConfirmation />} />
+        <Route
+          path="Cart/Checkout/PaymentModal/PaymentConfirmation"
+          element={<PaymentConfirmation />}
+        />
         <Route
           path="Login/Register/Emailverification"
           element={<Emailverification />}
@@ -64,6 +64,7 @@ function AnimatedRoutes() {
         />
         <Route path="/Search" element={<SearchFilter />} />
         <Route path="/ProductDescription" element={<ProductDescription />} />
+        <Route path="/AdminDashboard" element={<Dashboard />} />
       </Routes>
     </AnimatePresence>
   );
