@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
@@ -21,6 +21,7 @@ import Bg15 from "../../assets/Filtered-Images/Spl18.png";
 import { IoCartOutline } from "react-icons/io5";
 import PropTypes from "prop-types";
 import { RxEyeOpen } from "react-icons/rx";
+import { MdOutlineArrowRight } from "react-icons/md";
 
 // Example products array, you can replace it with dynamic data or fetch it from an API
 const products = [
@@ -231,28 +232,46 @@ ProductCard.propTypes = {
 const SearchFilter = () => {
   const [showFilter, setShowFilter] = useState(false);
 
+  const [filterProducts, setFilterProducts] = useState([]);
+
+  useEffect(() => {
+    setFilterProducts(products);
+  }, []);
+
+  const [showFilters, setShowFilters] = useState(false);
+
+  const toggleFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setShowFilters(true);
+    }
+  }, []);
+
   return (
     <div>
       <Navbar />
-      <div className="flex items-center justify-between py-2 pr-20">
-        <p
-          className="my-2 mx-20 text-2xl font-bold flex items-center cursor-pointer gap-2"
-          onClick={() => setShowFilter(!showFilter)} // Toggle filter visibility on click
+      <div className="flex flex-col sm:flex-row gap-1 sm:gap-5 pt-10 border-t">
+        <div
+          className={`md:w-1/4 ${showFilters ? "block" : "hidden"} md:block`}
         >
-          Filters
-        </p>
-        <p className="bg-[#E6F7FF]">10,000+ results for Ladies Gown</p>
-        <select className="border-2 border-gray-300 text-sm px-2 py-3 bg-[#E6F7FF]">
-          <option value="relevant">Sort By: Relevant</option>
-          <option value="low-high">Sort by: Low to High</option>
-          <option value="high-low">Sort by: High to Low</option>
-        </select>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10">
-        <div className="min-w-[20rem] border border-gray-300 rounded-lg p-4">
+          <p
+            onClick={() => setShowFilter(!showFilter)}
+            className="my-2 text-2xl font-bold flex items-center cursor-pointer "
+          >
+            Filters
+            <MdOutlineArrowRight
+              className={`h-6 mt-1 md:hidden ${showFilter ? "rotate-90" : ""}`}
+            />
+          </p>
           {/* Categories */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+          <div
+            className={`border border-gray-300 rounded-lg p-4 ${
+              showFilter ? "" : "hidden"
+            } md:block`}
+          >
             <p className="mb-3 text-[18px] font-medium">Categories</p>
             <hr className="my-3 border-gray-300" />
             <div className="flex flex-col gap-4 text-lg text-[#002366]">
@@ -279,196 +298,205 @@ const SearchFilter = () => {
                 </label>
               ))}
             </div>
-          </div>
 
-          {/* Size */}
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold mb-2">Size</h3>
-            <hr className="my-2 border-gray-300" />
-            <div className="grid grid-cols-4 gap-2">
-              {[
-                "XS",
-                "S",
-                "M",
-                "L",
-                "6",
-                "8",
-                "10",
-                "12",
-                "14",
-                "16",
-                "18",
-                "20",
-                "22",
-                "24",
-                "26",
-                "32",
-                "One Size",
-              ].map((size) => (
-                <button
-                  key={size}
-                  className="px-3 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200"
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Color */}
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold mb-2">Color</h3>
-            <hr className="my-2 border-gray-300" />
-            <div className="grid grid-cols-6 gap-2">
-              {[
-                "#000000",
-                "#FFFFF",
-                "#FF0000",
-                "#0000FF",
-                "#FFA500",
-                "#FFFF00",
-                "#00008B",
-                "#8A2BE2",
-                "#00FF00",
-                "#FF69B4",
-                "#008000",
-                "#A52A2A",
-              ].map((color) => (
-                <button
-                  key={color}
-                  className="w-8 h-8 rounded-full"
-                  style={{ backgroundColor: color }}
-                ></button>
-              ))}
-            </div>
-          </div>
-
-          {/* Price */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
-            <p className="mb-3 text-xl font-medium">Price</p>
-            <hr className="my-3 border-gray-300" />
-            <div className="flex flex-col gap-4 text-sm text-[#002366]">
-              {[
-                "Under 2000",
-                "2000-5000",
-                "5000-10,000",
-                "10,000-20,000",
-                "20,000-30,000",
-                "35,000-50,000",
-                "Above 50,000",
-              ].map((price) => (
-                <label
-                  key={price}
-                  className="flex gap-2 items-center text-lg cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 rounded-full"
-                    value={price}
-                  />
-                  {price}
-                </label>
-              ))}
-              <div className="mt-4 flex gap-2">
-                <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
-                  Min
-                </button>
-                <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
-                  Max
-                </button>
-                <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
-                  Go
-                </button>
+            {/* Size */}
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">Size</h3>
+              <hr className="my-2 border-gray-300" />
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  "XS",
+                  "S",
+                  "M",
+                  "L",
+                  "6",
+                  "8",
+                  "10",
+                  "12",
+                  "14",
+                  "16",
+                  "18",
+                  "20",
+                  "22",
+                  "24",
+                  "26",
+                  "32",
+                  "One Size",
+                ].map((size) => (
+                  <button
+                    key={size}
+                    className="px-3 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200"
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Type */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
-            <p className="mb-3 text-lg font-medium">Type</p>
-            <hr className="my-3 border-gray-300" />
-            <div className="flex flex-col gap-4 text-sm text-[#002366]">
-              {[
-                "Bodycon",
-                "Fitted",
-                "A Pendulum",
-                "Fit & Flare",
-                "Peplum",
-                "Slip",
-                "Tunic",
-              ].map((type) => (
-                <label
-                  key={type}
-                  className="flex gap-2 text-lg items-center cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 rounded-full"
-                    value={type}
-                  />
-                  {type}
-                </label>
-              ))}
+            {/* Color */}
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">Color</h3>
+              <hr className="my-2 border-gray-300" />
+              <div className="grid grid-cols-6 gap-2">
+                {[
+                  "#000000",
+                  "#FFFFF",
+                  "#FF0000",
+                  "#0000FF",
+                  "#FFA500",
+                  "#FFFF00",
+                  "#00008B",
+                  "#8A2BE2",
+                  "#00FF00",
+                  "#FF69B4",
+                  "#008000",
+                  "#A52A2A",
+                ].map((color) => (
+                  <button
+                    key={color}
+                    className="w-8 h-8 rounded-full"
+                    style={{ backgroundColor: color }}
+                  ></button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Ratings */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
-            <p className="mb-3 text-lg font-medium">Ratings</p>
-            <hr className="my-3 border-gray-300" />
-            <AnimatedRating initialRating={4} />
-          </div>
-
-          {/* Occasion */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
-            <p className="mb-3 text-lg font-medium">Occasion</p>
-            <hr className="my-3 border-gray-300" />
-            <div className="flex flex-col gap-4 text-lg text-[#002366]">
-              {["Casual", "Party", "Evening", "Traditional", "Work"].map(
-                (occasion) => (
+            {/* Price */}
+            <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+              <p className="mb-3 text-xl font-medium">Price</p>
+              <hr className="my-3 border-gray-300" />
+              <div className="flex flex-col gap-4 text-sm text-[#002366]">
+                {[
+                  "Under 2000",
+                  "2000-5000",
+                  "5000-10,000",
+                  "10,000-20,000",
+                  "20,000-30,000",
+                  "35,000-50,000",
+                  "Above 50,000",
+                ].map((price) => (
                   <label
-                    key={occasion}
+                    key={price}
                     className="flex gap-2 items-center text-lg cursor-pointer"
                   >
                     <input
                       type="checkbox"
                       className="w-4 h-4 rounded-full"
-                      value={occasion}
+                      value={price}
                     />
-                    {occasion}
+                    {price}
                   </label>
-                )
-              )}
+                ))}
+                <div className="mt-4 flex gap-2">
+                  <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
+                    Min
+                  </button>
+                  <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
+                    Max
+                  </button>
+                  <button className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200">
+                    Go
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Shipping */}
-          <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
-            <p className="mb-3 text-lg font-medium">Shipping</p>
-            <hr className="my-3 border-gray-300" />
-            <div className="flex flex-col gap-4 text-sm text-[#002366]">
-              {["Free", "Paid"].map((shipping) => (
-                <label
-                  key={shipping}
-                  className="flex gap-2 items-center text-lg cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 rounded-full"
-                    value={shipping}
-                  />
-                  {shipping}
-                </label>
-              ))}
+            {/* Type */}
+            <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+              <p className="mb-3 text-lg font-medium">Type</p>
+              <hr className="my-3 border-gray-300" />
+              <div className="flex flex-col gap-4 text-sm text-[#002366]">
+                {[
+                  "Bodycon",
+                  "Fitted",
+                  "A Pendulum",
+                  "Fit & Flare",
+                  "Peplum",
+                  "Slip",
+                  "Tunic",
+                ].map((type) => (
+                  <label
+                    key={type}
+                    className="flex gap-2 text-lg items-center cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 rounded-full"
+                      value={type}
+                    />
+                    {type}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Ratings */}
+            <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+              <p className="mb-3 text-lg font-medium">Ratings</p>
+              <hr className="my-3 border-gray-300" />
+              <AnimatedRating initialRating={4} />
+            </div>
+
+            {/* Occasion */}
+            <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+              <p className="mb-3 text-lg font-medium">Occasion</p>
+              <hr className="my-3 border-gray-300" />
+              <div className="flex flex-col gap-4 text-lg text-[#002366]">
+                {["Casual", "Party", "Evening", "Traditional", "Work"].map(
+                  (occasion) => (
+                    <label
+                      key={occasion}
+                      className="flex gap-2 items-center text-lg cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="w-4 h-4 rounded-full"
+                        value={occasion}
+                      />
+                      {occasion}
+                    </label>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Shipping */}
+            <div className={`mb-4 ${showFilter ? "" : "hidden"} sm:block`}>
+              <p className="mb-3 text-lg font-medium">Shipping</p>
+              <hr className="my-3 border-gray-300" />
+              <div className="flex flex-col gap-4 text-sm text-[#002366]">
+                {["Free", "Paid"].map((shipping) => (
+                  <label
+                    key={shipping}
+                    className="flex gap-2 items-center text-lg cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 rounded-full"
+                      value={shipping}
+                    />
+                    {shipping}
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+        <div className="flex-1 w-full">
+          <div className="flex justify-between text-base sm:text-2xl mb-5 mt-10 h-max-content">
+            <p className="bg-[#E6F7FF]">10,000+ results for Ladies Gown</p>
+            <select className="border-2 border-gray-300 text-sm px-2 py-3 bg-[#E6F7FF]">
+              <option value="relevant">Sort By: Relevant</option>
+              <option value="low-high">Sort by: Low to High</option>
+              <option value="high-low">Sort by: High to Low</option>
+            </select>
+          </div>
 
-        {/* Product Grid */}
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
+          <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
+            {filterProducts.map((product, index) => (
+              <ProductCard key={index} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
