@@ -16,6 +16,8 @@ import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Product from "./pages/Dashboard/Product";
+import Orders from "./pages/Dashboard/Orders";
 
 function App() {
   useEffect(() => {
@@ -65,6 +67,8 @@ function AnimatedRoutes() {
         <Route path="/Search" element={<SearchFilter />} />
         <Route path="/ProductDescription" element={<ProductDescription />} />
         <Route path="/AdminDashboard" element={<Dashboard />} />
+        <Route path="/Product" element={<Product />} />
+        <Route path="/Orders" element={<Orders />} />
       </Routes>
     </AnimatePresence>
   );
