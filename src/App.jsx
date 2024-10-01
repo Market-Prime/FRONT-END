@@ -18,6 +18,8 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Product from "./pages/Dashboard/Product";
 import Orders from "./pages/Dashboard/Orders";
+import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
+import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
 
 function App() {
   useEffect(() => {
@@ -69,6 +71,8 @@ function AnimatedRoutes() {
         <Route path="/AdminDashboard" element={<Dashboard />} />
         <Route path="/Product" element={<Product />} />
         <Route path="/Orders" element={<Orders />} />
+        <Route path="/VendorsAccount" element={<VendorsAccount />} />
+        <Route path="/VendorsLogin" element={<VendorsLogin />} />
       </Routes>
     </AnimatePresence>
   );
