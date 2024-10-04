@@ -20,6 +20,8 @@ import Product from "./pages/Dashboard/Product";
 import Orders from "./pages/Dashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
+import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
+import FinalSection from "./pages/VendorsPage/FinalSection";
 
 function App() {
   useEffect(() => {
@@ -73,6 +75,8 @@ function AnimatedRoutes() {
         <Route path="/Orders" element={<Orders />} />
         <Route path="/VendorsAccount" element={<VendorsAccount />} />
         <Route path="/VendorsLogin" element={<VendorsLogin />} />
+        <Route path="/VendorsVerifiedEmail" element={<VendorsVerifyEmail />} />
+        <Route path="/FinalSection" element={<FinalSection />} />
       </Routes>
     </AnimatePresence>
   );
