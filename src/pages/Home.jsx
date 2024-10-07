@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Best, ExploreData, Topdealdata } from "../data/Topdealdata";
 import Footer from "../components/Footer/Footer";
-import bg from "../../public/images/Frame 6.png";
+import slider1 from "../../public/images/Frame 6.png";
+import slider2 from "../assets/Filtered-Images/slider2.png";
 const Home = () => {
   const topdeal = Topdealdata.map((item, i) => {
     return (
@@ -74,17 +75,50 @@ const Home = () => {
       </div>
     );
   });
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [slider1, slider2]; // Add your slider images here
+
+  // Change slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000); // 5 seconds for each slide
+    return () => clearInterval(interval);
+  }, [slides.length]);
   return (
     <div>
       <Navbar />
       {/* Hero Image */}
-      <div className="w-100vw">
-        <img
-          src={bg}
-          className="w-full 2xl:h-screen xl:h-screen lg:h-screen md:h-full sm:h-auto"
-          data-aos="fade-right"
-          data-aos-duration="4000"
-        />
+      <div className="relative w-[98vw] h-screen overflow-x-hidden">
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={slide}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+
+        {/* Pagination Dots */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+          {slides.map((_, index) => (
+            <span
+              key={index}
+              className={`w-3 h-3 rounded-full bg-white ${
+                index === currentSlide ? "opacity-100" : "opacity-50"
+              }`}
+            ></span>
+          ))}
+        </div>
       </div>
 
       {/* Seamless Fashion */}
@@ -157,29 +191,44 @@ const Home = () => {
       {/* End of Perfect Fit */}
 
       {/* Explore */}
-      <div className="2xl:px-5 xl:px-5 lg:px-5 md:px-0 sm:px-0">
-        <div className="bg-topdealbg px-5 py-5 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-0 sm:mt-0">
-          <p className="text-topdeal text-3xl font-semibold">Explore</p>
-
-          {/* Grid layout for responsive columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mt-5">
-            {explore}
-          </div>
-        </div>
-      </div>
-
-      {/* End of explore */}
-
-      {/* Best sellers */}
-      <div className="2xl:px-5 xl:px-5 lg:px-5 md:px-0 sm:px-0 sm:mt-5 md:mt-5 lg:mt-0 xl:mt-0 2xl:mt-0">
-        <div className="bg-topdealbg px-5 py-5 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-0 sm:mt-0">
-          <p className="text-topdeal text-4xl font-semibold">
-            Today's Top Deal
+      <div className="2xl:px-10 xl:px-10 lg:px-10 md:px-5 sm:px-5">
+        {/* Explore Section */}
+        <div className="bg-topdealbg rounded-lg shadow-lg px-8 py-8 2xl:mt-10 xl:mt-10 lg:mt-10 md:mt-5 sm:mt-5">
+          <p className="text-topdeal text-4xl font-semibold text-center mb-5">
+            Explore
           </p>
 
           {/* Grid layout for responsive columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mx-auto mt-5">
-            {bestseller}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+            {explore.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-200 hover:scale-105"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Best Sellers Section */}
+        <div className="2xl:px-10 xl:px-10 lg:px-10 md:px-5 sm:px-5 sm:mt-10 md:mt-10 lg:mt-10 xl:mt-10 2xl:mt-10">
+          <div className="bg-topdealbg rounded-lg shadow-lg px-8 py-8">
+            <p className="text-topdeal text-4xl font-semibold text-center mb-5">
+              Today's Top Deal
+            </p>
+
+            {/* Grid layout for responsive columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+              {bestseller.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-200 hover:scale-105"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
