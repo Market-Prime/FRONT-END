@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Best, ExploreData, Topdealdata } from "../data/Topdealdata";
 import Footer from "../components/Footer/Footer";
-import slider1 from "../../public/images/Frame 6.png";
-import slider2 from "../assets/Filtered-Images/slider2.png";
+import bg from "../../public/images/bg.jpg";
 const Home = () => {
   const topdeal = Topdealdata.map((item, i) => {
     return (
@@ -75,50 +74,14 @@ const Home = () => {
       </div>
     );
   });
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [slider1, slider2]; // Add your slider images here
 
-  // Change slide every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000); // 5 seconds for each slide
-    return () => clearInterval(interval);
-  }, [slides.length]);
   return (
     <div>
       <Navbar />
       {/* Hero Image */}
       <div className="relative w-[98vw] h-screen overflow-x-hidden">
+        <img src={bg} alt="" className="w-full h-full object-cover" />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={slide}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-
-        {/* Pagination Dots */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-          {slides.map((_, index) => (
-            <span
-              key={index}
-              className={`w-3 h-3 rounded-full bg-white ${
-                index === currentSlide ? "opacity-100" : "opacity-50"
-              }`}
-            ></span>
-          ))}
-        </div>
       </div>
 
       {/* Seamless Fashion */}
