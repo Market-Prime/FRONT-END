@@ -27,7 +27,8 @@ export default {
         topdealbg: "#E6F7FF",
         homebgshadow: "RGBA(109,151,207,.5)",
         tryonecolor: "#0A51D0",
-        productcolor:"#3D56FA"
+        productcolor:"#3D56FA",
+        signupcolor:"#78D6F0"
       },
       screens: {
         'sm': '300px',

@@ -79,7 +79,7 @@ const Home = () => {
     <div>
       <Navbar />
       {/* Hero Image */}
-      <div className="relative w-[98vw] h-screen overflow-x-hidden">
+      <div className="relative w-[100vw] h-screen overflow-x-hidden">
         <img src={bg} alt="" className="w-full h-full object-cover" />
         {/* Dark overlay */}
       </div>
