@@ -18,6 +18,7 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
+import Orders2 from "./pages/VendorsPage/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
@@ -78,7 +79,7 @@ function AnimatedRoutes() {
         <Route path="/VendorDashboard" element={<VendorDashboard />}>
           <Route index element={<Content />} /> {/* Default content */}
           <Route path="Product" element={<Product2 />} />
-          <Route path="Orders" element={<Orders />} />
+          <Route path="Orders" element={<Orders2 />} />
         </Route>
 
         <Route path="/VendorsAccount" element={<VendorsAccount />} />

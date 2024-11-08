@@ -1,8 +1,49 @@
 import React from 'react';
 import './Emailverification.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom';
 
 const Emailverification = () => {
+  const navigate = useNavigate();
+
+  const handleConfirm = async () =>{
+    try{
+      const response = await axios.post(
+        `https://backend-server-0ddt.onrender.com/api/account/confirm/`
+      );
+      toast.success(`Account Confirmed: ${response.data.message || 'Confirmed' , {
+        position:"top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick:true,
+        pauseOnHover: true,
+        draggable:true,
+        progress: undefined,
+        theme: "colored"
+      }}`);
+      setTimeout(() => {
+        navigate("/EmailConfirmation");
+      }, 5000);
+    } catch (error) {
+      const errorMessage = error.response && error.response.data && error.response.data.error
+      ? error.response.data.error
+      : error.message;  
+      toast.error(`Error registering user: ${errorMessage} , {
+      position:"top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick:true,
+      pauseOnHover: true,
+      draggable:true,
+      progress: undefined,
+      theme: "colored"
+      }}`);
+    console.error('Error registering user:', errorMessage);
+    }
+  }
   return (
     <div className="container">
       <div className="card">
@@ -19,8 +60,8 @@ const Emailverification = () => {
           Use the link below to verify your email.
         </p>
         {/* <button className="verify-button">Verify</button> */}
-        <Link className='verify-button' to="/EmailConfirmation">Verify</Link>
-       <Link to="Emailconfirmation"><button   className="verify-button">Verify</button></Link>
+        <Link className='verify-button' to="" onClick={handleConfirm}>Verify Email</Link>
+       {/* <Link to="Emailconfirmation"><button   className="verify-button">Verify</button></Link> */}
         <p className="resend-text">
           Didn’t get the mail? <span className="resend-link">Resend Email</span>
         </p>
