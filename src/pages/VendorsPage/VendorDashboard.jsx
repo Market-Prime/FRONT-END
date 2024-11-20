@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom"; // Import Outlet for nested routes
 import Header from "./Navbar";
 import Sidebar from "./Sidebar";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProductDescription.css";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import bg from "../../assets/Filtered-Images/Gown 1.png";
 import image2 from "../../assets/Filtered-Images/Gown 2 1.png";
 import image3 from "../../assets/Filtered-Images/Gown 2 1.png";
@@ -9,12 +9,12 @@ import image5 from "../../assets/Filtered-Images/Gown 4 1.png";
 import image6 from "../../assets/Filtered-Images/Gown 5 1.png";
 import image7 from "../../assets/Filtered-Images/Frame 50.png";
 import image8 from "../../assets/Filtered-Images/Frame 38.png";
-import Reviews from "../../components/Reviews/Reviews";
+import Reviews from "../../../components/Reviews/Reviews";
 import { Topdealdata } from "../../data/Topdealdata";
 import { Link } from "react-router-dom";
 import { PiCaretDown } from "react-icons/pi";
-import Footer from "../../components/Footer/Footer";
-import ProductImageView from "../../components/ProductImageViews";
+import Footer from "../../../components/Footer/Footer";
+import ProductImageView from "../../../components/ProductImageViews";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -22,7 +22,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../components/ui/Breadcrumb";
+} from "../../../components/ui/Breadcrumb";
 
 const ProductDescription = () => {
   const images = [bg, image2, image3, image4, image5, image6];

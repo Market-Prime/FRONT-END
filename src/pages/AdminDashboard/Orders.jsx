@@ -35,10 +35,9 @@ const Orders = () => {
   return (
     <div className="h-screen w-full flex">
       {/* Sidebar */}
-      <DashNav />
+
       {/* Main content */}
       <div className="bg-[#E6F7FF] flex-grow">
-        <Header />
         {/* Filters */}
         <div className="bg-white my-4 px-10 flex items-center justify-between w-full py-2">
           <div className="flex items-center space-x-2">

@@ -3,7 +3,7 @@ import "./Login.css";
 import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiCloseLargeLine } from "react-icons/ri";
-import { Input } from "../components/ui/Input";
+import { Input } from "../../components/ui/Input";
 const Login = ({ toggleModal }) => {
   return (
     <div className="modal-backdrop bg-homebgshadow sm:px-5 md:px-0 lg:px-0 xl:px-0 2xl:px-0">

@@ -12,117 +12,112 @@ import { Link, useLocation } from "react-router-dom";
 const DashNav = () => {
   const location = useLocation();
   const [activeItem, setActiveItem] = useState(location.pathname);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleItemClick = (path) => {
     setActiveItem(path);
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="w-1/6 h-screen border border-gray-400 bg-white shadow-xl flex flex-col justify-between">
-      {/* Logo Section */}
-      <div>
-        <div className="flex items-center justify-center mt-9">
-          <img src={logo} alt="Market Prime Logo" className="w-14" />
-          <h1 className="text-xl font-bold text-blue-900 ml-2">MARKET PRIME</h1>
+    <div className="relative h-screen">
+      {/* Hamburger Icon */}
+      <button
+        onClick={toggleSidebar}
+        className="absolute top-4 left-4 z-50 text-2xl bg-blue-900 text-white p-2 rounded-md shadow-lg md:hidden"
+      >
+        {isSidebarOpen ? "✖" : "☰"}
+      </button>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-white shadow-lg border-r border-gray-200 flex flex-col justify-between transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 z-40 w-64`}
+      >
+        {/* Logo Section */}
+        <div className="flex flex-col items-center mt-6">
+          <img src={logo} alt="Market Prime Logo" className="w-12 md:w-14" />
+          <h1 className="text-lg md:text-xl font-semibold text-blue-900 mt-2">
+            MARKET PRIME
+          </h1>
         </div>
 
-        <div className="flex flex-col gap-5 items-start px-4 mt-10 list-none text-[#002366] text-lg tracking-wide">
-          {/* Dashboard Link */}
-          <Link
-            to="/AdminDashboard"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/AdminDashboard" ? "bg-shopcolor text-white" : ""
-            }`}
-            onClick={() => handleItemClick("/AdminDashboard")}
-          >
-            <LuLayoutDashboard
-              className={`${
-                activeItem === "/AdminDashboard"
-                  ? "text-white"
-                  : "text-[#002366]"
+        {/* Navigation Links */}
+        <div className="flex flex-col gap-4 mt-8 px-4">
+          {[
+            {
+              path: "/AdminDashboard",
+              label: "Dashboard",
+              icon: LuLayoutDashboard,
+            },
+            {
+              path: "/AdminDashboard/Product",
+              label: "Product Management",
+              icon: LuBox,
+            },
+            {
+              path: "/AdminDashboard/Orders",
+              label: "Order Management",
+              icon: FaBoxes,
+            },
+          ].map(({ path, label, icon: Icon }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out ${
+                activeItem === path
+                  ? "bg-blue-900 text-white shadow-md"
+                  : "hover:bg-gray-100"
               }`}
-            />
-            Dashboard
-          </Link>
+              onClick={() => handleItemClick(path)}
+            >
+              <Icon className="text-lg" />
+              <span>{label}</span>
+            </Link>
+          ))}
 
-          {/* Analytics Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <BsGraphUpArrow className="text-xl mt-1" /> Analytics
-          </li>
+          {/* Non-Link Items */}
+          {[
+            { label: "Analytics", icon: BsGraphUpArrow },
+            { label: "Product Listing", icon: FaBoxes },
+            { label: "User Management", icon: HiUsers },
+            { label: "Vendor Management", icon: HiUsers },
+            { label: "Messages", icon: FaRegMessage },
+          ].map(({ label, icon: Icon }) => (
+            <div
+              key={label}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-900 hover:bg-gray-100 cursor-pointer transition-all duration-200 ease-in-out"
+            >
+              <Icon className="text-lg" />
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
 
-          {/* Product Management Link */}
-          <Link
-            to="/AdminDashboard/Product"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/Product" ? "bg-shopcolor text-white" : ""
-            }`}
-            onClick={() => handleItemClick("/Product")}
-          >
-            <LuBox
-              className={`${
-                activeItem === "/Product" ? "text-white" : "text-[#002366]"
-              }`}
-            />
-            Product Management
-          </Link>
-
-          {/* Product Listing Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <FaBoxes className="text-xl mt-1" /> Product Listing
-          </li>
-
-          {/* Order Management Link */}
-          <Link
-            to="/AdminDashboard/Orders"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/AdminDashboard/Orders"
-                ? "bg-shopcolor text-white"
-                : ""
-            }`}
-            onClick={() => handleItemClick("/AdminDashboard/Orders")}
-          >
-            <FaBoxes
-              className={`${
-                activeItem === "/AdminDashboard/Orders"
-                  ? "text-white"
-                  : "text-[#002366]"
-              }`}
-            />
-            Order Management
-          </Link>
-
-          {/* User Management Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <HiUsers className="text-xl mt-1" /> User Management
-          </li>
-
-          {/* Vendor Management Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <HiUsers className="text-xl mt-1" /> Vendor Management
-          </li>
-
-          {/* Messages Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <FaRegMessage className="text-xl mt-1" /> Messages
-          </li>
+        {/* Footer Links */}
+        <div className="pb-6 px-4">
+          <div className="flex items-center gap-3 py-3 text-blue-900 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+            <IoSettingsOutline className="text-lg" />
+            <span>Settings</span>
+          </div>
+          <div className="flex items-center gap-3 py-3 text-red-500 hover:bg-gray-100 rounded-lg cursor-pointer transition-all duration-200 ease-in-out">
+            <RiLogoutCircleLine className="text-lg" />
+            <span>Logout</span>
+          </div>
         </div>
       </div>
 
-      {/* Spacer */}
-      <div className="flex-grow"></div>
-
-      {/* Fixed section for Settings and Logout */}
-      <div className="pb-4">
-        {/* Settings Section */}
-        <li className="cursor-pointer flex gap-2 px-4 py-2">
-          <IoSettingsOutline className="text-xl mt-1" /> Settings
-        </li>
-
-        {/* Logout Section */}
-        <li className="cursor-pointer flex gap-2 px-4 py-2">
-          <RiLogoutCircleLine className="text-xl mt-1" /> Logout
-        </li>
-      </div>
+      {/* Overlay for Mobile Sidebar */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-30"
+          onClick={toggleSidebar}
+        ></div>
+      )}
     </div>
   );
 };

@@ -36,7 +36,7 @@ const Product = () => {
         <div className="bg-[#E6F7FF] w-5/6">
           <Header />
           <div className="bg-white my-4 px-10 flex items-center justify-between w-full py-2">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap">
               <button className="flex items-center py-3 bg-topdealbg mr-2 px-7 rounded-lg">
                 Category <IoIosArrowDown className="ml-3" />
               </button>
