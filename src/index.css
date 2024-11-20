@@ -40,3 +40,10 @@
   background-position:left;
   width:100%;
 }
+.forgot-password{
+  background:url(../public/images/Skyline.jpg);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  width:100%;
+}

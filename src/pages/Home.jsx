@@ -20,10 +20,10 @@ export default function DynamicSlider() {
   useInterval(nextSlide, 5000);
 
   const images = [
-    "/public/images/bg.jpg",
-    "/public/images/bg2.png",
-    "/public/images/bg3.png",
-    "/public/images/bg4.png",
+    "/public/images/VID-20241119-WA0175.mp4",
+    // "/public/images/VID-20241119-WA0178.mp4",
+    "/public/images/VID-20241119-WA0180.mp4",
+    "/public/images/VID-20241119-WA0189.mp4",
   ];
 
   const directions = ["top", "bottom", "left", "right"];
@@ -37,18 +37,33 @@ export default function DynamicSlider() {
 
   function Slide({ src, direction }) {
     return (
-      <motion.img
-        src={src}
-        alt="Slider image"
-        className="absolute w-full h-full object-cover"
-        variants={slideVariants[direction]}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      />
+      <div className="absolute inset-0 w-full h-full">
+        {/* Black transparent overlay */}
+        <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+  
+        {/* Video */}
+        <motion.video
+          src={src}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectFit: "cover",
+            minHeight: "100vh", // Ensures video covers full height
+            minWidth: "100vw",  // Ensures video covers full width
+          }}
+          variants={slideVariants[direction]}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
     );
   }
+  
+  
 
   Slide.propTypes = {
     src: PropTypes.string.isRequired,
