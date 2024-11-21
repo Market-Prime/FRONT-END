@@ -1,5 +1,4 @@
 import order_icon from "../../assets/Filtered-Images/tder.png";
-import { useState } from "react";
 import vendors_icon from "../../assets/Filtered-Images/vendors.png";
 import users from "../../assets/Filtered-Images/users.png";
 import sales_icon from "../../assets/Filtered-Images/sales.png";
@@ -17,6 +16,7 @@ import {
 } from "recharts";
 import DashNav from "./DashNav";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const orders = [
@@ -117,13 +117,6 @@ const Dashboard = () => {
       </div>
     );
   });
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev);
-  };
-
   return (
     <div className="h-screen w-screen">
       <div className="flex justify-between relative">
@@ -133,57 +126,45 @@ const Dashboard = () => {
 
           <div className=" bg-[#E6F7FF]">
             {/* Analytics Card */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Orders</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img
-                      src={order_icon}
-                      alt="Order Icon"
-                      className="h-6 md:h-8"
-                    />
+            <div className="flex justify-around items-center mt-10">
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                  <p className="text-xl">Total Orders</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={order_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Sales</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">N1,800,309</h1>
-                    <img
-                      src={sales_icon}
-                      alt="Sales Icon"
-                      className="h-6 md:h-8"
-                    />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                  <p className="text-xl">Total Sales</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">N1,800,309</h1>
+                    <img src={sales_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Active Vendors</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img
-                      src={vendors_icon}
-                      alt="Vendors Icon"
-                      className="h-6 md:h-8"
-                    />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full">
+                  <p className="text-xl">Active Vendors</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={vendors_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Users</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img src={users} alt="Users Icon" className="h-6 md:h-8" />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
+                  <p className="text-xl">Total Users</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={users} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
             </div>
@@ -192,7 +173,7 @@ const Dashboard = () => {
             {/* <div className="h-[40%] rounded-3xl"></div> */}
             <div className="flex flex-col md:flex-row relative h-auto md:gap-2 my-3 gap-8">
               {/* Pie chart box */}
-              <div className="lg:w-[24%] w-full bg-white rounded-xl">
+              <div className="w-[24%] bg-white rounded-xl">
                 <h3 className="text-start mt-2 pl-10 pb-2 text-xl">
                   Order Status
                 </h3>
@@ -238,14 +219,14 @@ const Dashboard = () => {
               </div>
 
               {/* Bar chart box */}
-              <div className="lg:w-[49%] w-full py-0 bg-white rounded-xl">
-                <div className="flex-col md:flex items-center justify-between w-full py-2 mt-2 px-10">
+              <div className="w-[49%] py-0 bg-white rounded-xl">
+                <div className="flex items-center justify-between w-full py-2 mt-2 px-10">
                   <p className="w-1/2 text-xl">Sales Analytics</p>
                   <div className="flex items-center justify-between w-1/2">
-                    <p className="text-lg md:text-xl">Daily</p>
-                    <p className="md:text-xl text-lg">Weekly</p>
-                    <p className="md:text-xl text-lg">Monthly</p>
-                    <p className="md:text-xl text-lg">Yearly</p>
+                    <p className="text-xl">Daily</p>
+                    <p className="text-xl">Weekly</p>
+                    <p className="text-xl">Monthly</p>
+                    <p className="text-xl">Yearly</p>
                   </div>
                 </div>
                 <ResponsiveContainer
@@ -283,7 +264,7 @@ const Dashboard = () => {
                 </ResponsiveContainer>
               </div>
               {/* Best selling section */}
-              <div className="lg:w-[24%] w-full bg-white rounded-xl">
+              <div className="w-[24%] bg-white rounded-xl">
                 <div className="flex items-center justify-between py-2 px-5">
                   <h3 className="text-lg">Best Selling Products</h3>
                   <p className="text-lg">See all</p>
@@ -293,17 +274,20 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Orders */}
-            <div className="h-[34%] flex flex-col lg:flex-row gap-4 lg:gap-0 justify-around items-center w-full mt-2">
-              <div className="lg:w-[69%] w-full h-full border-2 rounded-md bg-white">
-                <div className="flex justify-between mb-2 px-5 flex-wrap">
+            <div className="h-[34%] flex justify-around items-center min-w-full mt-2">
+              <div className="w-[69%] h-full border-2 rounded-md bg-white">
+                <div className="flex justify-between mb-2 px-5">
                   <div className="flex items-center space-x-2 ">
                     <span className="text-gray-700 text-xls">
                       Recent Orders
                     </span>
+                    {/* <button className="bg-blue-100 text-blue-600 py-1 px-2 rounded-lg flex items-center">
+                    <i className="fas fa-filter mr-1"></i> Filters
+                  </button> */}
                   </div>
-                  <div className="flex-col items-center space-x-2 md:flex">
+                  <div className="flex items-center space-x-2">
                     <span className="text-gray-500">Sort By:</span>
-                    <select className="bg-blue-100 py-1 px-1 rounded-lg md:px-2">
+                    <select className="bg-blue-100 py-1 px-2 rounded-lg">
                       <option>Recent Orders</option>
                       <option>Pending Orders</option>
                       <option>Out of Stock</option>
@@ -349,7 +333,7 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
-              <div className="lg:w-[23%] w-full h-full border-2 rounded-md bg-white px-5 py-5">
+              <div className="w-[23%] h-full border-2 rounded-md bg-white px-5 py-5">
                 <h5 className="text-xl text-center">Customers Review </h5>
                 <div className="flex items-center justify-between mt-2">
                   <p className="text-sm">
@@ -363,28 +347,28 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start mt-0 justify-between flex-col ">
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                <div className="flex items-start mt-0 justify-between flex-col">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4084.png" />
                     <p className="ml-5">Excellent </p>
                     <span className="block ml-5">70</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4085.png" />
                     <p className="ml-5">Good </p>
                     <span className="block ml-12">50</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4086.png" />
                     <p className="ml-5">Average </p>
                     <span className="block ml-7">40</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4088.png" />
                     <p className="ml-5">Not Bad </p>
                     <span className="block ml-16">30</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4087.png" />
                     <p className="ml-5">Poor </p>
                     <span className="block ml-14">10</span>

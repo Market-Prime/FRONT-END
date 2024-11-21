@@ -103,55 +103,60 @@ const Content = () => {
       price: "#30,000",
     },
   ];
-  const products = bestproducts.map((item, i) => (
-    <div
-      key={i}
-      className="flex items-center justify-between px-4 w-full py-2 hover:bg-gray-100 transition duration-200 ease-in-out rounded-lg cursor-pointer"
-    >
-      <div className="w-4/5 flex items-center">
-        <img
-          src={item.image}
-          className="rounded-full w-12 h-12 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
-          alt={item.name}
-        />
-        <p className="text-sm ml-2 truncate">{item.name}</p>
+  const products = bestproducts.map((item, i) => {
+    return (
+      <div key={i} className="flex items-center justify-between px-5 w-full">
+        <div className="w-4/5 flex items-center justify-start">
+          <img src={item.image} className="rounded-full w-[22%]" />
+          <p className="text-sm ml-2">{item.name}</p>
+        </div>
+        <span className="w-1/5">{item.price}</span>
       </div>
-      <span className="w-1/5 text-right text-blue-600 font-medium">
-        {item.price}
-      </span>
-    </div>
-  ));
-
+    );
+  });
   return (
-    <main className="flex-1 bg-[#C1CFE3] p-4">
-      {/* Summary Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-        {[
-          { title: "Total Orders", value: "10,720", icon: order_icon },
-          { title: "Total Sales", value: "₦1,800,309", icon: sales_icon },
-          { title: "Active Vendors", value: "3,254", icon: vendors_icon },
-          { title: "Total Users", value: "12,348", icon: users },
-        ].map((stat, index) => (
-          <div
-            key={index}
-            className="shadow-lg hover:shadow-xl sm:w-2/2 transition-shadow duration-200 border border-slate-300 bg-white rounded-xl flex flex-col items-start p-4"
-          >
-            <div className="ml-1 flex flex-col w-full">
-              <p className="text-lg lg:text-xl">{stat.title}</p>
-              <div className="flex w-full justify-between items-center mt-2">
-                <h1 className="text-md lg:text-2xl w-[70%] whitespace-normal break-words font-bold text-gray-700 h-max">
-                  {stat.value}
-                </h1>
-                <img
-                  src={stat.icon}
-                  alt={`${stat.title} icon`}
-                  className="w-10 h-10 sm:w-8 sm:h-8"
-                />
-              </div>
-              <p className="text-sm text-gray-500">From yesterday</p>
+    <main className="flex-1 bg-[#C1CFE3]">
+      <div className="flex justify-around items-center mt-2">
+        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
+          <div className="ml-7  flex flex-col items-start justify-center w-full ">
+            <p className="text-xl">Total Orders</p>
+            <div className="flex w-[85%] justify-between">
+              <h1 className="text-xl font-bold">10720</h1>
+              <img src={order_icon} alt="" />
             </div>
+            <p>From yesterday</p>
           </div>
-        ))}
+        </div>
+        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+          <div className="ml-7  flex flex-col items-start justify-center w-full ">
+            <p className="text-xl">Total Sales</p>
+            <div className="flex w-[85%] justify-between">
+              <h1 className="text-xl font-bold">N1,800,309</h1>
+              <img src={sales_icon} alt="" />
+            </div>
+            <p>From yesterday</p>
+          </div>
+        </div>
+        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+          <div className="ml-7  flex flex-col items-start justify-center w-full">
+            <p className="text-xl">Active Vendors</p>
+            <div className="flex w-[85%] justify-between">
+              <h1 className="text-xl font-bold">10720</h1>
+              <img src={vendors_icon} alt="" />
+            </div>
+            <p>From yesterday</p>
+          </div>
+        </div>
+        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+          <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
+            <p className="text-xl">Total Users</p>
+            <div className="flex w-[85%] justify-between">
+              <h1 className="text-xl font-bold">10720</h1>
+              <img src={users} alt="" />
+            </div>
+            <p>From yesterday</p>
+          </div>
+        </div>
       </div>
 
       {/* Charts and Best Sellers */}
@@ -173,8 +178,19 @@ const Content = () => {
               ))}
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={data} barSize={20}>
+          <ResponsiveContainer width="100%" height={250} className="mt-12">
+            <BarChart
+              width={500}
+              height={300}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+              barSize={20}
+            >
               <XAxis
                 dataKey="name"
                 scale="point"
@@ -207,99 +223,102 @@ const Content = () => {
         </div>
       </div>
 
-      {/* Order Status Pie Chart and Recent Orders */}
-      <div className="flex flex-col lg:flex-row justify-between items-start mt-8 gap-4">
-        {/* Order Status Pie Chart */}
-        <div className="flex-1 lg:w-1/3 sm:w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Order Status
-          </h3>
+      <div className="flex flex-col lg:flex-row justify-around items-center w-full space-y-5 lg:space-y-0 lg:space-x-5 px-4">
+        {/* Pie chart box */}
+        <div className="w-full lg:w-1/3 h-[400px] bg-white rounded-xl p-4">
+          <h3 className="text-start mt-1 text-xl">Order Status</h3>
           <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie
-                data={data02}
                 dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={50}
-                outerRadius={100}
+                data={data02}
+                cx="50%" // Centering the pie horizontally
+                cy="50%" // Centering the pie vertically
+                innerRadius={50} // Increased inner radius
+                outerRadius={120} // Increased outer radius
+                fill="#227BF2"
               />
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
-          <div className="flex justify-around mt-4">
-            {data02.map((status) => (
-              <div key={status.name} className="text-center">
-                <div
-                  className={`w-4 h-4 mx-auto mb-1 rounded-full`}
-                  style={{ backgroundColor: status.fill }}
-                ></div>
-                <p className="text-sm">{status.name}</p>
-                <span className="text-base font-medium text-gray-700">
-                  {status.value}%
-                </span>
-              </div>
-            ))}
+          <div className="flex items-center justify-between my-5 lg:my-0 w-full lg:w-4/5 mx-auto">
+            <div className="">
+              <p className="h-7 bg-[#3D56FA] w-8 text-center mx-auto"></p>
+              <p className="text-center text-sm">Success</p>
+              <span className="text-center text-base block text-[#3D56FA]">
+                79%
+              </span>
+            </div>
+            <div className="">
+              <p className="h-7 bg-[#F7EC1B] w-8 text-center mx-auto"></p>
+              <p className="text-center text-sm">Pending</p>
+              <span className="text-center text-base block text-[#F7EC1B]">
+                12%
+              </span>
+            </div>
+            <div className="">
+              <p className="h-7 bg-[#F82A0D] w-8 text-center mx-auto"></p>
+              <p className="text-center text-sm">Canceled</p>
+              <span className="text-center text-base block text-[#F82A0D]">
+                9%
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Recent Orders */}
-        <div className="flex-1 lg:w-2/3 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-x-auto">
-          <div className="flex justify-between mb-4">
-            <span className="text-lg font-semibold text-gray-800">
-              Recent Orders
-            </span>
-            <select className="bg-blue-100 p-2 rounded-lg text-sm">
-              <option>Recent Orders</option>
-              <option>Pending Orders</option>
-              <option>Out of Stock</option>
-              <option>Recently added products</option>
-              <option>Delivered Items</option>
-            </select>
+        <div className="w-full lg:w-[70%]  bg-white rounded-xl p-4">
+          <div className="flex justify-between mb-2">
+            <div className="flex items-center space-x-2">
+              <span className="text-gray-700 text-xl">Recent Orders</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-gray-500">Sort By:</span>
+              <select className="bg-blue-100 py-1 px-2 rounded-lg">
+                <option>Recent Orders</option>
+                <option>Pending Orders</option>
+                <option>Out of Stock</option>
+                <option>Recently added products</option>
+                <option>Delivered Items</option>
+              </select>
+            </div>
           </div>
-          <table className="min-w-full table-auto text-sm border-collapse">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-4 py-2 border-b border-gray-200">Order ID</th>
-                <th className="px-4 py-2 border-b border-gray-200">Item</th>
-                <th className="px-4 py-2 border-b border-gray-200">Date</th>
-                <th className="px-4 py-2 border-b border-gray-200">Price</th>
-                <th className="px-4 py-2 border-b border-gray-200">Category</th>
-                <th className="px-4 py-2 border-b border-gray-200">Seller</th>
-                <th className="px-4 py-2 border-b border-gray-200">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order, i) => (
-                <tr
-                  key={i}
-                  className="hover:bg-gray-50 transition-colors duration-150"
-                >
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.id}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.item}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.date}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.price}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.category}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.seller}
-                  </td>
-                  <td className="px-4 py-2 border-b border-gray-200">
-                    {order.status}
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="min-w-full table-auto border-collapse border border-gray-200">
+              <thead>
+                <tr>
+                  <th className="px-4 py-1 text-left">Order ID</th>
+                  <th className="px-4 py-1 text-left">Item</th>
+                  <th className="px-4 py-1 text-left">Date</th>
+                  <th className="px-4 py-1 text-left">Price</th>
+                  <th className="px-4 py-1 text-left">Category</th>
+                  <th className="px-4 py-1 text-left">Seller</th>
+                  <th className="px-4 py-1 text-left">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {orders.map((order, index) => (
+                  <tr key={index} className="bg-white">
+                    <td className="px-4 py-[8px]">{order.id}</td>
+                    <td className="px-4 py-[8px]">{order.item}</td>
+                    <td className="px-4 py-[8px]">{order.date}</td>
+                    <td className="px-4 py-[8px]">{order.price}</td>
+                    <td className="px-4 py-[8px]">{order.category}</td>
+                    <td className="px-4 py-[8px]">{order.seller}</td>
+                    <td
+                      className={`px-4 py-1 ${
+                        order.status === "Pending"
+                          ? "text-yellow-500"
+                          : "text-blue-800"
+                      }`}
+                    >
+                      {order.status}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </main>

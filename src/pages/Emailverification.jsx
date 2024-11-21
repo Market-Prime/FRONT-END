@@ -78,8 +78,8 @@
 //           Didn’t get the mail? <span className="resend-link">Resend Email</span>
 //         </p>
 //         <div className="footer">
-//           <a href="/" className="footer-link">Terms of use</a> |
-//           <a href="/" className="footer-link">Privacy Policy</a> |
+//           <a href="/" className="footer-link">Terms of use</a> | 
+//           <a href="/" className="footer-link">Privacy Policy</a> | 
 //           <a href="/" className="footer-link">Customer Service</a>
 //         </div>
 //         <ToastContainer />

@@ -8,7 +8,7 @@ import { BsShop } from "react-icons/bs";
 import { IoCalculatorOutline } from "react-icons/io5";
 import { RiMastercardLine } from "react-icons/ri";
 import { SiVisa } from "react-icons/si";
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
 
 const Checkout = () => {
   const location = useLocation();

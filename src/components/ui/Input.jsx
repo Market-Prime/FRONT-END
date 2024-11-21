@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { cn } from "../../lib/utils"; // Utility function
+import { cn } from "../../../lib/utils"; // Utility function
 
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (

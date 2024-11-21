@@ -1,13 +1,91 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import { Best, ExploreData, Topdealdata } from "../data/Topdealdata";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
 import bg from "../../public/images/bg.jpg";
-const Home = () => {
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInterval } from "react-use";
+import PropTypes from "prop-types";
+
+export default function DynamicSlider() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("right");
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides                   .length);
+    setDirection(directions[Math.floor(Math.random() * directions.length)]);
+  };
+
+  useInterval(nextSlide, 5000);
+
+  const slides = [
+    { src: "/public/images/VID-20241119-WA0175.mp4", text: "Effortless Elegance" },
+    { src: "/public/images/VID-20241119-WA0180.mp4", text: "Bold & Beautiful" },
+    { src: "/public/images/VID-20241119-WA0189.mp4", text: "Unmatched Style" },
+  ];
+  
+
+  const directions = ["top", "bottom", "left", "right"];
+
+  const slideVariants = {
+    top: { initial: { y: "-100%" }, animate: { y: 0 }, exit: { y: "100%" } },
+    bottom: { initial: { y: "100%" }, animate: { y: 0 }, exit: { y: "-100%" } },
+    left: { initial: { x: "-100%" }, animate: { x: 0 }, exit: { x: "100%" } },
+    right: { initial: { x: "100%" }, animate: { x: 0 }, exit: { x: "-100%" } },
+  };
+
+  function Slide({ src, direction, text }) {
+    return (
+      <div className="absolute inset-0 w-full h-full">
+        {/* Black transparent overlay */}
+        <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
+  
+        {/* Video */}
+        <motion.video
+          src={src}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectFit: "cover",
+            minHeight: "100vh", // Ensures video covers full height
+            minWidth: "100vw",  // Ensures video covers full width
+          }}
+          variants={slideVariants[direction]}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          autoPlay
+          loop
+          muted
+        />
+
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center z-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <p className="text-white text-4xl font-bold text-start px-4 sm:text-2xl md:text-3xl lg:text-4xl xl:text-7xl">
+            {text}
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
+  
+  
+
+  Slide.propTypes = {
+    src: PropTypes.string.isRequired,
+    direction: PropTypes.oneOf(directions).isRequired,
+  };
+
   const topdeal = Topdealdata.map((item, i) => {
     return (
       <div
-        className="mx-auto  mb-8 2xl:w-6/6 xl:w-4/6 lg:w-6/6 md:w-2/2 sm:w-[90%]"
+        className="mx-auto mb-8 2xl:w-6/6 xl:w-4/6 lg:w-6/6 md:w-2/2 sm:w-[90%]"
         key={i}
       >
         <img src={item.image} className="w-full mx-auto" />
@@ -20,7 +98,7 @@ const Home = () => {
         <div className="flex items-center justify-start w-full ml-3 mx-auto">
           <Link
             to={item.link}
-            className="bg-seamlessbg py-2 text-white font-bold text-sm 2xl:w-7/12 xl:w-7/12 lg:w-[55%] md:w-2/3 text-start px-2  rounded-xl"
+            className="bg-seamlessbg py-2 text-white font-bold text-sm 2xl:w-7/12 xl:w-7/12 lg:w-[55%] md:w-2/3 text-start px-2 rounded-xl"
           >
             {item.button}
           </Link>
@@ -78,9 +156,15 @@ const Home = () => {
     <div>
       <Navbar />
       {/* Hero Image */}
-      <div className="relative w-[98vw] h-screen overflow-x-hidden">
-        <img src={bg} alt="" className="w-full h-full object-cover" />
-        {/* Dark overlay */}
+      <div className="relative w-screen h-screen overflow-hidden">
+        <AnimatePresence initial={false} mode="wait">
+          <Slide
+            key={currentIndex}
+            src={slides[currentIndex].src}
+            text={slides[currentIndex].text}
+            direction={direction}
+          />
+        </AnimatePresence>
       </div>
 
       {/* Seamless Fashion */}
@@ -92,7 +176,7 @@ const Home = () => {
           </p>
           <Link
             to="Search"
-            className="block mt-10 bg-white  py-6 mx-auto font-bold 2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-2/3 text-center rounded-3xl text-3xl text-shopcolor"
+            className="block mt-10 bg-white py-6 mx-auto font-bold 2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-2/3 text-center rounded-3xl text-3xl text-shopcolor"
           >
             Shop now
           </Link>
@@ -150,82 +234,33 @@ const Home = () => {
           </p>
         </div>
       </div>
-      {/* End of Perfect Fit */}
+      {/* End of Perfect fit */}
 
       {/* Explore */}
-      <div className="2xl:px-10 xl:px-10 lg:px-10 md:px-5 sm:px-5">
-        {/* Explore Section */}
-        <div className="bg-topdealbg rounded-lg shadow-lg px-8 py-8 2xl:mt-10 xl:mt-10 lg:mt-10 md:mt-5 sm:mt-5">
-          <p className="text-topdeal text-4xl font-semibold text-center mb-5">
-            Explore
-          </p>
+      <div className="bg-explorebg px-5 py-5">
+        <p className="text-center text-4xl font-bold text-white mb-5">
+          Explore more
+        </p>
 
-          {/* Grid layout for responsive columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
-            {explore.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-200 hover:scale-105"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mx-auto">
+          {explore}
         </div>
+      </div>
+      {/* End of Explore */}
 
-        {/* Best Sellers Section */}
-        <div className="2xl:px-10 xl:px-10 lg:px-10 md:px-5 sm:px-5 sm:mt-10 md:mt-10 lg:mt-10 xl:mt-10 2xl:mt-10">
-          <div className="bg-topdealbg rounded-lg shadow-lg px-8 py-8">
-            <p className="text-topdeal text-4xl font-semibold text-center mb-5">
-              Today's Top Deal
-            </p>
+      {/* Bestseller */}
+      <div className="2xl:px-5 xl:px-5 lg:px-0 md:px-0 sm:px-0">
+        <div className="bg-topdealbg px-5 py-5 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-0 sm:mt-0">
+          <p className="text-topdeal text-4xl font-semibold">Bestseller</p>
 
-            {/* Grid layout for responsive columns */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
-              {bestseller.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-200 hover:scale-105"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mx-auto mt-5">
+            {bestseller}
           </div>
         </div>
       </div>
+      {/* End of Bestseller */}
 
-      {/* End of best sellers */}
-
-      {/* Boring outfit */}
-      <div className="bg-seamlessbg pt-10 2xl:px-32 xl:px-32 lg:px-20 md:px-10 sm:px-5 flex 2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-col items-center justify-between w-full">
-        <div className="sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-0 sm:mt-10">
-          <p className="text-4xl text-white text-start leading-snug font-extrabold">
-            Never wear a boring outfit
-          </p>
-          <p className="mt-10 text-white text-2xl">
-            Shop with Market Prime for an outfit that fits.
-          </p>
-          <Link
-            to="Search"
-            className="block mt-10 bg-white  py-6 mx-0 font-bold 2xl:w-1/3 xl:w-1/3 lg:w-2/3 md:w-2/3 sm:w-full text-center rounded-3xl text-4xl text-shopcolor"
-          >
-            Shop now
-          </Link>
-        </div>
-        <div className="sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-0 sm:mt-10">
-          <img
-            src="/images/Rectangle 354.png"
-            className="2xl:ml-96 xl:ml-0 lg:ml-0 md:ml-0 sm:ml-0 2xl:w-auto xl:w-auto lg:w-auto md:w-full sm:w-full"
-          />
-        </div>
-      </div>
-      {/* End of Boring outfits */}
-
-      {/* Footer */}
       <Footer />
-      {/* End of the footer */}
     </div>
   );
-};
-export default Home;
+}
