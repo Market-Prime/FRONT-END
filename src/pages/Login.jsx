@@ -8,8 +8,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify"; // Import toast
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for toast
+import { useAuth } from "./AuthContext";
 const Login = ({ toggleModal }) => {
   const navigate = useNavigate();
+  const {login} = useAuth();
+
 
   const [data, setData] = useState({
     email: "",
@@ -23,8 +26,8 @@ const Login = ({ toggleModal }) => {
     });
   };
 
-  const submitLogin = async () => {
-    try {
+  const submitLogin = async () =>{
+    try{
       const response = await axios.post(
         `https://backend-server-0ddt.onrender.com/api/account/login`,
         {
@@ -32,22 +35,17 @@ const Login = ({ toggleModal }) => {
           password: data.password,
         }
       );
-      toast.success(
-        `Login Successful: ${
-          (response.data.message || "Welcome",
-          {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            style: { backgroundColor: "green" },
-          })
-        }`
-      );
+      toast.success(`Login Successful: ${response.data.message || 'Welcome' , {
+        position:"top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick:true,
+        pauseOnHover: true,
+        draggable:true,
+        progress: undefined,
+        theme: "colored",
+        style: {backgroundColor: "green"}
+      }}`);
       setTimeout(() => {
         navigate("/");
       }, 5000);
@@ -141,86 +139,80 @@ const Login = ({ toggleModal }) => {
     //   </div>
     // </div>
 
-    <div className="w-full bg-green-400 h-screen">
+    <div className="w-full  h-screen">
       <ToastContainer />
       <div className="w-full flex flex-row-reverse items-center justify-center bg-red-400 h-screen">
         <div className="w-2/3 h-screen">
-          <img
-            src="/images/IMG-20241105-WA0023.jpg"
-            className="object-cover w-full h-full"
-          />
+          <img src="/images/IMG-20241105-WA0023.jpg" className="object-cover w-full h-full" />
         </div>
 
         {/* Form */}
         <div className="w-1/3 bg-blue-700 h-screen px-10 py-52">
-          <div>
-            {/* <button className="close-modal" onClick={toggleModal}>
+        <div>
+        {/* <button className="close-modal" onClick={toggleModal}>
           <RiCloseLargeLine />
         </button> */}
-            <h4 className="text-cartbg text-2xl font-medium">Welcome</h4>
-            <p className="text-xl text-cartbg font-medium mt-6">
-              Type your email and password to Log in
-            </p>
-            <form className="mt-10">
-              <label className="block text-cartbg font-medium text-base">
-                Your Email
-              </label>
-              <Input
-                type="email"
-                name="email"
-                onChange={handleInputChange}
-                required
-                className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
-              />
-              <label
-                className="block text-cartbg font-medium text-base mt-10"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <div className="flex items-center justify-between  py-2 px-3 mt-2">
-                <Input
-                  type="password"
-                  name="password"
-                  required
-                  onChange={handleInputChange}
-                  className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
-                />
-                <FaRegEye />
-              </div>
-              <label
-                htmlFor=""
-                className="mt-5 block flex items-center justify-start"
-              >
-                <input type="checkbox" className="inputCheckBox" />
-                <span className="block ml-2 text-sm">Remember Me</span>
-              </label>
-              <a
-                href="#"
-                className="block mt-1 text-sm text-cartbg font-medium"
-              >
-                Forgot Password?
-              </a>
-            </form>
-            <Link
-              to=""
-              onClick={submitLogin}
-              className="w-full bg-aboutbg block py-3 rounded-lg text-white uppercase text-center font-bold mt-10"
-            >
-              Login
-            </Link>
-
-            <p className="mt-5 text-xs">
-              Don't have an account?
-              {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
-              <Link
-                to="/Signup"
-                className="inline text-sm text-cartbg font-medium ml-1"
-              >
-                Register
-              </Link>
-            </p>
+        <h4 className="text-cartbg text-2xl font-medium">Welcome</h4>
+        <p className="text-xl text-cartbg font-medium mt-6">
+          Type your email and password to Log in
+        </p>
+        <form className="mt-10">
+          <label className="block text-cartbg font-medium text-base">
+            Your Email
+          </label>
+          <Input
+            type="email"
+            name="email"
+            onChange={handleInputChange}
+            required
+            className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
+          />
+          <label
+            className="block text-cartbg font-medium text-base mt-10"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <div className="flex items-center justify-between  py-2 px-3 mt-2">
+            <Input
+              type="password"
+              name="password"
+              required
+              onChange={handleInputChange}
+              className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
+            />
+            <FaRegEye />
           </div>
+          <label
+            htmlFor=""
+            className="mt-5 block flex items-center justify-start"
+          >
+            <input type="checkbox" className="inputCheckBox" />
+            <span className="block ml-2 text-sm">Remember Me</span>
+          </label>
+          <a href="#" className="block mt-1 text-sm text-cartbg font-medium">
+            Forgot Password?
+          </a>
+        </form>
+        <Link
+          to=""
+          onClick={submitLogin}
+          className="w-full bg-aboutbg block py-3 rounded-lg text-white uppercase text-center font-bold mt-10"
+        >
+          Login
+        </Link>
+
+        <p className="mt-5 text-xs">
+          Don't have an account?
+          {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
+          <Link
+            to="/Signup"
+            className="inline text-sm text-cartbg font-medium ml-1"
+          >
+            Register
+          </Link>
+        </p>
+        </div>
         </div>
       </div>
     </div>
