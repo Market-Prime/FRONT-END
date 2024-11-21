@@ -13,18 +13,18 @@ export default function DynamicSlider() {
   const [direction, setDirection] = useState("right");
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides                   .length);
     setDirection(directions[Math.floor(Math.random() * directions.length)]);
   };
 
   useInterval(nextSlide, 5000);
 
-  const images = [
-    "/public/images/VID-20241119-WA0175.mp4",
-    // "/public/images/VID-20241119-WA0178.mp4",
-    "/public/images/VID-20241119-WA0180.mp4",
-    "/public/images/VID-20241119-WA0189.mp4",
+  const slides = [
+    { src: "/public/images/VID-20241119-WA0175.mp4", text: "Effortless Elegance" },
+    { src: "/public/images/VID-20241119-WA0180.mp4", text: "Bold & Beautiful" },
+    { src: "/public/images/VID-20241119-WA0189.mp4", text: "Unmatched Style" },
   ];
+  
 
   const directions = ["top", "bottom", "left", "right"];
 
@@ -35,11 +35,11 @@ export default function DynamicSlider() {
     right: { initial: { x: "100%" }, animate: { x: 0 }, exit: { x: "-100%" } },
   };
 
-  function Slide({ src, direction }) {
+  function Slide({ src, direction, text }) {
     return (
       <div className="absolute inset-0 w-full h-full">
         {/* Black transparent overlay */}
-        <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+        <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
   
         {/* Video */}
         <motion.video
@@ -59,6 +59,18 @@ export default function DynamicSlider() {
           loop
           muted
         />
+
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center z-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <p className="text-white text-4xl font-bold text-start px-4 sm:text-2xl md:text-3xl lg:text-4xl xl:text-7xl">
+            {text}
+          </p>
+        </motion.div>
       </div>
     );
   }
@@ -148,7 +160,8 @@ export default function DynamicSlider() {
         <AnimatePresence initial={false} mode="wait">
           <Slide
             key={currentIndex}
-            src={images[currentIndex]}
+            src={slides[currentIndex].src}
+            text={slides[currentIndex].text}
             direction={direction}
           />
         </AnimatePresence>

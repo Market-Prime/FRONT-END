@@ -145,6 +145,7 @@ import Content from "./pages/VendorsPage/Content";
 import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import Accountmanagement from "./pages/Accountmanagement";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   useEffect(() => {
@@ -200,6 +201,8 @@ function AnimatedRoutes() {
           <Route path="/admindashboard/orders" element={<Orders />} />
 
           <Route path="/account" element={<Accountmanagement />} />
+
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </AnimatePresence>
     </AuthProvider>

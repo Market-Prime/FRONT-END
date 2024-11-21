@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotPassword = () => {
 
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("")
 
     const forgotEmail = async () => {
         try{
@@ -21,6 +22,9 @@ const ForgotPassword = () => {
                 theme:"colored",
                 style:{backgroundColor: "green"},
             });
+            setTimeout(() => {
+                navigate("/email-confirmation/:token");
+              }, 5000);
         } catch(error) {
             const errorMessage = error.response && error.response.message && error.response.message.error 
             ? error.response.message.error
