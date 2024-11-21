@@ -13,5 +13,9 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "./src"), // Define your alias for the 'src' folder
     },
+    optimizeDeps: {
+      include: ["axios", "react-toastify"], // Explicitly include dependencies
+      exclude: ["some-large-package"], // Exclude packages if needed
+    },
   },
 });

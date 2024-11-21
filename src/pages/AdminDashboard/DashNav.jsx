@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/Logo 1.png";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { HiUsers } from "react-icons/hi";
@@ -23,7 +23,7 @@ const DashNav = () => {
   };
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen flex">
       {/* Hamburger Icon */}
       <button
         onClick={toggleSidebar}
@@ -34,9 +34,9 @@ const DashNav = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-white shadow-lg border-r border-gray-200 flex flex-col justify-between transform ${
+        className={`fixed md:static top-0 left-0 h-full bg-white shadow-lg border-r border-gray-200 flex flex-col justify-between transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 z-40 w-64`}
+        } md:translate-x-0 transition-transform duration-300 z-40 w-64`}
       >
         {/* Logo Section */}
         <div className="flex flex-col items-center mt-6">
@@ -118,6 +118,8 @@ const DashNav = () => {
           onClick={toggleSidebar}
         ></div>
       )}
+
+      {/* Main Content */}
     </div>
   );
 };

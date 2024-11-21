@@ -3,7 +3,7 @@ import "./Login.css";
 import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiCloseLargeLine } from "react-icons/ri";
-import { Input } from "../components/ui/Input";
+import { Input } from "../../components/ui/Input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify"; // Import toast
