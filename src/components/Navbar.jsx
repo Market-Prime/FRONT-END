@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useAuth } from "../src/pages/AuthContext";
+import { useAuth } from "../pages/AuthContext";
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
 

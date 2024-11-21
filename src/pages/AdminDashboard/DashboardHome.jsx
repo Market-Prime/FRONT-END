@@ -1,3 +1,4 @@
+import { useState } from "react";
 import order_icon from "../../assets/Filtered-Images/tder.png";
 import vendors_icon from "../../assets/Filtered-Images/vendors.png";
 import users from "../../assets/Filtered-Images/users.png";
@@ -117,18 +118,16 @@ const Dashboard = () => {
       </div>
     );
   });
-  return (
-    <div className="h-screen w-screen">
-      <div className="flex justify-between relative">
-        <DashNav isSidebarOpen={isSidebarOpen} />
-        <div className="bg-[#E6F7FF] w-6/6">
-          <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
+  return (
+    <div className="h-screen w-full flex">
+      <div className="flex justify-between relative">
+        <div className="bg-[#E6F7FF] md:w-full w-[500px]">
           <div className=" bg-[#E6F7FF]">
             {/* Analytics Card */}
-            <div className="flex justify-around items-center mt-10">
-              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
-                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7 flex flex-col items-start justify-center w-full">
                   <p className="text-xl">Total Orders</p>
                   <div className="flex w-[85%] justify-between">
                     <h1 className="text-xl font-bold">10720</h1>
@@ -137,8 +136,9 @@ const Dashboard = () => {
                   <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border bg-white border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7 flex flex-col items-start justify-center w-full">
                   <p className="text-xl">Total Sales</p>
                   <div className="flex w-[85%] justify-between">
                     <h1 className="text-xl font-bold">N1,800,309</h1>
@@ -147,8 +147,9 @@ const Dashboard = () => {
                   <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-                <div className="ml-7  flex flex-col items-start justify-center w-full">
+
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border bg-white border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7 flex flex-col items-start justify-center w-full">
                   <p className="text-xl">Active Vendors</p>
                   <div className="flex w-[85%] justify-between">
                     <h1 className="text-xl font-bold">10720</h1>
@@ -157,8 +158,9 @@ const Dashboard = () => {
                   <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-                <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
+
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border bg-white border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7 mx-2 flex flex-col items-start justify-center w-full">
                   <p className="text-xl">Total Users</p>
                   <div className="flex w-[85%] justify-between">
                     <h1 className="text-xl font-bold">10720</h1>
@@ -173,7 +175,7 @@ const Dashboard = () => {
             {/* <div className="h-[40%] rounded-3xl"></div> */}
             <div className="flex flex-col md:flex-row relative h-auto md:gap-2 my-3 gap-8">
               {/* Pie chart box */}
-              <div className="w-[24%] bg-white rounded-xl">
+              <div className="md:w-[24%] w-full bg-white rounded-xl">
                 <h3 className="text-start mt-2 pl-10 pb-2 text-xl">
                   Order Status
                 </h3>
@@ -219,7 +221,7 @@ const Dashboard = () => {
               </div>
 
               {/* Bar chart box */}
-              <div className="w-[49%] py-0 bg-white rounded-xl">
+              <div className="md:w-[49%] w-full py-0 bg-white rounded-xl">
                 <div className="flex items-center justify-between w-full py-2 mt-2 px-10">
                   <p className="w-1/2 text-xl">Sales Analytics</p>
                   <div className="flex items-center justify-between w-1/2">
@@ -264,7 +266,7 @@ const Dashboard = () => {
                 </ResponsiveContainer>
               </div>
               {/* Best selling section */}
-              <div className="w-[24%] bg-white rounded-xl">
+              <div className="md:w-[24%] w-full bg-white rounded-xl">
                 <div className="flex items-center justify-between py-2 px-5">
                   <h3 className="text-lg">Best Selling Products</h3>
                   <p className="text-lg">See all</p>
@@ -274,8 +276,8 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Orders */}
-            <div className="h-[34%] flex justify-around items-center min-w-full mt-2">
-              <div className="w-[69%] h-full border-2 rounded-md bg-white">
+            <div className="h-[34%] flex flex-col md:flex-row md:gap-2 justify-around items-center min-w-full mt-2">
+              <div className="md:w-[69%] w-full h-full border-2 rounded-md bg-white">
                 <div className="flex justify-between mb-2 px-5">
                   <div className="flex items-center space-x-2 ">
                     <span className="text-gray-700 text-xls">
@@ -333,45 +335,110 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
-              <div className="w-[23%] h-full border-2 rounded-md bg-white px-5 py-5">
-                <h5 className="text-xl text-center">Customers Review </h5>
+              <div className="md:w-[23%] w-full h-full border-2 rounded-md bg-white px-4 py-4">
+                <h5 className="text-xl text-center font-semibold">
+                  Customers Review
+                </h5>
+
+                {/* Overall Rating Section */}
                 <div className="flex items-center justify-between mt-2">
-                  <p className="text-sm">
+                  <p className="text-sm text-gray-600">
                     Overall rate of 200 customer’s reviews.
                   </p>
-                  <div className="flex items-center justify-center">
-                    <img src="/images/Star 6.png" />
-                    <img src="/images/Star 6.png" />
-                    <img src="/images/Star 6.png" />
-                    <img src="/images/Star 6.png" />
+                  <div className="flex items-center space-x-0.5">
+                    <img
+                      src="/images/Star 6.png"
+                      alt="Star"
+                      className="w-4 h-4"
+                    />
+                    <img
+                      src="/images/Star 6.png"
+                      alt="Star"
+                      className="w-4 h-4"
+                    />
+                    <img
+                      src="/images/Star 6.png"
+                      alt="Star"
+                      className="w-4 h-4"
+                    />
+                    <img
+                      src="/images/Star 6.png"
+                      alt="Star"
+                      className="w-4 h-4"
+                    />
                   </div>
                 </div>
 
-                <div className="flex items-start mt-0 justify-between flex-col">
-                  <div className="flex items-center justify-between mt-1">
-                    <img src="/images/Rectangle 4084.png" />
-                    <p className="ml-5">Excellent </p>
-                    <span className="block ml-5">70</span>
+                {/* Review Details */}
+                <div className="flex flex-col mt-4 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/Rectangle 4084.png"
+                        alt="Excellent"
+                        className="w-4 h-4"
+                      />
+                      <p className="ml-3 text-sm text-gray-700">Excellent</p>
+                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      70
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <img src="/images/Rectangle 4085.png" />
-                    <p className="ml-5">Good </p>
-                    <span className="block ml-12">50</span>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/Rectangle 4085.png"
+                        alt="Good"
+                        className="w-4 h-4"
+                      />
+                      <p className="ml-3 text-sm text-gray-700">Good</p>
+                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      50
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <img src="/images/Rectangle 4086.png" />
-                    <p className="ml-5">Average </p>
-                    <span className="block ml-7">40</span>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/Rectangle 4086.png"
+                        alt="Average"
+                        className="w-4 h-4"
+                      />
+                      <p className="ml-3 text-sm text-gray-700">Average</p>
+                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      40
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <img src="/images/Rectangle 4088.png" />
-                    <p className="ml-5">Not Bad </p>
-                    <span className="block ml-16">30</span>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/Rectangle 4088.png"
+                        alt="Not Bad"
+                        className="w-4 h-4"
+                      />
+                      <p className="ml-3 text-sm text-gray-700">Not Bad</p>
+                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      30
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <img src="/images/Rectangle 4087.png" />
-                    <p className="ml-5">Poor </p>
-                    <span className="block ml-14">10</span>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/Rectangle 4087.png"
+                        alt="Poor"
+                        className="w-4 h-4"
+                      />
+                      <p className="ml-3 text-sm text-gray-700">Poor</p>
+                    </div>
+                    <span className="text-sm font-medium text-gray-800">
+                      10
+                    </span>
                   </div>
                 </div>
               </div>

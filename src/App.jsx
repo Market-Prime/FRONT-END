@@ -60,10 +60,8 @@
 //         <Route path="/Signup" element={<Signup />} />
 //         {/* <Route path="/Emailverification" element={<Emailverification />} /> */}
 
-
 //         <Route path="/email-confirmation/:token" element={<EmailConfirmation />} />
 
-        
 //         <Route path="/Login/Register" element={<Signup />} />
 //         <Route path="/Cart/Checkout/PaymentModal" element={<PaymentModal />} />
 //         <Route
@@ -79,7 +77,7 @@
 //           element={<EmailConfirmation />}
 //         />
 
-//         <Route 
+//         <Route
 //           path="/ForgotPassword" element={<ForgotPassword />}
 //         />
 //         <Route path="/Search" element={<SearchFilter />} />
@@ -100,20 +98,14 @@
 //         <Route path="/AdminDashboard/Product" element={<Product />} />
 //         <Route path="/AdminDashboard/Orders" element={<Orders />} />
 
-
 //       </Routes>
 //     </AnimatePresence>
 //     </AuthProvider>
-   
+
 //   );
 // }
 
 // export default App;
-
-
-
-
-
 
 // New code
 import React, { useEffect } from "react";
@@ -132,7 +124,8 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
-import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import AdminDashboardLayout from "../layout/AdminDashboardLayout";
+import DashboardHome from "./pages/AdminDashboard/DashboardHome";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
@@ -177,10 +170,19 @@ function AnimatedRoutes() {
           <Route path="/virtualtryon" element={<VirtualTryOn />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/email-confirmation/:token" element={<EmailConfirmation />} />
+          <Route
+            path="/email-confirmation/:token"
+            element={<EmailConfirmation />}
+          />
           <Route path="/login/register" element={<Signup />} />
-          <Route path="/cart/checkout/paymentmodal" element={<PaymentModal />} />
-          <Route path="/cart/checkout/paymentmodal/paymentconfirmation" element={<PaymentConfirmation />} />
+          <Route
+            path="/cart/checkout/paymentmodal"
+            element={<PaymentModal />}
+          />
+          <Route
+            path="/cart/checkout/paymentmodal/paymentconfirmation"
+            element={<PaymentConfirmation />}
+          />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/search" element={<SearchFilter />} />
           <Route path="/productdescription" element={<ProductDescription />} />
@@ -194,15 +196,24 @@ function AnimatedRoutes() {
 
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
-          <Route path="/vendorsverifiedemail" element={<VendorsVerifyEmail />} />
+          <Route
+            path="/vendorsverifiedemail"
+            element={<VendorsVerifyEmail />}
+          />
           <Route path="/finalsection" element={<FinalSection />} />
-          <Route path="/admindashboard" element={<AdminDashboard />} />
+
           <Route path="/admindashboard/product" element={<Product />} />
           <Route path="/admindashboard/orders" element={<Orders />} />
 
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+          <Route path="/admindashboard" element={<AdminDashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="products" element={<Product />} />
+          </Route>
         </Routes>
       </AnimatePresence>
     </AuthProvider>
@@ -210,4 +221,3 @@ function AnimatedRoutes() {
 }
 
 export default App;
-
