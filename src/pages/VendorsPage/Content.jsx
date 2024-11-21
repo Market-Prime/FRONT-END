@@ -157,7 +157,7 @@ const Content = () => {
       {/* Charts and Best Sellers */}
       <div className="flex flex-col lg:flex-row justify-between items-start mt-8 gap-4">
         {/* Sales Bar Chart */}
-        <div className="flex-1 bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200">
+        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-semibold text-gray-800">
               Sales Analytics
@@ -194,7 +194,7 @@ const Content = () => {
         </div>
 
         {/* Best Selling Products */}
-        <div className="flex-1 bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 max-h-[350px] overflow-y-auto">
+        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 max-h-[350px] overflow-y-auto">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-lg font-semibold text-gray-800">
               Best Selling Products

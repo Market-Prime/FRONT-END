@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="flex flex-row items-center justify-between">
         {/* Hamburger Icon - Visible on Mobile */}
         <div className="lg:hidden">
-          <GiHamburgerMenu className="text-2xl" />
+          <CiSearch className="text-blue-600 text-2xl ml-3 " />
         </div>
 
         {/* Search Input - Hidden on Mobile */}
@@ -25,7 +25,6 @@ const Navbar = () => {
             placeholder=""
             className="py-2 px-20 border-2 border-white rounded-xl"
           />
-          <CiSearch className="absolute text-blue-600 text-2xl ml-3" />
         </div>
 
         {/* Profile Section */}

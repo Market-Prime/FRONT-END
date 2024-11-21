@@ -126,7 +126,7 @@ const Dashboard = () => {
 
   return (
     <div className="h-screen w-screen">
-      <div className="flex justify-between relative bg-slate-400">
+      <div className="flex justify-between relative">
         <DashNav isSidebarOpen={isSidebarOpen} />
         <div className="bg-[#E6F7FF] w-6/6">
           <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
@@ -190,7 +190,7 @@ const Dashboard = () => {
 
             {/* Charts */}
             {/* <div className="h-[40%] rounded-3xl"></div> */}
-            <div className="flex flex-col md:flex-row relative bg-slate-400 h-screen overflow-auto">
+            <div className="flex flex-col md:flex-row relative h-auto md:gap-2 my-3 gap-8">
               {/* Pie chart box */}
               <div className="lg:w-[24%] w-full bg-white rounded-xl">
                 <h3 className="text-start mt-2 pl-10 pb-2 text-xl">

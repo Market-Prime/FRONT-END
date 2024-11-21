@@ -32,12 +32,19 @@ const Orders = () => {
     </tr>
   ));
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
     <div className="h-screen w-full flex">
       {/* Sidebar */}
+      <DashNav isSidebarOpen={isSidebarOpen} />
 
       {/* Main content */}
-      <div className="bg-[#E6F7FF] flex-grow">
+      <div className="bg-[#E6F7FF] w-6/6">
         {/* Filters */}
         <div className="bg-white my-4 px-10 flex items-center justify-between w-full py-2">
           <div className="flex items-center space-x-2">

@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useAuth } from "../pages/AuthContext";
+import { useAuth } from "../src/pages/AuthContext";
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -73,42 +73,43 @@ const Navbar = () => {
               </div>
             </Link> */}
 
+            <div className="relative">
+              <div
+                className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
+                onClick={toggleUserDropdown}
+              >
+                <AiOutlineUser className="text-2xl text-gray-600" />
+              </div>
 
-
-        <div className="relative">
-          <div
-            className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
-            onClick={toggleUserDropdown}
-          >
-            <AiOutlineUser className="text-2xl text-gray-600" />
-          </div>
-
-          {showUserDropdown && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-              <ul className="text-gray-700">
-                {isLoggedIn ? (
-                  <>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/account">My Account</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={logout}>
-                      Logout
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/signup">Register</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
+              {showUserDropdown && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+                  <ul className="text-gray-700">
+                    {isLoggedIn ? (
+                      <>
+                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                          <Link to="/account">My Account</Link>
+                        </li>
+                        <li
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                          onClick={logout}
+                        >
+                          Logout
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                          <Link to="/login">Login</Link>
+                        </li>
+                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                          <Link to="/signup">Register</Link>
+                        </li>
+                      </>
+                    )}
+                  </ul>
+                </div>
+              )}
             </div>
-          )}
-        </div>
             <Link to="/cart">
               <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
                 <IoCartOutline className="text-2xl text-gray-600" />

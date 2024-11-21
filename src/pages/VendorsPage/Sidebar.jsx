@@ -18,10 +18,10 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex relative">
       {/* Toggle button for small screens */}
       <button
-        className="lg:hidden p-3 text-blue-900 bg-white rounded-md fixed top-4 left-4 z-20 shadow-md"
+        className="lg:hidden p-3 text-blue-900 bg-white rounded-md md:fixed fixed top-4 left-4 z-20 shadow-md"
         onClick={toggleSidebar}
       >
         <FiMenu className="text-2xl" />
