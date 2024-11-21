@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../src/assets/Logo 1.png";
+import logo from "../assets/Logo 1.png";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";

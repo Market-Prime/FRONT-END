@@ -1,5 +1,4 @@
 import order_icon from "../../assets/Filtered-Images/tder.png";
-import { useState } from "react";
 import vendors_icon from "../../assets/Filtered-Images/vendors.png";
 import users from "../../assets/Filtered-Images/users.png";
 import sales_icon from "../../assets/Filtered-Images/sales.png";
@@ -17,6 +16,7 @@ import {
 } from "recharts";
 import DashNav from "./DashNav";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const orders = [
@@ -117,82 +117,153 @@ const Dashboard = () => {
       </div>
     );
   });
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev);
-  };
-
   return (
     <div className="h-screen w-screen">
-      <div className="flex justify-between relative bg-slate-400">
-        <DashNav isSidebarOpen={isSidebarOpen} />
-        <div className="bg-[#E6F7FF] w-6/6">
-          <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      {/* Navigation Bar */}
+      {/* <div className="">
+        <div className="flex relative">
+          <input
+            type="text"
+            className="border-2 outline-none border-gray-500 px-4 py-2 rounded-lg w-[300px] h-10"
+          />
+          <CiSearch className="text-2xl mt-2 mr-2 right-0 absolute" />
+        </div>
+        <div className="flex items-center justify-between bg-red-900">
+          <img src={profile} alt="" className="w-12 h-12" />
+          <div className="flex flex-col">
+            <p className="flex text-md">
+              Akpan David <FaAngleDown className="mt-1" />
+            </p>
+            <p className="text- text-blue-600">Super Admin </p>
+          </div>
+        </div>
+      </div> */}
 
+      {/* Side-bar */}
+      <div className="flex justify-between h-full w-full relative">
+        <DashNav />
+        {/* <div className="w-1/6 h-full border border-gray-400 bg-white shadow-xl relative">
+          <div className="flex items-center justify-center mt-9">
+            <img src={logo} alt="" className="w-14" />
+            <h1 className="text-xl font-bold text-blue-900 ml-2">
+              MARKET PRIME
+            </h1>
+          </div>
+
+          <div className="flex flex-col gap-5 items-start px-4 mt-10 list-none text-[#002366] text-lg tracking-wide ">
+            <li className="bg-[#002366] rounded-md py-4 w-full text-center text-white text-2xl cursor-pointer">
+              Dashboard
+            </li>
+            <li className="cursor-pointer flex gap-4">
+              <BsGraphUpArrow className="text-xl mt-1" /> Analytics
+            </li>
+            <Link to="/Product" className="cursor-pointer flex gap-4"><LuBox className="text-xl mt-1" />Product Management</Link>
+            <li className="cursor-pointer flex gap-4">
+              {" "}
+              <FaBoxes className="text-xl mt-1" /> Product Listing
+            </li>
+            <li className="cursor-pointer flex gap-4">
+              {" "}
+              <FaBoxes className="text-xl mt-1" />Order Management
+            </li>
+            <li className="cursor-pointer flex gap-4">
+              {" "}
+              <HiUsers className="text-xl mt-1" />
+              User Management
+            </li>
+            <li className="cursor-pointer flex gap-4">
+              {" "}
+              <HiUsers className="text-xl mt-1" /> Vendor Management
+            </li>
+            <li className="cursor-pointer flex gap-4">
+              {" "}
+              <FaRegMessage className="text-xl mt-1" /> Messages
+            </li>
+          </div>
+
+          <div className="flex flex-col items-start list-none mt-72 px-4  text-[#002366] text-lg tracking-wide gap-5">
+            <li className="cursor-pointer flex gap-2">
+              <IoSettingsOutline className="text-xl mt-1" />
+              Settings
+            </li>
+            <li className="cursor-pointer flex gap-2">
+              {" "}
+              <RiLogoutCircleLine className="text-xl mt-1" />
+              Logout
+            </li>
+          </div>
+        </div> */}
+        {/* Inner content  #E6F7FF*/}
+        <div className="bg-[#E6F7FF] w-5/6">
+          <Header />
+          {/* <div className="flex  items-center justify-end bg-white p-3">
+            <div className="flex items-center justify-start w-2/6 mx-auto bg-white border border-gray-500 rounded-xl px-2">
+              <input
+                type="text"
+                className=" outline-none w-full border-gray-500 px-4 py-3 rounded-lg bg-white"
+              />
+              <CiSearch className="text-2xl" />
+            </div>
+            <div className="flex items-center justify-end  w-2/12 ">
+              <img src={profile} alt="" className="w-12 h-12" />
+              <div className="flex flex-col ml-5">
+                <p className="flex text-xl">
+                Akpan David <FaAngleDown className="mt-1 ml-1" />
+                </p>
+                <p className="text-xl text-blue-600">Super Admin </p>
+              </div>
+            </div>
+          </div> */}
           <div className=" bg-[#E6F7FF]">
             {/* Analytics Card */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Orders</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img
-                      src={order_icon}
-                      alt="Order Icon"
-                      className="h-6 md:h-8"
-                    />
+            <div className="flex justify-around items-center mt-10">
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                  <p className="text-xl">Total Orders</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={order_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Sales</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">N1,800,309</h1>
-                    <img
-                      src={sales_icon}
-                      alt="Sales Icon"
-                      className="h-6 md:h-8"
-                    />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full ">
+                  <p className="text-xl">Total Sales</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">N1,800,309</h1>
+                    <img src={sales_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Active Vendors</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img
-                      src={vendors_icon}
-                      alt="Vendors Icon"
-                      className="h-6 md:h-8"
-                    />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  flex flex-col items-start justify-center w-full">
+                  <p className="text-xl">Active Vendors</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={vendors_icon} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
-              <div className="h-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4 overflow-hidden">
-                <div className="flex flex-col items-start justify-center w-full space-y-2">
-                  <p className="text-lg md:text-xl">Total Users</p>
-                  <div className="flex w-full justify-between items-center">
-                    <h1 className="text-lg md:text-xl font-bold">10720</h1>
-                    <img src={users} alt="Users Icon" className="h-6 md:h-8" />
+              <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
+                <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
+                  <p className="text-xl">Total Users</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={users} alt="" />
                   </div>
-                  <p className="text-sm md:text-base">From yesterday</p>
+                  <p>From yesterday</p>
                 </div>
               </div>
             </div>
 
             {/* Charts */}
             {/* <div className="h-[40%] rounded-3xl"></div> */}
-            <div className="flex flex-col md:flex-row relative bg-slate-400 h-screen overflow-auto">
+            <div className="flex items-center justify-between w-full px-4 my-6">
               {/* Pie chart box */}
-              <div className="lg:w-[24%] w-full bg-white rounded-xl">
+              <div className="w-[24%] bg-white rounded-xl">
                 <h3 className="text-start mt-2 pl-10 pb-2 text-xl">
                   Order Status
                 </h3>
@@ -238,14 +309,14 @@ const Dashboard = () => {
               </div>
 
               {/* Bar chart box */}
-              <div className="lg:w-[49%] w-full py-0 bg-white rounded-xl">
-                <div className="flex-col md:flex items-center justify-between w-full py-2 mt-2 px-10">
+              <div className="w-[49%] py-0 bg-white rounded-xl">
+                <div className="flex items-center justify-between w-full py-2 mt-2 px-10">
                   <p className="w-1/2 text-xl">Sales Analytics</p>
                   <div className="flex items-center justify-between w-1/2">
-                    <p className="text-lg md:text-xl">Daily</p>
-                    <p className="md:text-xl text-lg">Weekly</p>
-                    <p className="md:text-xl text-lg">Monthly</p>
-                    <p className="md:text-xl text-lg">Yearly</p>
+                    <p className="text-xl">Daily</p>
+                    <p className="text-xl">Weekly</p>
+                    <p className="text-xl">Monthly</p>
+                    <p className="text-xl">Yearly</p>
                   </div>
                 </div>
                 <ResponsiveContainer
@@ -283,7 +354,7 @@ const Dashboard = () => {
                 </ResponsiveContainer>
               </div>
               {/* Best selling section */}
-              <div className="lg:w-[24%] w-full bg-white rounded-xl">
+              <div className="w-[24%] bg-white rounded-xl">
                 <div className="flex items-center justify-between py-2 px-5">
                   <h3 className="text-lg">Best Selling Products</h3>
                   <p className="text-lg">See all</p>
@@ -293,17 +364,20 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Orders */}
-            <div className="h-[34%] flex flex-col lg:flex-row gap-4 lg:gap-0 justify-around items-center w-full mt-2">
-              <div className="lg:w-[69%] w-full h-full border-2 rounded-md bg-white">
-                <div className="flex justify-between mb-2 px-5 flex-wrap">
+            <div className="h-[34%] flex justify-around items-center min-w-full mt-2">
+              <div className="w-[69%] h-full border-2 rounded-md bg-white">
+                <div className="flex justify-between mb-2 px-5">
                   <div className="flex items-center space-x-2 ">
                     <span className="text-gray-700 text-xls">
                       Recent Orders
                     </span>
+                    {/* <button className="bg-blue-100 text-blue-600 py-1 px-2 rounded-lg flex items-center">
+                    <i className="fas fa-filter mr-1"></i> Filters
+                  </button> */}
                   </div>
-                  <div className="flex-col items-center space-x-2 md:flex">
+                  <div className="flex items-center space-x-2">
                     <span className="text-gray-500">Sort By:</span>
-                    <select className="bg-blue-100 py-1 px-1 rounded-lg md:px-2">
+                    <select className="bg-blue-100 py-1 px-2 rounded-lg">
                       <option>Recent Orders</option>
                       <option>Pending Orders</option>
                       <option>Out of Stock</option>
@@ -349,7 +423,7 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
-              <div className="lg:w-[23%] w-full h-full border-2 rounded-md bg-white px-5 py-5">
+              <div className="w-[23%] h-full border-2 rounded-md bg-white px-5 py-5">
                 <h5 className="text-xl text-center">Customers Review </h5>
                 <div className="flex items-center justify-between mt-2">
                   <p className="text-sm">
@@ -363,28 +437,28 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start mt-0 justify-between flex-col ">
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                <div className="flex items-start mt-0 justify-between flex-col">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4084.png" />
                     <p className="ml-5">Excellent </p>
                     <span className="block ml-5">70</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4085.png" />
                     <p className="ml-5">Good </p>
                     <span className="block ml-12">50</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4086.png" />
                     <p className="ml-5">Average </p>
                     <span className="block ml-7">40</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4088.png" />
                     <p className="ml-5">Not Bad </p>
                     <span className="block ml-16">30</span>
                   </div>
-                  <div className="flex items-center justify-between mt-1 flex-wrap">
+                  <div className="flex items-center justify-between mt-1">
                     <img src="/images/Rectangle 4087.png" />
                     <p className="ml-5">Poor </p>
                     <span className="block ml-14">10</span>

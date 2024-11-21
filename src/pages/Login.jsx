@@ -1,40 +1,47 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./Login.css";
 import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiCloseLargeLine } from "react-icons/ri";
-import { Input } from "../../components/ui/Input";
+import { Input } from "../components/ui/Input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify"; // Import toast
-import "react-toastify/dist/ReactToastify.css"; // Import CSS for toast
+import { ToastContainer, toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast
 import { useAuth } from "./AuthContext";
 const Login = ({ toggleModal }) => {
+
   const navigate = useNavigate();
   const {login} = useAuth();
 
 
   const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+    email:'',
+    password:''
+  })
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) =>{
     setData({
       ...data,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
   const submitLogin = async () =>{
+    login();
+
     try{
       const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/account/login`,
-        {
-          email: data.email,
-          password: data.password,
-        }
+      `https://backend-server-0ddt.onrender.com/api/account/login`,
+      {
+        email:data.email,
+        password:data.password
+      },
       );
+
+      const token= response.data.access;
+      localStorage.setItem("authToken", token);
+      console.log("My token", token);
       toast.success(`Login Successful: ${response.data.message || 'Welcome' , {
         position:"top-right",
         autoClose: 5000,
@@ -47,28 +54,27 @@ const Login = ({ toggleModal }) => {
         style: {backgroundColor: "green"}
       }}`);
       setTimeout(() => {
-        navigate("/");
-      }, 5000);
+        navigate("/")
+      },5000);
       console.log("Login Successful", response.data);
     } catch (error) {
-      const errorMessage =
-        error.response && error.response.data && error.response.data.detail
-          ? error.response.data.detail
-          : error.message;
+      const errorMessage = error.response && error.response.data && error.response.data.detail
+        ? error.response.data.detail
+        : error.message;  
 
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-        style: { backgroundColor: "red" }, // Red background for errors
-      });
-      console.error("Login failed:", errorMessage);
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          style: { backgroundColor: "red" }, // Red background for errors
+        });  
+      console.error('Login failed:', errorMessage);
     }
-  };
+  }
   return (
     // <div className="modal-backdrop bg-homebgshadow sm:px-5 md:px-0 lg:px-0 xl:px-0 2xl:px-0 ">
     //   <ToastContainer />
@@ -141,23 +147,23 @@ const Login = ({ toggleModal }) => {
 
     <div className="w-full  h-screen">
       <ToastContainer />
-      <div className="w-full flex flex-row-reverse items-center justify-center bg-red-400 h-screen">
-        <div className="w-2/3 h-screen">
-          <img src="/images/IMG-20241105-WA0023.jpg" className="object-cover w-full h-full" />
+      <div className="w-full flex 2xl:flex-row-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-col-reverse sm:flex-col-reverse items-center justify-center  h-screen">
+        <div className="2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full h-screen" data-aos="fade-down" data-aos-durationn="2000">
+          <img src="/images/IMG-20241107-WA0059.jpg" className="object-cover w-full h-full" />
         </div>
 
         {/* Form */}
-        <div className="w-1/3 bg-blue-700 h-screen px-10 py-52">
+        <div className="2xl:w-1/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full bg-white h-screen px-10 2xl:py-52 xl:py-52 lg:py-40 md:py-20 sm:py-10">
         <div>
         {/* <button className="close-modal" onClick={toggleModal}>
           <RiCloseLargeLine />
         </button> */}
-        <h4 className="text-cartbg text-2xl font-medium">Welcome</h4>
-        <p className="text-xl text-cartbg font-medium mt-6">
+        <h4 className="text-black text-3xl font-medium">Welcome</h4>
+        <p className="2xl:text-xl xl:text-xl lg:text-lg md:text-lg sm:text-base text-black font-medium mt-6">
           Type your email and password to Log in
         </p>
         <form className="mt-10">
-          <label className="block text-cartbg font-medium text-base">
+          <label className="block text-black font-medium text-lg">
             Your Email
           </label>
           <Input
@@ -165,24 +171,21 @@ const Login = ({ toggleModal }) => {
             name="email"
             onChange={handleInputChange}
             required
-            className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
+            className="py-2 outline-none px-3 border-2 rounded-xl 2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-1/2 sm:w-full  mt-2"
           />
           <label
-            className="block text-cartbg font-medium text-base mt-10"
+            className="block text-black font-medium text-lg mt-8"
             htmlFor="password"
           >
             Password
           </label>
-          <div className="flex items-center justify-between  py-2 px-3 mt-2">
-            <Input
-              type="password"
-              name="password"
-              required
-              onChange={handleInputChange}
-              className="py-2 outline-none px-3 border-2 rounded-xl w-full mt-2"
-            />
-            <FaRegEye />
-          </div>
+          <Input
+            type="password"
+            name="password"
+            onChange={handleInputChange}
+            required
+            className="py-2 outline-none px-3 border-2 rounded-xl 2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-1/2 sm:w-full mt-2"
+          />
           <label
             htmlFor=""
             className="mt-5 block flex items-center justify-start"
@@ -190,19 +193,20 @@ const Login = ({ toggleModal }) => {
             <input type="checkbox" className="inputCheckBox" />
             <span className="block ml-2 text-sm">Remember Me</span>
           </label>
-          <a href="#" className="block mt-1 text-sm text-cartbg font-medium">
+          {/* <a href="#" className="block mt-5 text-sm text-black font-medium">
             Forgot Password?
-          </a>
+          </a> */}
+          <Link to="/ForgotPassword" className="block mt-5 text-sm text-black font-medium">Forgot Password?</Link>
         </form>
         <Link
           to=""
           onClick={submitLogin}
-          className="w-full bg-aboutbg block py-3 rounded-lg text-white uppercase text-center font-bold mt-10"
+          className="2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-1/2 sm:w-full bg-aboutbg block py-3 rounded-lg text-white uppercase text-center font-bold mt-10"
         >
           Login
         </Link>
 
-        <p className="mt-5 text-xs">
+        <p className="mt-10 text-xs">
           Don't have an account?
           {/* <a href='#' className='inline text-base text-cartbg font-medium'>Register</a> */}
           <Link

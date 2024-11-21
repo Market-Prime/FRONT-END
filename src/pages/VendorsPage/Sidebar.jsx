@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Use useLocation to get current path
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaBoxes } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { HiUsers } from "react-icons/hi";
-import { FiMenu } from "react-icons/fi"; // Icon for menu toggle
 import logo from "../../assets/Logo 1.png";
 
 const Sidebar = () => {
-  const location = useLocation();
+  const location = useLocation(); // Get current location
   const [isOpen, setIsOpen] = useState(false);
 
   // Function to toggle sidebar on mobile screens
@@ -18,109 +17,93 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex">
+    <>
       {/* Toggle button for small screens */}
       <button
-        className="lg:hidden p-3 text-blue-900 bg-white rounded-md fixed top-4 left-4 z-20 shadow-md"
+        className="block lg:hidden p-4 bg-blue-600 text-white"
         onClick={toggleSidebar}
       >
-        <FiMenu className="text-2xl" />
+        {isOpen ? "Close Sidebar" : "Open Sidebar"}
       </button>
 
       {/* Sidebar container */}
       <aside
-        className={`fixed top-0 left-0 w-64 bg-white h-full p-6 transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-72 bg-white h-screen p-4 transition-transform transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:relative lg:w-72 lg:h-screen z-10`}
+        } lg:translate-x-0 lg:relative lg:flex lg:flex-col`}
       >
         {/* Logo Section */}
-        <div className="flex items-center justify-center mt-8 relative">
-          <img src={logo} alt="Market Prime Logo" className="w-12" />
+        <div className="flex items-center justify-center mt-9 relative">
+          <img src={logo} alt="Market Prime Logo" className="w-14" />
           <h1 className="text-xl font-bold text-blue-900 ml-2">
             MARKET <br /> PRIME
           </h1>
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex flex-col gap-4 mt-10 text-[#002366] text-lg">
+        <div className="flex flex-col gap-5 items-start px-4 mt-10 list-none text-[#002366] text-lg tracking-wide">
           <Link
-            to="/VendorDashboard"
-            className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors ${
+            to="/VendorDashboard" // Updated path
+            className={`cursor-pointer flex w-full gap-4 items-center px-4 py-2 rounded-md ${
               location.pathname === "/VendorDashboard"
-                ? "bg-blue-700 text-white"
-                : "hover:bg-blue-100"
+                ? "bg-shopcolor text-white"
+                : ""
             }`}
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
           >
-            <LuLayoutDashboard className="text-xl" />
+            <LuLayoutDashboard
+              className={`${
+                location.pathname === "/VendorDashboard"
+                  ? "text-white"
+                  : "text-[#002366]"
+              }`}
+            />
             Dashboard
           </Link>
 
           <Link
-            to="/VendorDashboard/Product"
-            className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors ${
+            to="/VendorDashboard/Product" // Updated path
+            className={`cursor-pointer flex w-full gap-4 items-center px-4 py-2 rounded-md ${
               location.pathname === "/VendorDashboard/Product"
-                ? "bg-blue-700 text-white"
-                : "hover:bg-blue-100"
+                ? "bg-shopcolor text-white"
+                : ""
             }`}
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
           >
-            <FaBoxes className="text-xl" />
-            Product
+            <FaBoxes className="text-xl mt-1" /> Product
           </Link>
 
           <Link
-            to="/VendorDashboard/Orders"
-            className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors ${
+            to="/VendorDashboard/Orders" // Updated path
+            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
               location.pathname === "/VendorDashboard/Orders"
-                ? "bg-blue-700 text-white"
-                : "hover:bg-blue-100"
+                ? "bg-shopcolor text-white"
+                : ""
             }`}
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
           >
-            <FaBoxes className="text-xl" />
+            <FaBoxes
+              className={`${
+                location.pathname === "/AdminDashboard/Orders"
+                  ? "text-white"
+                  : "text-[#002366]"
+              }`}
+            />
             Orders
           </Link>
 
-          <Link
-            to="/VendorDashboard/Customers"
-            className="flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-blue-100 transition-colors"
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
-          >
-            <HiUsers className="text-xl" />
-            Customers
-          </Link>
-        </nav>
-
-        {/* Bottom Links */}
-        <div className="mt-auto flex flex-col gap-4 border-t pt-4">
-          <Link
-            to="/settings"
-            className="flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-blue-100 transition-colors"
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
-          >
-            <IoSettingsOutline className="text-xl" />
-            Settings
-          </Link>
-          <Link
-            to="/logout"
-            className="flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-blue-100 transition-colors"
-            onClick={() => setIsOpen(false)} // Close sidebar after navigating
-          >
-            <RiLogoutCircleLine className="text-xl" />
+          <li className="cursor-pointer flex gap-4 px-4 py-2">
+            <HiUsers className="text-xl mt-1" /> Customers
+          </li>
+        </div>
+        <div className="fixed bottom-0 left-0 flex flex-col">
+          <li className="cursor-pointer flex gap-4 text-xl px-2 py-2">
+            <IoSettingsOutline className="text-2xl mt-1" /> Settings
+          </li>
+          <li className="cursor-pointer flex gap-4 text-xl px-2 py-2">
+            <RiLogoutCircleLine className="text-2xl mt-1" />
             Log Out
-          </Link>
+          </li>
         </div>
       </aside>
-
-      {/* Overlay for small screens when sidebar is open */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50  lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-    </div>
+    </>
   );
 };
 
