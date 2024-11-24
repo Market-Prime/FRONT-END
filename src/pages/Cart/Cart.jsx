@@ -101,6 +101,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
+      <div className="pt-24 bg-blue-700"></div>
       <div className="cart-page">
         <div className="main-container">
           <div className="cart-container">
