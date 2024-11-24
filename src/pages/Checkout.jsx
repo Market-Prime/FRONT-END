@@ -17,7 +17,7 @@ const Checkout = () => {
   return (
     <div>
       <Navbar />
-
+      <div className="pt-24 bg-blue-900">
       <div className="flex flex-col items-center bg-blue-900 min-h-screen py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-4/5 lg:w-5/5">
           {/* Customer's Address */}
@@ -118,6 +118,7 @@ const Checkout = () => {
           or phone number.
         </p>
       </div>
+    </div>
     </div>
   );
 };
