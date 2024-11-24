@@ -1,14 +1,21 @@
-import React from "react";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // State for toggling search bar
+
+  // Toggle search bar visibility
+  const toggleSearchBar = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   return (
     <header className="bg-blue-600 text-white p-4 shadow-md">
       <div className="flex flex-row items-center justify-between">
         {/* Hamburger Icon - Visible on Mobile */}
         <div className="lg:hidden">
-          <GiHamburgerMenu className="text-2xl" />
+          <CiSearch className="text-blue-600 text-2xl ml-3 " />
         </div>
 
         {/* Search Input - Hidden on Mobile */}
@@ -18,7 +25,6 @@ const Navbar = () => {
             placeholder=""
             className="py-2 px-20 border-2 border-white rounded-xl"
           />
-          <CiSearch className="absolute text-blue-600 text-2xl ml-3" />
         </div>
 
         {/* Profile Section */}

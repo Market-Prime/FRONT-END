@@ -138,16 +138,7 @@ const Signup = () => {
   const submitRegister = async () => {
     try {
       const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/account/user/`,
-        {
-          first_name: formData.first_name,
-          last_name: formData.last_name,
-          email: formData.email,
-          phone_number: formData.phone_number,
-          password: formData.password,
-          confirm_password: formData.confirm_password,
-          rewardCode: formData.rewardCode // Optional
-        }
+        `https://backend-server-0ddt.onrender.com/api/account/user/`, formData,
         // Uncomment and replace `token` if needed
         // {
         //   headers: {
@@ -158,7 +149,7 @@ const Signup = () => {
       );
   
       // Display a success toast with a green background
-      toast.success(response.data.message || "Welcome!", {
+      toast.success(response.data.message || "Registration Successful, check your email to confirm your account", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,
@@ -171,7 +162,7 @@ const Signup = () => {
   
       // Redirect to Email Verification page after a delay
       setTimeout(() => {
-        navigate("/EmailVerification");
+        navigate("/email-confirmation/:token");
       }, 5000);
   
       console.log("Registration successful:", response.data);

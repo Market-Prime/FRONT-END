@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import logo from "../../assets/Logo 1.png";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { HiUsers } from "react-icons/hi";
-import { FaBoxes } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
+import { FaBoxes } from "react-icons/fa";
 import { LuBox, LuLayoutDashboard } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleLine } from "react-icons/ri";
@@ -12,119 +12,149 @@ import { Link, useLocation } from "react-router-dom";
 const DashNav = () => {
   const location = useLocation();
   const [activeItem, setActiveItem] = useState(location.pathname);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleItemClick = (path) => {
     setActiveItem(path);
   };
 
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
-    <div className="w-1/6 h-screen border border-gray-400 bg-white shadow-xl flex flex-col justify-between">
-      {/* Logo Section */}
-      <div>
-        <div className="flex items-center justify-center mt-9">
-          <img src={logo} alt="Market Prime Logo" className="w-14" />
-          <h1 className="text-xl font-bold text-blue-900 ml-2">MARKET PRIME</h1>
+    <div
+      className={`${
+        isCollapsed ? "w-20" : "w-64"
+      } h-screen bg-[#E6F7FF] z-20 shadow-xl fixed flex flex-col justify-between transition-all duration-300`}
+    >
+      {/* Logo and Toggle Section */}
+      <div className="p-4">
+        <div
+          className={`flex items-center ${
+            isCollapsed ? "justify-center" : "justify-start"
+          } gap-2`}
+        >
+          <img src={logo} alt="Market Prime Logo" className="w-10" />
+          {!isCollapsed && (
+            <h1 className="text-xl font-bold text-blue-900">MARKET PRIME</h1>
+          )}
         </div>
-
-        <div className="flex flex-col gap-5 items-start px-4 mt-10 list-none text-[#002366] text-lg tracking-wide">
-          {/* Dashboard Link */}
-          <Link
-            to="/AdminDashboard"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/AdminDashboard" ? "bg-shopcolor text-white" : ""
-            }`}
-            onClick={() => handleItemClick("/AdminDashboard")}
-          >
-            <LuLayoutDashboard
-              className={`${
-                activeItem === "/AdminDashboard"
-                  ? "text-white"
-                  : "text-[#002366]"
-              }`}
-            />
-            Dashboard
-          </Link>
-
-          {/* Analytics Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <BsGraphUpArrow className="text-xl mt-1" /> Analytics
-          </li>
-
-          {/* Product Management Link */}
-          <Link
-            to="/AdminDashboard/Product"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/Product" ? "bg-shopcolor text-white" : ""
-            }`}
-            onClick={() => handleItemClick("/Product")}
-          >
-            <LuBox
-              className={`${
-                activeItem === "/Product" ? "text-white" : "text-[#002366]"
-              }`}
-            />
-            Product Management
-          </Link>
-
-          {/* Product Listing Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <FaBoxes className="text-xl mt-1" /> Product Listing
-          </li>
-
-          {/* Order Management Link */}
-          <Link
-            to="/AdminDashboard/Orders"
-            className={`cursor-pointer flex gap-4 items-center px-4 py-2 rounded-md ${
-              activeItem === "/AdminDashboard/Orders"
-                ? "bg-shopcolor text-white"
-                : ""
-            }`}
-            onClick={() => handleItemClick("/AdminDashboard/Orders")}
-          >
-            <FaBoxes
-              className={`${
-                activeItem === "/AdminDashboard/Orders"
-                  ? "text-white"
-                  : "text-[#002366]"
-              }`}
-            />
-            Order Management
-          </Link>
-
-          {/* User Management Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <HiUsers className="text-xl mt-1" /> User Management
-          </li>
-
-          {/* Vendor Management Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <HiUsers className="text-xl mt-1" /> Vendor Management
-          </li>
-
-          {/* Messages Section */}
-          <li className="cursor-pointer flex gap-4 px-4 py-2">
-            <FaRegMessage className="text-xl mt-1" /> Messages
-          </li>
-        </div>
+        <button
+          className="mt-6 block lg:hidden bg-blue-500 text-white rounded p-2 w-full"
+          onClick={toggleSidebar}
+        >
+          {isCollapsed ? "Expand" : "Collapse"}
+        </button>
       </div>
 
-      {/* Spacer */}
-      <div className="flex-grow"></div>
+      {/* Navigation Links */}
+      <nav className="flex flex-col gap-5 text-[#002366] px-4">
+        <SidebarItem
+          path="/AdminDashboard"
+          label="Dashboard"
+          icon={<LuLayoutDashboard />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/AdminDashboard/Product"
+          label="Product Management"
+          icon={<LuBox />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/AdminDashboard/Orders"
+          label="Order Management"
+          icon={<FaBoxes />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/analytics"
+          label="Analytics"
+          icon={<BsGraphUpArrow />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/user-management"
+          label="User Management"
+          icon={<HiUsers />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/vendor-management"
+          label="Vendor Management"
+          icon={<HiUsers />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/messages"
+          label="Messages"
+          icon={<FaRegMessage />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+      </nav>
 
-      {/* Fixed section for Settings and Logout */}
-      <div className="pb-4">
-        {/* Settings Section */}
-        <li className="cursor-pointer flex gap-2 px-4 py-2">
-          <IoSettingsOutline className="text-xl mt-1" /> Settings
-        </li>
-
-        {/* Logout Section */}
-        <li className="cursor-pointer flex gap-2 px-4 py-2">
-          <RiLogoutCircleLine className="text-xl mt-1" /> Logout
-        </li>
+      {/* Footer Section */}
+      <div className="p-4">
+        <SidebarItem
+          path="/settings"
+          label="Settings"
+          icon={<IoSettingsOutline />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
+        <SidebarItem
+          path="/logout"
+          label="Logout"
+          icon={<RiLogoutCircleLine />}
+          activeItem={activeItem}
+          handleClick={handleItemClick}
+          isCollapsed={isCollapsed}
+        />
       </div>
     </div>
   );
 };
+
+const SidebarItem = ({
+  path,
+  label,
+  icon,
+  activeItem,
+  handleClick,
+  isCollapsed,
+}) => (
+  <Link
+    to={path}
+    onClick={() => handleClick(path)}
+    className={`flex items-center gap-4 px-4 py-2 rounded-md transition-all ${
+      activeItem === path ? "bg-blue-500 text-white" : "hover:bg-gray-100"
+    }`}
+  >
+    <span
+      className={`text-xl ${
+        activeItem === path ? "text-white" : "text-[#002366]"
+      }`}
+    >
+      {icon}
+    </span>
+    {!isCollapsed && <span>{label}</span>}
+  </Link>
+);
 
 export default DashNav;
