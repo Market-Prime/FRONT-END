@@ -5,24 +5,24 @@
   min-height: 100vh;
   background: radial-gradient(
     86.52% 159.85% at 83.33% 5.76%,
-    #006dff 0%,
-    #004aad 100%
+    #ffffff 0%,
+    #ffffff 100%
   );
 }
 
 .main-container {
   display: flex;
   justify-content: space-between;
-  min-width: 80%;
+  min-width: 100%;
   margin-top: 20px;
 }
 
 .cart-container {
-  width: 65%;
+  width: 100%;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 30px;
   height: 75vh;
-  overflow-y: scroll;
+
 }
 .cart-item {
   display: flex;
@@ -96,48 +96,47 @@
   margin-bottom: 10px;
   font-size: 15px;
 }
-.order-summary {
-  width: 30%;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  height: 30vh;
-}
-.order-summary h3 {
-  font-weight: 700;
-}
-.order-summary p {
-  margin: 15px 0;
-}
-.order-summary span {
-  margin-left: 60%;
-}
-.checkout {
-  background-color: #001a3e;
-  color: white;
-  padding: 10px;
-  border: none;
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
+
 
 .add-more {
   margin-top: 20px;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 15px;
+  background-color: #007bff; /* Blue color */
   color: white;
   border: none;
   border-radius: 35px;
   cursor: pointer;
-  width: 40%;
-  position: relative;
-  bottom: 10px;
-  right: 230px;
+  width: 50%; /* Adjust width as needed */
   display: flex;
   justify-content: center;
+  align-items: center; /* Center the text vertically */
+  margin-left: auto;
+  margin-right: auto; /* Center the button horizontally */
+  position: relative; /* Remove or keep depending on layout */
+  bottom: 0; /* Adjust for visual alignment */
+  right: 0; /* Reset alignment adjustments */
 }
+.checkout
+ {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #072f5a; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  width: 50%; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the text vertically */
+  margin-left: auto;
+  margin-right: auto; /* Center the button horizontally */
+  position: relative; /* Remove or keep depending on layout */
+  bottom: 0; /* Adjust for visual alignment */
+  right: 0; /* Reset alignment adjustments */
+}
+
 .add-more img {
   width: 20px;
   margin-right: 20px;

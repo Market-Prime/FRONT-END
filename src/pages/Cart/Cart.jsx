@@ -101,7 +101,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-24 bg-blue-700"></div>
+      <div className="pt-24 bg-white"></div>
       <div className="cart-page">
         <div className="main-container">
           <div className="cart-container">
@@ -148,22 +148,18 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="order-summary">
-            <h3>Order Summary</h3>
-            <hr />
-            <p>
-              Subtotal <span>₦{totalAmount.toLocaleString()}</span>
-            </p>
+          
 
-            <button className="checkout" onClick={handleCheckout}>
-              CHECKOUT (₦{totalAmount.toLocaleString()})
-            </button>
+        
           </div>
         </div>
+        <button className="checkout" onClick={handleCheckout}>
+              CHECKOUT (₦{totalAmount.toLocaleString()})
+            </button>
         <button className="add-more">
           <img src={plusbtn} alt="" /> Add more items
         </button>
-      </div>
+      
     </>
   );
 };
