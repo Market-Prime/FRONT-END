@@ -252,7 +252,7 @@ const SearchFilter = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex flex-col sm:flex-row gap-1 sm:gap-5 pt-10 border-t">
         <div
           className={`md:w-1/4 ${showFilters ? "block" : "hidden"} md:block`}

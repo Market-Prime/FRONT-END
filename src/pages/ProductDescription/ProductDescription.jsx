@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductDescription.css";
 import Navbar from "../../components/Navbar";
 import bg from "../../assets/Filtered-Images/Gown 1.png";
@@ -27,6 +27,9 @@ import {
 const ProductDescription = () => {
   const images = [bg, image2, image3, image4, image5, image6];
   const [mainImage, setMainImage] = useState(images[0]);
+  const [zoomed, setZoomed] = useState(false);
+
+
   const reviewsData = [
     { label: "Quality", percentage: 99.9 },
     { label: "Real size", percentage: 100 },
@@ -59,10 +62,15 @@ const ProductDescription = () => {
     );
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+
   return (
     <div>
       <Navbar />
-      <Breadcrumb>
+      <Breadcrumb className="mt-24 ml-5">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -88,7 +96,7 @@ const ProductDescription = () => {
               <img
                 src={img}
                 alt={`thumbnail ${index}`}
-                className="w-full h-auto cursor-pointer"
+                className="w-full h-auto cursor-pointer" data-aos="fade-right" data-aos-duration="5000" data-aos-delay={index * 200}
                 onClick={() => setMainImage(img)}
               />
             </div>
@@ -99,7 +107,7 @@ const ProductDescription = () => {
             <img
               src={mainImage}
               alt="Main"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover" data-aos="zoom-in" data-aos-duration="5000"
             />
           </div>
           <div className="product-info w-full md:w-[30%] flex flex-col gap-4">

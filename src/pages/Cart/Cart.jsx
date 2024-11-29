@@ -34,22 +34,22 @@ const cartItems = [
     color: "Blue",
     imageUrl: cart3,
   },
-  {
-    id: 4, // Adjusted ID to avoid duplication
-    name: "Women Sweat Top",
-    price: 30000,
-    size: "M",
-    color: "Blue",
-    imageUrl: cart3,
-  },
-  {
-    id: 5, // Adjusted ID to avoid duplication
-    name: "Women Sweat Top",
-    price: 30000,
-    size: "M",
-    color: "Blue",
-    imageUrl: cart3,
-  },
+  // {
+  //   id: 4, // Adjusted ID to avoid duplication
+  //   name: "Women Sweat Top",
+  //   price: 30000,
+  //   size: "M",
+  //   color: "Blue",
+  //   imageUrl: cart3,
+  // },
+  // {
+  //   id: 5, // Adjusted ID to avoid duplication
+  //   name: "Women Sweat Top",
+  //   price: 30000,
+  //   size: "M",
+  //   color: "Blue",
+  //   imageUrl: cart3,
+  // },
 ];
 
 // Function to calculate total amount per item
@@ -101,6 +101,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
+      {/* <div className="pt-24 bg-red-900"></div> */}
       <div className="cart-page">
         <div className="main-container">
           <div className="cart-container">
@@ -147,22 +148,23 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="order-summary">
-            <h3>Order Summary</h3>
-            <hr />
-            <p>
-              Subtotal <span>₦{totalAmount.toLocaleString()}</span>
-            </p>
+          
 
-            <button className="checkout" onClick={handleCheckout}>
-              CHECKOUT (₦{totalAmount.toLocaleString()})
-            </button>
+        
           </div>
         </div>
-        <button className="add-more">
-          <img src={plusbtn} alt="" /> Add more items
-        </button>
-      </div>
+
+        <div className="flex items-center justify-between mx-auto  w-1/3">
+          <button className="w-1/2 bg-[#8FCEDD] text-white py-2" onClick={handleCheckout} >
+              CHECKOUT (₦{totalAmount.toLocaleString()})
+          </button>
+          <button className="w-1/2 bg-aboutbg flex items-center justify-center  ml-10 py-2">
+            <img src={plusbtn} alt="" className="w-4 " /> 
+            <p className="text-white ml-2">Add more items</p>
+          </button>
+        </div>
+    
+      
     </>
   );
 };

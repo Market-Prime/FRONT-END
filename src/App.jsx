@@ -137,6 +137,7 @@ import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
+import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation"
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
 import VendorDashboard from "./pages/VendorsPage/VendorDashboard";
@@ -146,6 +147,10 @@ import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import Accountmanagement from "./pages/Accountmanagement";
 import ResetPassword from "./pages/ResetPassword";
+import SuperadminAccount from "./pages/AdminDashboard/SuperadminAccount";
+import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
+import AdminLogin from "./pages/AdminDashboard/AdminLogin";
+// import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 
 function App() {
   useEffect(() => {
@@ -178,12 +183,15 @@ function AnimatedRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/email-confirmation/:token" element={<EmailConfirmation />} />
+          <Route path="/vendor-email-confirmation/:token" element={<Vendoremailconfirmation />} />
+          <Route path="/admin-confirm-account/:token" element={<AdminConfirmaccount />} />
           <Route path="/login/register" element={<Signup />} />
           <Route path="/cart/checkout/paymentmodal" element={<PaymentModal />} />
           <Route path="/cart/checkout/paymentmodal/paymentconfirmation" element={<PaymentConfirmation />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/search" element={<SearchFilter />} />
           <Route path="/productdescription" element={<ProductDescription />} />
+          <Route path="/finalsection" element={<FinalSection />} />
 
           {/* Dashboard Route with nested routes */}
           <Route path="/vendordashboard" element={<VendorDashboard />}>
@@ -203,6 +211,12 @@ function AnimatedRoutes() {
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+          <Route path="/super-admin-account" element={<SuperadminAccount />} />
+
+          <Route path="/admin-login" element={<AdminLogin />} />
+
+
         </Routes>
       </AnimatePresence>
     </AuthProvider>
