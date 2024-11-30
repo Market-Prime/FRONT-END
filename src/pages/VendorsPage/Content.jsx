@@ -159,16 +159,23 @@ const Content = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between w-full px-4 my-5">
-        {/* Bar chart box */}
-        <div className="w-[73%] py-0 bg-white rounded-xl">
-          <div className="flex items-center justify-between w-full py-2 mt-2 px-10">
-            <p className="w-1/2 text-xl">Sales Analytics</p>
-            <div className="flex items-center justify-between w-1/2">
-              <p className="text-xl">Daily</p>
-              <p className="text-xl">Weekly</p>
-              <p className="text-xl">Monthly</p>
-              <p className="text-xl">Yearly</p>
+      {/* Charts and Best Sellers */}
+      <div className="flex flex-col lg:flex-row justify-between items-start mt-8 gap-4">
+        {/* Sales Bar Chart */}
+        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200">
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-lg font-semibold text-gray-800">
+              Sales Analytics
+            </p>
+            <div className="flex gap-2 text-sm">
+              {["Daily", "Weekly", "Monthly", "Yearly"].map((period) => (
+                <p
+                  key={period}
+                  className="cursor-pointer hover:text-blue-500 transition-colors duration-200"
+                >
+                  {period}
+                </p>
+              ))}
             </div>
           </div>
           <ResponsiveContainer width="100%" height={250} className="mt-12">
@@ -201,11 +208,16 @@ const Content = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        {/* Best selling section */}
-        <div className="w-[25%] h-[350px] bg-white rounded-xl overflow-clip">
-          <div className="flex items-center justify-between py-2 px-5">
-            <h3 className="text-lg">Best Selling Products</h3>
-            <p className="text-lg">See all</p>
+
+        {/* Best Selling Products */}
+        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 max-h-[350px] overflow-y-auto">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-lg font-semibold text-gray-800">
+              Best Selling Products
+            </h3>
+            <p className="text-sm cursor-pointer text-blue-500 hover:underline">
+              See all
+            </p>
           </div>
           <div>{products}</div>
         </div>

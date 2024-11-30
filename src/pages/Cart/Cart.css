@@ -15,16 +15,14 @@
   display: flex;
   justify-content: space-between;
   min-width: 100%;
-  margin-top:0px;
+  margin-top: 20px;
 }
 
 .cart-container {
   width: 100%;
-  /* background-color: #ffffff; */
-  /* background-color:pink; */
-  padding: 50px 50px 0;
-  margin-top:65px;
-  /* height: 75vh; */
+  background-color: #ffffff;
+  padding: 30px;
+  height: 75vh;
 
 }
 .cart-item {
@@ -102,7 +100,48 @@
 
 
 
+.add-more {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  width: 50%; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the text vertically */
+  margin-left: auto;
+  margin-right: auto; /* Center the button horizontally */
+  position: relative; /* Remove or keep depending on layout */
+  bottom: 0; /* Adjust for visual alignment */
+  right: 0; /* Reset alignment adjustments */
+}
+.checkout
+ {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #072f5a; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  width: 50%; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the text vertically */
+  margin-left: auto;
+  margin-right: auto; /* Center the button horizontally */
+  position: relative; /* Remove or keep depending on layout */
+  bottom: 0; /* Adjust for visual alignment */
+  right: 0; /* Reset alignment adjustments */
+}
 
+.add-more img {
+  width: 20px;
+  margin-right: 20px;
+}
 
 /* ... (rest of the CSS remains the same) */
 
