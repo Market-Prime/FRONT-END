@@ -1,85 +1,88 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 import logo from "/src/assets/Logo 1.png";
-import { Link } from "react-router-dom";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import axios from "axios"; // Import axios
-import { ToastContainer, toast } from 'react-toastify'; // Import toast
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast
-import { useNavigate } from "react-router-dom";
+// import logo 1 from "src/assets/Logo 1.png"
+import axios from 'axios';
 
-const VendorsAccount = () => {
-  const navigate = useNavigate();
-  const [formdata, setformdata] = useState({
-    business_name:"",
-    email:"",
-    password:"",
-    confirm_password:"",
-    first_name:"",
-    last_name:"",
-    phone_number:""
-  })
+const SuperadminAccount = () =>{
+    const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setformdata({
-      ...formdata,
-      [e.target.name]: e.target.value // Update the respective field value
-    });
-  };
 
-  const submitVendor = async () => {
-    try {
-      const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/account/register/?type=vendor`, formdata,
-        // Uncomment and replace `token` if needed
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`, // Replace with actual token if needed
-        //     // 'Content-Type': 'application/json'
-        //   }
-        // }
-      );
+    const [formdata, setformdata] = useState({
+      psk:"",
+      email:"",
+      password:"",
+      confirm_password:"",
+      first_name:"",
+      last_name:"",
+      phone_number:""
+    })
   
-      // Display a success toast with a green background
-      toast.success(response.data.message || "Registration Successful, check your email to confirm your account", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-        style: { backgroundColor: "green" }, // Green background for success
+    const handleInputChange = (e) => {
+      setformdata({
+        ...formdata,
+        [e.target.name]: e.target.value // Update the respective field value
       });
-  
-      // Redirect to Email Verification page after a delay
-      setTimeout(() => {
-        navigate("/vendor-email-confirmation/:token");
-      }, 5000);
-  
-      console.log("Registration successful:", response.data);
-    } catch (error) {
-      // Get error message from response or use generic error message
-      const errorMessage = error.response && error.response.data && error.response.data.error
-      ? error.response.data.error
-      : error.message;
-  
-      // Display an error toast with a red background
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-        style: { backgroundColor: "red" }, // Red background for errors
-      });
-  
-      console.error("Error registering user:", errorMessage);
-    }
-  };
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    };
+
+    const submitAdmin = async () => {
+        try {
+          const response = await axios.post(
+            `https://backend-server-0ddt.onrender.com/api/account/register/?type=super-admin`, formdata,
+            // Uncomment and replace `token` if needed
+            // {
+            //   headers: {
+            //     Authorization: `Bearer ${token}`, // Replace with actual token if needed
+            //     // 'Content-Type': 'application/json'
+            //   }
+            // }
+          );
+      
+          // Display a success toast with a green background
+          toast.success(response.data.message || "Registration Successful, check your email to confirm your account", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+            style: { backgroundColor: "green" }, // Green background for success
+          });
+      
+          // Redirect to Email Verification page after a delay
+          setTimeout(() => {
+            navigate("/admin-confirm-account/:token");
+          }, 5000);
+      
+          console.log("Registration successful:", response.data);
+        } catch (error) {
+          // Get error message from response or use generic error message
+          const errorMessage = error.response && error.response.data && error.response.data.error
+          ? error.response.data.error
+          : error.message;
+      
+          // Display an error toast with a red background
+          toast.error(errorMessage, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+            style: { backgroundColor: "red" }, // Red background for errors
+          });
+      
+          console.error("Error registering user:", errorMessage);
+        }
+      };
+    return(
+        <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <ToastContainer />
       <div className="w-full max-w-lg p-3 bg-white rounded-lg shadow-md">
         <div className="text-center mb-8">
@@ -90,20 +93,20 @@ const VendorsAccount = () => {
           />{" "}
           {/* Add your logo source */}
           <h2 className="text-2xl font-semibold">Setup your account</h2>
-          <p className="text-gray-600 mt-2">
+          {/* <p className="text-gray-600 mt-2">
             Enter your business details to create a Vendor's account
-          </p>
+          </p> */}
         </div>
         <form className="space-y-4">
           <div>
             <label className="block text-gray-700">
-              Registered Business Name
+              PassKey
             </label>
             <input
               type="text"
-              name="business_name"
+              name="psk"
               className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Enter business name"
+              placeholder="Enter your PassKey"
               onChange={handleInputChange}
             />
           </div>
@@ -196,11 +199,11 @@ const VendorsAccount = () => {
           >
             Create Account
           </button> */}
-          <Link onClick={submitVendor} to="" className="w-full py-3 mt-6 block text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">Create account</Link>
+          <Link onClick={submitAdmin} to="" className="w-full py-3 mt-6 block text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">Create account</Link>
 
           <p className="text-center mt-4 text-gray-600">
             Already have an account?{" "}
-            <Link to="/VendorsLogin">
+            <Link>
               <a href="#" className="text-blue-600 hover:underline">
                 Sign in
               </a>
@@ -209,7 +212,6 @@ const VendorsAccount = () => {
         </form>
       </div>
     </div>
-  );
-};
-
-export default VendorsAccount;
+    )
+}
+export default SuperadminAccount;

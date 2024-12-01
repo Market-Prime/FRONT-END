@@ -138,7 +138,7 @@ const Signup = () => {
   const submitRegister = async () => {
     try {
       const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/account/user/`, formData,
+        `https://backend-server-0ddt.onrender.com/api/account/register/`, formData,
         // Uncomment and replace `token` if needed
         // {
         //   headers: {

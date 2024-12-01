@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../assets/Logo 1.png";
 import { CiSearch } from "react-icons/ci";
@@ -6,44 +7,69 @@ import { AiOutlineUser } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useAuth } from "../pages/AuthContext";
+
 const Navbar = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
+  const toggleSearchBox = () => {
+    setShowSearchBox(!showSearchBox);
+  };
+
+  const handleSearchInput = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    console.log("Searching for:", searchQuery);
+    navigate("/search");
+  };
+
   const [showUserDropdown, setShowUserDropdown] = useState(false);
-  const { isLoggedIn, logout } = useAuth(); // Get auth state and logout function
+  const { isLoggedIn, logout } = useAuth();
 
   const toggleUserDropdown = () => {
     setShowUserDropdown(!showUserDropdown);
   };
 
+  // Add scroll listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {/* Main Navbar */}
-      <div className="header bg-[#8FCEDD] absolute z-50 left-[12%] top-6 py-4 px-12 ml-6 flex items-center justify-between w-[75%] shadow-lg rounded-full">
+      <div
+        className={`header ${
+          isScrolled ? "bg-topdealbg shadow-2xl text-black" : "bg-transparent"
+        } fixed z-50 top-0 py-2 px-12 ml-0 flex items-center justify-between w-full transition-all duration-300`}
+      >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="MarketPrime Logo" className="h-12" />
+          <img src={logo} alt="MarketPrime Logo" className="h-14 rounded-xl" />
         </Link>
 
-        {/* Search Icon and Hamburger Menu (only for screens < 768px) */}
-        <div className="flex lg:hidden items-center justify-center gap-6">
-          <Link to="/search">
-            <div className="scon h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-300 transition duration-300">
-              <CiSearch className="text-2xl" />
-            </div>
-          </Link>
-          <RxHamburgerMenu
-            className="ham text-3xl cursor-pointer"
-            onClick={toggleModal}
-          />
-        </div>
-
         {/* Navbar Links for larger screens */}
-        <ul className="hidden lg:flex gap-12 text-[17px] ml-6 font-small text-gray-700">
+        <ul className="hidden lg:flex gap-12 text-2xl ml-10 font-bold font-small">
           {["Home", "Men", "Women", "Collections"].map((item) => (
             <li
               key={item}
@@ -54,24 +80,36 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Search Bar and Icons (visible on larger screens) */}
-        <div className="hidden lg:flex items-center gap-8">
-          {/* <div className="relative w-56">
-            <input
-              type="text"
-              placeholder="Search Products"
-              className="w-full pl-12 p-3 rounded-full bg-gray-100 focus:bg-gray-200 transition duration-300 outline-none"
-            />
-            <Link to="/search">
-              <CiSearch className="absolute top-1/2 left-4 transform -translate-y-1/2 text-2xl text-gray-500" />
-            </Link>
-          </div> */}
-          <div className="flex items-center gap-4">
-            {/* <Link to="/login">
-              <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
-                <AiOutlineUser className="text-2xl text-gray-600" />
+        {/* Icons Section */}
+        <div className="flex items-center gap-3">
+          {/* Search Icon and Box */}
+          <div className="relative flex items-center">
+            <div
+              className="h-12 w-12 flex items-center justify-center hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
+              onClick={toggleSearchBox}
+            >
+              <CiSearch className="text-3xl text-black font-bold" />
+            </div>
+
+            {/* Search Box */}
+            {showSearchBox && (
+              <div className="ml-4 flex items-center bg-white shadow-md rounded-full pl-4 pr-2 py-2 w-[400px] transition-all duration-300">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={handleSearchInput}
+                  className="flex-grow p-2 border-none outline-none text-gray-600"
+                />
+                <button
+                  onClick={handleSearch}
+                  className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-600 transition duration-300"
+                >
+                  Go
+                </button>
               </div>
-            </Link> */}
+            )}
+          </div>
 
             <div className="relative">
               <div
@@ -81,35 +119,32 @@ const Navbar = () => {
                 <AiOutlineUser className="text-2xl text-gray-600" />
               </div>
 
-              {showUserDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-                  <ul className="text-gray-700">
-                    {isLoggedIn ? (
-                      <>
-                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                          <Link to="/account">My Account</Link>
-                        </li>
-                        <li
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={logout}
-                        >
-                          Logout
-                        </li>
-                      </>
-                    ) : (
-                      <>
-                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                          <Link to="/login">Login</Link>
-                        </li>
-                        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                          <Link to="/signup">Register</Link>
-                        </li>
-                      </>
-                    )}
-                  </ul>
-                </div>
-              )}
+          {showUserDropdown && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+              <ul className="text-gray-700">
+                {isLoggedIn ? (
+                  <>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      <Link to="/account">My Account</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={logout}>
+                      Logout
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      <Link to="/login">Login</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      <Link to="/signup">Register</Link>
+                    </li>
+                  </>
+                )}
+              </ul>
             </div>
+          )}
+        </div>
             <Link to="/cart">
               <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
                 <IoCartOutline className="text-2xl text-gray-600" />
@@ -134,18 +169,6 @@ const Navbar = () => {
               )
             )}
           </ul>
-          <div className="flex items-center gap-4 mt-6">
-            <Link to="/login">
-              <div className="h-10 w-10 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
-                <AiOutlineUser className="text-2xl text-gray-600" />
-              </div>
-            </Link>
-            <Link to="/cart">
-              <div className="h-10 w-10 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
-                <IoCartOutline className="text-2xl text-gray-600" />
-              </div>
-            </Link>
-          </div>
         </div>
       )}
     </>

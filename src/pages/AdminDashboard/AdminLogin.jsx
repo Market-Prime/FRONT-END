@@ -1,15 +1,88 @@
 import React, { useState } from "react";
 import logo from "../../assets/Logo 1.png";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast
+import { useAuth } from "../../pages/AuthContext";
 
-const VendorsLogin = () => {
+const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  
+
+  const navigate = useNavigate();
+  const login = useAuth();
+
+  const [data, setData] = useState({
+    email:'',
+    password:''
+  })
+
+  const handleInputChange = (e) =>{
+    setData({
+        ...data,
+        [e.target.name]: e.target.value
+    });
+  };
+
+
+  const submitLogin = async () =>{
+    // login();
+
+    try{
+      const response = await axios.post(
+      `https://backend-server-0ddt.onrender.com/api/account/login`,
+      {
+        email:data.email,
+        password:data.password
+      },
+      );
+
+      const token= response.data.access;
+      localStorage.setItem("authToken", token);
+      console.log("My token", token);
+      toast.success(`Login Successful: ${response.data.message || 'Welcome' , {
+        position:"top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick:true,
+        pauseOnHover: true,
+        draggable:true,
+        progress: undefined,
+        theme: "colored",
+        style: {backgroundColor: "green"}
+      }}`);
+      setTimeout(() => {
+        navigate("/AdminDashboard")
+      },5000);
+      console.log("Login Successful", response.data);
+    } catch (error) {
+      const errorMessage = error.response && error.response.data && error.response.data.detail
+        ? error.response.data.detail
+        : error.message;  
+
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          style: { backgroundColor: "red" }, // Red background for errors
+        });  
+      console.error('Login failed:', errorMessage);
+    }
+  }
+
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <ToastContainer />
       <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Market Prime" className="h-10" />
@@ -25,6 +98,8 @@ const VendorsLogin = () => {
             <input
               id="email"
               type="email"
+              name="email"
+              onChange={handleInputChange}
               placeholder="Enter your email"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
@@ -38,6 +113,8 @@ const VendorsLogin = () => {
             <div className="relative">
               <input
                 id="password"
+                name="password"
+                onChange={handleInputChange}
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -70,12 +147,19 @@ const VendorsLogin = () => {
             </a>
           </div>
 
-          <button
+          {/* <button
             type="submit"
             className="w-full bg-blue-900 text-white p-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-200"
           >
             Login
-          </button>
+          </button> */}
+
+          <Link 
+          className="w-full bg-blue-900 text-white p-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-200 block text-center" 
+          onClick={submitLogin} 
+          to="">
+            Login
+          </Link>
 
           <p className="mt-4 text-center text-sm">
             Don’t have an account yet?{" "}
@@ -89,4 +173,4 @@ const VendorsLogin = () => {
   );
 };
 
-export default VendorsLogin;
+export default AdminLogin;

@@ -34,22 +34,22 @@ const cartItems = [
     color: "Blue",
     imageUrl: cart3,
   },
-  {
-    id: 4, // Adjusted ID to avoid duplication
-    name: "Women Sweat Top",
-    price: 30000,
-    size: "M",
-    color: "Blue",
-    imageUrl: cart3,
-  },
-  {
-    id: 5, // Adjusted ID to avoid duplication
-    name: "Women Sweat Top",
-    price: 30000,
-    size: "M",
-    color: "Blue",
-    imageUrl: cart3,
-  },
+  // {
+  //   id: 4, // Adjusted ID to avoid duplication
+  //   name: "Women Sweat Top",
+  //   price: 30000,
+  //   size: "M",
+  //   color: "Blue",
+  //   imageUrl: cart3,
+  // },
+  // {
+  //   id: 5, // Adjusted ID to avoid duplication
+  //   name: "Women Sweat Top",
+  //   price: 30000,
+  //   size: "M",
+  //   color: "Blue",
+  //   imageUrl: cart3,
+  // },
 ];
 
 // Function to calculate total amount per item

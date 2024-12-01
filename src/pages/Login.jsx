@@ -147,13 +147,13 @@ const Login = ({ toggleModal }) => {
 
     <div className="w-full  h-screen">
       <ToastContainer />
-      <div className="w-full flex 2xl:flex-row-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-col-reverse sm:flex-col-reverse items-center justify-center  h-screen">
-        <div className="2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full h-screen" data-aos="fade-down" data-aos-durationn="2000">
-          <img src="/images/IMG-20241107-WA0059.jpg" className="object-cover w-full h-full" />
+      <div className="w-full flex 2xl:flex-row-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-col-reverse sm:flex-col items-center justify-center  h-screen">
+        <div className="2xl:w-2/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full h-screen flex items-start justify-center" data-aos="fade-down" data-aos-durationn="2000">
+          <img src="/images/IMG-20241126-WA0067.jpg" className="object-cover w-full h-full" />
         </div>
 
         {/* Form */}
-        <div className="2xl:w-1/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full bg-white h-screen px-10 2xl:py-52 xl:py-52 lg:py-40 md:py-20 sm:py-10">
+        <div className="2xl:w-1/3 xl:w-2/3 lg:w-1/2 md:w-full sm:w-full  bg-white h-screen px-10 2xl:py-52 xl:py-52 lg:py-40 md:py-20 sm:py-10">
         <div>
         {/* <button className="close-modal" onClick={toggleModal}>
           <RiCloseLargeLine />
