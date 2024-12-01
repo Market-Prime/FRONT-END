@@ -2,6 +2,7 @@ import React from "react";
 import { BsImages } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import DropdownWithAddOption from "./DropdownWithAddOption";
 import shirt1 from "../../../public/images/T-shirt 1.png";
 import shirt2 from "../../../public/images/T-shirt 2.png";
 import shirt3 from "../../../public/images/T-shirt 3.png";
@@ -41,27 +42,31 @@ const Product2 = () => {
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Category</p>
-              <div className="flex items-center justify-center h-[50px] w-full bg-white">
+              
               <DropdownWithAddOption initialOptions={["Women", "Men", "Kids"]} />
-              </div>
+            
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Sub-Category</p>
-              <div className="flex items-center justify-center h-[50px] w-full bg-white">
-                <p className="font-semibold">Clothes</p>
-              </div>
+              <DropdownWithAddOption initialOptions={["Cloth", "Skirt", "Trouser"]} />
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Price</p>
-              <div className="flex items-center justify-center h-[50px] w-full bg-white">
-                <p className="font-semibold">N25,000</p>
-              </div>
+              <input
+  type="text"
+  defaultValue="₦25,000"
+  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
+/>
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Tags</p>
-              <div className="flex items-center justify-center h-[50px] w-full bg-white">
-                <p className="font-semibold">N25,000</p>
-              </div>
+              <input
+  type="text"
+  defaultValue="₦25,000"
+  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
+/>
             </div>
           </div>
           <div className="h-full w-[47%] flex flex-col gap-4">
