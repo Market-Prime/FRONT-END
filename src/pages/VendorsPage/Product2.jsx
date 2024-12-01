@@ -19,24 +19,30 @@ const Product2 = () => {
             <div className=" h-full w-full flex flex-col gap-2">
               <p className="text-[#004AAD]">Product Name</p>
               <div className="flex items-center justify-center h-[50px] w-full bg-white">
-                <p className="font-semibold">Quality Fashion T-Shirt</p>
+              <input
+  type="text"
+  defaultValue="Quality Fashion T-Shirt"
+  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
+/>
               </div>
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Description</p>
               <div className="flex items-center justify-center h-[90px] my-2 w-full bg-white">
-                <p className="text-center px-2 font-semibold">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  vero aliquid unde soluta consequuntur culpa laboriosam
-                  possimus est officiis corrupti minima cum quia illo impedit,
-                  tempore totam, nam dolore ex.
-                </p>
+              <textarea
+  defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas vero aliquid unde soluta consequuntur culpa laboriosam possimus est officiis corrupti minima cum quia illo impedit, tempore totam, nam dolore ex."
+  className="text-center px-2 font-semibold border border-gray-300 rounded-md w-full p-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+  rows={5} // Adjust number of rows as needed
+  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
+/>
+
               </div>
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
               <p>Category</p>
               <div className="flex items-center justify-center h-[50px] w-full bg-white">
-                <p className="font-semibold">Women</p>
+              <DropdownWithAddOption initialOptions={["Women", "Men", "Kids"]} />
               </div>
             </div>
             <div className=" h-full w-full flex flex-col gap-2">
