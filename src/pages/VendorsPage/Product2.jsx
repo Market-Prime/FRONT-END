@@ -12,151 +12,99 @@ import shirt5 from "../../../public/images/T-shirt 5.png";
 const Product2 = () => {
   return (
     <main className="flex-1 bg-[#C1CFE3]">
-      <div className="flex flex-col px-8 my-5 w-[1200px] h-screen gap-3">
-        <h1 className="text-blue-800 text-2xl font-bold">Add Products</h1>
+      <div className="flex flex-col px-4 md:px-8 my-5 max-w-7xl mx-auto h-full gap-6">
+        <h1 className="text-blue-800 text-xl md:text-2xl font-bold">Add Products</h1>
 
-        <div className="flex flex-row items-center justify-between w-full h-full">
-          <div className="flex flex-col w-[47%] h-full gap-4">
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p className="text-[#004AAD]">Product Name</p>
-              <div className="flex items-center justify-center h-[50px] w-full bg-white">
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Left Column */}
+          <div className="flex flex-col w-full md:w-1/2 gap-4">
+            <div className="flex flex-col gap-2">
+              <label className="text-[#004AAD] font-medium">Product Name</label>
               <input
-  type="text"
-  defaultValue="Quality Fashion T-Shirt"
-  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
-/>
-              </div>
+                type="text"
+                defaultValue="Quality Fashion T-Shirt"
+                className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => console.log(e.target.value)}
+              />
             </div>
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p>Description</p>
-              <div className="flex items-center justify-center h-[90px] my-2 w-full bg-white">
-              <textarea
-  defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas vero aliquid unde soluta consequuntur culpa laboriosam possimus est officiis corrupti minima cum quia illo impedit, tempore totam, nam dolore ex."
-  className="text-center px-2 font-semibold border border-gray-300 rounded-md w-full p-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-  rows={5} // Adjust number of rows as needed
-  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
-/>
 
-              </div>
+            <div className="flex flex-col gap-2">
+              <label className="font-medium">Description</label>
+              <textarea
+                defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas vero aliquid unde soluta consequuntur culpa laboriosam possimus est officiis corrupti minima cum quia illo impedit, tempore totam, nam dolore ex."
+                className="text-center px-2 font-semibold border border-gray-300 rounded-md w-full p-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={5}
+                onChange={(e) => console.log(e.target.value)}
+              />
             </div>
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p>Category</p>
-              
+
+            <div className="flex flex-col gap-2">
+              <label className="font-medium">Category</label>
               <DropdownWithAddOption initialOptions={["Women", "Men", "Kids"]} />
-            
             </div>
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p>Sub-Category</p>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-medium">Sub-Category</label>
               <DropdownWithAddOption initialOptions={["Cloth", "Skirt", "Trouser"]} />
             </div>
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p>Price</p>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-medium">Price</label>
               <input
-  type="text"
-  defaultValue="₦25,000"
-  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
-/>
+                type="text"
+                defaultValue="₦25,000"
+                className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => console.log(e.target.value)}
+              />
             </div>
-            <div className=" h-full w-full flex flex-col gap-2">
-              <p>Tags</p>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-medium">Tags</label>
               <input
-  type="text"
-  defaultValue="₦25,000"
-  className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  onChange={(e) => console.log(e.target.value)} // Optional: Handle changes
-/>
+                type="text"
+                defaultValue="T-Shirt, Fashion, Casual"
+                className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => console.log(e.target.value)}
+              />
             </div>
           </div>
-          <div className="h-full w-[47%] flex flex-col gap-4">
+
+          {/* Right Column */}
+          <div className="flex flex-col w-full md:w-1/2 gap-4">
             <div className="flex flex-col gap-2">
-              <p className="text-[#004AAD]">Add Image</p>
-              <div className="bg-white h-[27vh] w-full flex flex-col gap-2 items-center justify-center">
+              <label className="text-[#004AAD] font-medium">Add Image</label>
+              <div className="bg-white h-[30vh] flex flex-col items-center justify-center gap-4 border border-dashed border-gray-300 rounded-md">
                 <BsImages className="text-8xl text-blue-600" />
-                <div className="flex flex-col items-center">
-                  <IoCloudUploadOutline className="text-4xl" />
+                <div className="text-center">
+                  <IoCloudUploadOutline className="text-4xl mx-auto" />
                   <p className="text-lg">
                     Drag & Drop image or{" "}
-                    <a href="" className="text-blue-600 underline">
+                    <a href="#" className="text-blue-600 underline">
                       Browse
-                    </a>{" "}
+                    </a>
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col h-full w-full gap-6">
-              <div className="w-full h-[10vh] bg-white flex items-center justify-between px-4">
-                <div className="h-full flex gap-6 ">
-                  <img src={shirt1} alt="" className="h-full w-[50px]" />
-                  <div className="flex flex-col justify-between">
-                    <p className="font-semibold">
-                      Quality Fashion T-Shirt Green.png
-                    </p>
-                    <p>500kb</p>
+            <div className="flex flex-col gap-4">
+              {[shirt1, shirt2, shirt3, shirt4, shirt5].map((shirt, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between bg-white border border-gray-300 rounded-md p-4"
+                >
+                  <div className="flex items-center gap-4">
+                    <img src={shirt} alt={`Shirt ${index + 1}`} className="h-12 w-12 object-cover" />
+                    <div className="flex flex-col">
+                      <p className="font-semibold text-sm">Quality Fashion T-Shirt Green.png</p>
+                      <p className="text-xs text-gray-500">500kb</p>
+                    </div>
                   </div>
+                  <button>
+                    <RiDeleteBin6Line className="text-2xl text-red-500" />
+                  </button>
                 </div>
-                <div>
-                  <RiDeleteBin6Line className="text-2xl" />
-                </div>
-              </div>
-              <div className="w-full h-[10vh] bg-white flex items-center justify-between px-4">
-                <div className="h-full flex gap-6 ">
-                  <img src={shirt2} alt="" className="h-full w-[50px]" />
-                  <div className="flex flex-col justify-between">
-                    <p className="font-semibold">
-                      Quality Fashion T-Shirt Green.png
-                    </p>
-                    <p>500kb</p>
-                  </div>
-                </div>
-                <div>
-                  <RiDeleteBin6Line className="text-2xl" />
-                </div>
-              </div>
-              <div className="w-full h-[10vh] bg-white flex items-center justify-between px-4">
-                <div className="h-full flex gap-6 ">
-                  <img src={shirt3} alt="" className="h-full w-[50px]" />
-                  <div className="flex flex-col justify-between">
-                    <p className="font-semibold">
-                      Quality Fashion T-Shirt Green.png
-                    </p>
-                    <p>500kb</p>
-                  </div>
-                </div>
-                <div>
-                  <RiDeleteBin6Line className="text-2xl" />
-                </div>
-              </div>
-              <div className="w-full h-[10vh] bg-white flex items-center justify-between px-4">
-                <div className="h-full flex gap-6 ">
-                  <img src={shirt4} alt="" className="h-full w-[50px]" />
-                  <div className="flex flex-col justify-between">
-                    <p className="font-semibold">
-                      Quality Fashion T-Shirt Green.png
-                    </p>
-                    <p>500kb</p>
-                  </div>
-                </div>
-                <div>
-                  <RiDeleteBin6Line className="text-2xl" />
-                </div>
-              </div>
-              <div className="w-full h-[10vh] bg-white flex items-center justify-between px-4">
-                <div className="h-full flex gap-6 ">
-                  <img src={shirt5} alt="" className="h-full w-[50px]" />
-                  <div className="flex flex-col justify-between">
-                    <p className="font-semibold">
-                      Quality Fashion T-Shirt Green.png
-                    </p>
-                    <p>500kb</p>
-                  </div>
-                </div>
-                <div>
-                  <RiDeleteBin6Line className="text-2xl" />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
