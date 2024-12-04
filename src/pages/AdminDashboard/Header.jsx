@@ -2,26 +2,39 @@ import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import profile from "../../assets/Filtered-Images/profile-pic.png";
-const Header = () =>{
-    return(
-    <div className="flex  items-center justify-end bg-white p-3">
-        <div className="flex items-center justify-start w-2/6 mx-auto bg-white border border-gray-500 rounded-xl px-2">
-          <input
-            type="text"
-            className=" outline-none w-full border-gray-500 px-4 py-3 rounded-lg bg-white"
-          />
-          <CiSearch className="text-2xl" />
+
+const Header = () => {
+  return (
+    <div className="flex items-center justify-between bg-white p-3 shadow-md">
+      {/* Search Bar */}
+      <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-full max-w-lg md:w-2/5">
+        <CiSearch className="text-2xl text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search..."
+          className="flex-grow outline-none bg-transparent px-2 text-gray-700 placeholder-gray-400 hidden sm:block"
+        />
+      </div>
+
+      {/* Profile Section */}
+      <div className="flex items-center space-x-3">
+        {/* Profile Icon */}
+        <img
+          src={profile}
+          alt="Profile"
+          className="w-10 h-10 rounded-full object-cover sm:w-12 sm:h-12"
+        />
+
+        {/* Profile Details (hidden on small screens) */}
+        <div className="hidden md:flex flex-col">
+          <p className="flex text-lg font-medium items-center">
+            Akpan David <FaAngleDown className="ml-1 text-gray-600" />
+          </p>
+          <p className="text-sm text-blue-600 font-semibold">Super Admin</p>
         </div>
-        <div className="flex items-center justify-end  w-2/12 ">
-          <img src={profile} alt="" className="w-12 h-12" />
-          <div className="flex flex-col ml-5">
-            <p className="flex text-xl">
-            Akpan David <FaAngleDown className="mt-1 ml-1" />
-            </p>
-            <p className="text-xl text-blue-600">Super Admin </p>
-          </div>
-        </div>
+      </div>
     </div>
-    )
-}
+  );
+};
+
 export default Header;

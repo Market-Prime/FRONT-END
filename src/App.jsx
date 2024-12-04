@@ -124,13 +124,12 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
-import AdminDashboardLayout from "../layout/AdminDashboardLayout";
-import DashboardHome from "./pages/AdminDashboard/DashboardHome";
+import AdminDashboard from "./pages/AdminDashboard/DashboardHome";
+import Layout from "../layout/AdminDashboardLayout";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
-import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation"
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
 import VendorDashboard from "./pages/VendorsPage/VendorDashboard";
@@ -140,10 +139,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import Accountmanagement from "./pages/Accountmanagement";
 import ResetPassword from "./pages/ResetPassword";
-import SuperadminAccount from "./pages/AdminDashboard/SuperadminAccount";
-import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
-import AdminLogin from "./pages/AdminDashboard/AdminLogin";
-// import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 
 function App() {
   useEffect(() => {
@@ -191,7 +186,6 @@ function AnimatedRoutes() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/search" element={<SearchFilter />} />
           <Route path="/productdescription" element={<ProductDescription />} />
-          <Route path="/finalsection" element={<FinalSection />} />
 
           {/* Dashboard Route with nested routes */}
           <Route path="/vendordashboard" element={<VendorDashboard />}>
@@ -207,19 +201,15 @@ function AnimatedRoutes() {
             element={<VendorsVerifyEmail />}
           />
           <Route path="/finalsection" element={<FinalSection />} />
-
-          <Route path="/admindashboard/product" element={<Product />} />
-          <Route path="/admindashboard/orders" element={<Orders />} />
-
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          {/* Default content when no subpath is specified */}
+          {/* <Route index element={<AdminDashboard />} /> */}
+          {/* Nested paths */}
+          <Route path="adminDashboard/product" element={<Product />} />
+          <Route path="adminDashboard/orders" element={<Orders />} />
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-
-          <Route path="/admindashboard" element={<AdminDashboardLayout />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="products" element={<Product />} />
-          </Route>
         </Routes>
       </AnimatePresence>
     </AuthProvider>
