@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "./Header";
-import DashNav from "./DashNav";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiPlusCircle } from "react-icons/fi";
 import { OrderData } from "./ProductsData";
@@ -40,8 +38,6 @@ const Orders = () => {
 
   return (
     <div className="h-screen w-full flex">
-      {/* Sidebar */}
-      <DashNav isSidebarOpen={isSidebarOpen} />
 
       {/* Main content */}
       <div className="bg-[#E6F7FF] w-6/6">

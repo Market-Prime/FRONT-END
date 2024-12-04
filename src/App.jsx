@@ -124,13 +124,12 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
-import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import DashboardHome from "./pages/AdminDashboard/DashboardHome";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
-import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation"
+import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
 import VendorDashboard from "./pages/VendorsPage/VendorDashboard";
@@ -145,85 +144,114 @@ import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
 import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 // import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 
-function App() {
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
-  }, []);
+import "./styles/global.css";
+import AdminLayout1 from "./pages/AdminDashboard/layout/adminLayout1";
+import Managers from "./pages/AdminDashboard/Managers";
 
-  return (
-    <div>
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
-    </div>
-  );
+function App() {
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,
+        });
+    }, []);
+
+    return (
+        <div>
+            <BrowserRouter>
+                <AnimatedRoutes />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 function AnimatedRoutes() {
-  const location = useLocation();
+    const location = useLocation();
 
-  return (
-    <AuthProvider>
-      <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/cart/checkout" element={<Checkout />} />
-          <Route path="/virtualtryon" element={<VirtualTryOn />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/email-confirmation/:token"
-            element={<EmailConfirmation />}
-          />
-          <Route path="/login/register" element={<Signup />} />
-          <Route
-            path="/cart/checkout/paymentmodal"
-            element={<PaymentModal />}
-          />
-          <Route
-            path="/cart/checkout/paymentmodal/paymentconfirmation"
-            element={<PaymentConfirmation />}
-          />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/search" element={<SearchFilter />} />
-          <Route path="/productdescription" element={<ProductDescription />} />
-          <Route path="/finalsection" element={<FinalSection />} />
+    return (
+        <AuthProvider>
+            <AnimatePresence>
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/cart/checkout" element={<Checkout />} />
+                    <Route path="/virtualtryon" element={<VirtualTryOn />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
 
-          {/* Dashboard Route with nested routes */}
-          <Route path="/vendordashboard" element={<VendorDashboard />}>
-            <Route index element={<Content />} /> {/* Default content */}
-            <Route path="product" element={<Product2 />} />
-            <Route path="orders" element={<Orders />} />
-          </Route>
+                    <Route
+                        path="/email-confirmation/:token"
+                        element={<EmailConfirmation />}
+                    />
+                    <Route path="/login/register" element={<Signup />} />
+                    <Route
+                        path="/cart/checkout/paymentmodal"
+                        element={<PaymentModal />}
+                    />
+                    <Route
+                        path="/cart/checkout/paymentmodal/paymentconfirmation"
+                        element={<PaymentConfirmation />}
+                    />
+                    <Route
+                        path="/forgotpassword"
+                        element={<ForgotPassword />}
+                    />
+                    <Route path="/search" element={<SearchFilter />} />
+                    <Route
+                        path="/productdescription"
+                        element={<ProductDescription />}
+                    />
+                    <Route path="/finalsection" element={<FinalSection />} />
 
-          <Route path="/vendorsaccount" element={<VendorsAccount />} />
-          <Route path="/vendorslogin" element={<VendorsLogin />} />
-          <Route
-            path="/vendorsverifiedemail"
-            element={<VendorsVerifyEmail />}
-          />
-          <Route path="/finalsection" element={<FinalSection />} />
+                    {/* Dashboard Route with nested routes */}
+                    <Route
+                        path="/vendordashboard"
+                        element={<VendorDashboard />}
+                    >
+                        <Route index element={<Content />} />{" "}
+                        {/* Default content */}
+                        <Route path="product" element={<Product2 />} />
+                        <Route path="orders" element={<Orders />} />
+                    </Route>
 
-          <Route path="/admindashboard/product" element={<Product />} />
-          <Route path="/admindashboard/orders" element={<Orders />} />
+                    <Route
+                        path="/vendorsaccount"
+                        element={<VendorsAccount />}
+                    />
+                    <Route path="/vendorslogin" element={<VendorsLogin />} />
+                    <Route
+                        path="/vendorsverifiedemail"
+                        element={<VendorsVerifyEmail />}
+                    />
+                    <Route path="/finalsection" element={<FinalSection />} />
 
-          <Route path="/account" element={<Accountmanagement />} />
+                    {/* <Route path="/admindashboard/product" element={<Product />} />
+          <Route path="/admindashboard/orders" element={<Orders />} /> */}
 
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+                    <Route path="/account" element={<Accountmanagement />} />
 
-          <Route path="/admindashboard" element={<AdminDashboardLayout />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="products" element={<Product />} />
-          </Route>
-        </Routes>
-      </AnimatePresence>
-    </AuthProvider>
-  );
+                    <Route
+                        path="/reset-password/:token"
+                        element={<ResetPassword />}
+                    />
+
+                    <Route
+                        path="/admin"
+                        element={<AdminLayout1 />}
+                    >
+                        <Route index element={<DashboardHome />} />
+                        <Route path="orders" element={<Orders />} />
+                        <Route path="products" element={<Product />} />
+                        <Route path="managers" element={<Managers />} />
+                    </Route>
+
+                    <Route path="/admin/login" element={<AdminLogin />} />
+                    <Route path="/admin/verify-email/:token" element={<AdminConfirmaccount />} />
+                    
+                </Routes>
+            </AnimatePresence>
+        </AuthProvider>
+    );
 }
 
 export default App;

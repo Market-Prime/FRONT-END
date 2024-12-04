@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "./Header";
-import DashNav from "./DashNav";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiPlusCircle } from "react-icons/fi";
 import { ProductsData } from "./ProductsData";
@@ -32,9 +30,7 @@ const Product = () => {
   return (
     <div className="h-screen w-screen">
       <div className="flex justify-between h-full w-full relative">
-        <DashNav />
         <div className="bg-[#E6F7FF] w-5/6">
-          <Header />
           <div className="bg-white my-4 px-10 flex items-center justify-between w-full py-2">
             <div className="flex items-center justify-between">
               <button className="flex items-center py-3 bg-topdealbg mr-2 px-7 rounded-lg">

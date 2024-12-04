@@ -15,8 +15,6 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import DashNav from "./DashNav";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -126,7 +124,7 @@ const Dashboard = () => {
           <div className=" bg-[#E6F7FF]">
             {/* Analytics Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-10">
                 <div className="ml-7 flex flex-col items-start justify-center w-full">
                   <p className="text-xl">Total Orders</p>
                   <div className="flex w-[85%] justify-between">
