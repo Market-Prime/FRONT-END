@@ -3,6 +3,7 @@ import { BsImages } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import DropdownWithAddOption from "./DropdownWithAddOption";
+import TagsInput from "./TagsInput";
 import shirt1 from "../../../public/images/T-shirt 1.png";
 import shirt2 from "../../../public/images/T-shirt 2.png";
 import shirt3 from "../../../public/images/T-shirt 3.png";
@@ -59,14 +60,9 @@ const Product2 = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-medium">Tags</label>
-              <input
-                type="text"
-                defaultValue="T-Shirt, Fashion, Casual"
-                className="font-semibold border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                onChange={(e) => console.log(e.target.value)}
-              />
-            </div>
+            
+            <TagsInput />
+          </div>
           </div>
 
           {/* Right Column */}
