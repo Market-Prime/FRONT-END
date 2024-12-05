@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Layout from "../../../layout/AdminDashboardLayout";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiPlusCircle } from "react-icons/fi";
 import { OrderData } from "./ProductsData";
@@ -38,10 +37,7 @@ const Orders = () => {
   };
 
   return (
-    <Layout>
-      <div className="h-screen w-full flex">
-        {/* Sidebar */}
-        {/* <DashNav isSidebarOpen={isSidebarOpen} /> */}
+    <div className="h-screen w-full flex">
 
         {/* Main content */}
         <div className="bg-[#E6F7FF] w-6/6">

@@ -15,8 +15,6 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import DashNav from "./DashNav";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 import Layout from "../../../layout/AdminDashboardLayout";
 
@@ -121,23 +119,22 @@ const Dashboard = () => {
   });
 
   return (
-    <Layout>
-      <div className="min-h-screen w-full flex ">
-        <div className="flex justify-between relative ">
-          <div className="bg-[#E6F7FF] md:w-[99.1%] w-[500px]   px-2">
-            <div className=" flex flex-col h-full w">
-              {/* Analytics Card */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-                <div className="h-[80%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
-                  <div className="ml-7 flex flex-col items-start justify-center w-full">
-                    <p className="text-xl">Total Orders</p>
-                    <div className="flex w-[85%] justify-between">
-                      <h1 className="text-xl font-bold">10720</h1>
-                      <img src={order_icon} alt="" />
-                    </div>
-                    <p>From yesterday</p>
+    <div className="h-screen w-full flex">
+      <div className="flex justify-between relative">
+        <div className="bg-[#E6F7FF] md:w-full w-[500px]">
+          <div className=" bg-[#E6F7FF]">
+            {/* Analytics Card */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+              <div className="h-[70%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-10">
+                <div className="ml-7 flex flex-col items-start justify-center w-full">
+                  <p className="text-xl">Total Orders</p>
+                  <div className="flex w-[85%] justify-between">
+                    <h1 className="text-xl font-bold">10720</h1>
+                    <img src={order_icon} alt="" />
                   </div>
+                  <p>From yesterday</p>
                 </div>
+              </div>
 
                 <div className="h-[80%] w-full shadow-gray-400 shadow-xl border bg-white border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
                   <div className="ml-7 flex flex-col items-start justify-center w-full">

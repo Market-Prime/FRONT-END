@@ -47,9 +47,9 @@ const AdminConfirmaccount = () =>{
     }
   }
     return(
-    <div>
+    <div className="flex flex-col items-center justify-center confirm-em">
       <ToastContainer />
-      <div className='2xl:w-1/3 xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-full bg-white rounded-3xl shadow-2xl m-auto my-56 py-10'>
+      <div className='2xl:w-1/3 xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-full bg-white rounded-3xl shadow-2xl m-auto py-10'>
         <img src={logo} alt="MarketPrime Logo" className="text-center mx-auto rounded-xl" />
         <h5 className='text-3xl text-center mt-5'>Confirm your Account</h5>
         <p  className='mt-3 text-center w-2/3 mx-auto'>Please click on the button below to confirm your account and continue shopping at MARKETPRIME</p>

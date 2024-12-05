@@ -124,13 +124,13 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
-import AdminDashboard from "./pages/AdminDashboard/DashboardHome";
-
+import DashboardHome from "./pages/AdminDashboard/DashboardHome";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorOrders from "../src/pages/VendorsPage/VendorOrders";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
+import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
 
@@ -140,6 +140,14 @@ import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import Accountmanagement from "./pages/Accountmanagement";
 import ResetPassword from "./pages/ResetPassword";
+import SuperadminAccount from "./pages/AdminDashboard/SuperadminAccount";
+import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
+import AdminLogin from "./pages/AdminDashboard/AdminLogin";
+// import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
+
+import "./styles/global.css";
+import AdminLayout1 from "./pages/AdminDashboard/layout/adminLayout1";
+import Managers from "./pages/AdminDashboard/Managers";
 
 function App() {
   useEffect(() => {
@@ -171,6 +179,7 @@ function AnimatedRoutes() {
           <Route path="/virtualtryon" element={<VirtualTryOn />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
           <Route
             path="/email-confirmation/:token"
             element={<EmailConfirmation />}
@@ -187,12 +196,14 @@ function AnimatedRoutes() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/search" element={<SearchFilter />} />
           <Route path="/productdescription" element={<ProductDescription />} />
+          <Route path="/finalsection" element={<FinalSection />} />
 
-          <Route path="/vendorDashboard" element={<Content />} />
-
-          <Route path="vendorDashboard/product" element={<Product2 />} />
-          <Route path="vendorDashboard/orders" element={<VendorOrders />} />
-          <Route path="/account" element={<Accountmanagement />} />
+          {/* Dashboard Route with nested routes */}
+          <Route path="/vendordashboard" element={<VendorDashboard />}>
+            <Route index element={<Content />} /> {/* Default content */}
+            <Route path="product" element={<Product2 />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
 
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
@@ -201,13 +212,26 @@ function AnimatedRoutes() {
             element={<VendorsVerifyEmail />}
           />
           <Route path="/finalsection" element={<FinalSection />} />
-          <Route path="/admindashboard" element={<AdminDashboard />} />
 
-          <Route path="adminDashboard/product" element={<Product />} />
-          <Route path="adminDashboard/orders" element={<Orders />} />
+          {/* <Route path="/admindashboard/product" element={<Product />} />
+          <Route path="/admindashboard/orders" element={<Orders />} /> */}
+
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+          <Route path="/admin" element={<AdminLayout1 />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="products" element={<Product />} />
+            <Route path="managers" element={<Managers />} />
+          </Route>
+
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/verify-email/:token"
+            element={<AdminConfirmaccount />}
+          />
         </Routes>
       </AnimatePresence>
     </AuthProvider>
