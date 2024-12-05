@@ -14,6 +14,7 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
+import VendorLayout from "../../../layout/VendorDashboardLayout";
 
 const Content = () => {
   const orders = [
@@ -46,7 +47,7 @@ const Content = () => {
     },
     {
       id: "MP1016",
-      item: "WomenBaggy Jean",
+      item: "Women Baggy Jean",
       date: "11/09/24",
       price: "#20,000",
       category: "Women",
@@ -103,225 +104,169 @@ const Content = () => {
       price: "#30,000",
     },
   ];
+
   const products = bestproducts.map((item, i) => {
     return (
-      <div key={i} className="flex items-center justify-between px-5 w-full">
-        <div className="w-4/5 flex items-center justify-start">
-          <img src={item.image} className="rounded-full w-[22%]" />
+      <div
+        key={i}
+        className="flex items-center justify-between px-5 w-full mt-2 bg-gray-50 rounded-lg p-2 hover:bg-gray-100 transition"
+      >
+        <div className="flex items-center">
+          <img
+            src={item.image}
+            className="rounded-full w-12 h-12"
+            alt={item.name}
+          />
           <p className="text-sm ml-2">{item.name}</p>
         </div>
-        <span className="w-1/5">{item.price}</span>
+        <span className="font-semibold text-gray-800">{item.price}</span>
       </div>
     );
   });
-  return (
-    <main className="flex-1 bg-[#C1CFE3]">
-      <div className="flex justify-around items-center mt-2">
-        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-4">
-          <div className="ml-7  flex flex-col items-start justify-center w-full ">
-            <p className="text-xl">Total Orders</p>
-            <div className="flex w-[85%] justify-between">
-              <h1 className="text-xl font-bold">10720</h1>
-              <img src={order_icon} alt="" />
-            </div>
-            <p>From yesterday</p>
-          </div>
-        </div>
-        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-          <div className="ml-7  flex flex-col items-start justify-center w-full ">
-            <p className="text-xl">Total Sales</p>
-            <div className="flex w-[85%] justify-between">
-              <h1 className="text-xl font-bold">N1,800,309</h1>
-              <img src={sales_icon} alt="" />
-            </div>
-            <p>From yesterday</p>
-          </div>
-        </div>
-        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-          <div className="ml-7  flex flex-col items-start justify-center w-full">
-            <p className="text-xl">Active Vendors</p>
-            <div className="flex w-[85%] justify-between">
-              <h1 className="text-xl font-bold">10720</h1>
-              <img src={vendors_icon} alt="" />
-            </div>
-            <p>From yesterday</p>
-          </div>
-        </div>
-        <div className="h-[70%] w-[23%] shadow-gray-400 shadow-xl border bg-white  border-slate-300 rounded-3xl flex flex-col items-start justify-center p-4">
-          <div className="ml-7  mx-2 flex flex-col items-start justify-center w-full">
-            <p className="text-xl">Total Users</p>
-            <div className="flex w-[85%] justify-between">
-              <h1 className="text-xl font-bold">10720</h1>
-              <img src={users} alt="" />
-            </div>
-            <p>From yesterday</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Charts and Best Sellers */}
-      <div className="flex flex-col lg:flex-row justify-between items-start mt-8 gap-4">
-        {/* Sales Bar Chart */}
-        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold text-gray-800">
-              Sales Analytics
-            </p>
-            <div className="flex gap-2 text-sm">
-              {["Daily", "Weekly", "Monthly", "Yearly"].map((period) => (
-                <p
-                  key={period}
-                  className="cursor-pointer hover:text-blue-500 transition-colors duration-200"
-                >
-                  {period}
+  return (
+    <VendorLayout>
+      <main className="flex-1 bg-[#C1CFE3] px-4 lg:px-6 overflow-y-auto">
+        {/* Statistics Overview */}
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
+          {[
+            { title: "Total Orders", count: "10720", icon: order_icon },
+            { title: "Total Sales", count: "N1,800,309", icon: sales_icon },
+            { title: "Active Vendors", count: "10720", icon: vendors_icon },
+            { title: "Total Users", count: "10720", icon: users },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="shadow-md bg-white rounded-2xl p-4 flex items-center justify-between hover:shadow-lg transition"
+            >
+              <div>
+                <p className="text-lg font-medium text-gray-700">
+                  {stat.title}
                 </p>
+                <h1 className="text-2xl font-bold mt-2">{stat.count}</h1>
+              </div>
+              <img src={stat.icon} alt={stat.title} className="w-12 h-12" />
+            </div>
+          ))}
+        </div>
+
+        {/* Analytics and Best Products */}
+        <div className="flex flex-col lg:flex-row gap-4 mt-8">
+          {/* Bar Chart */}
+          <div className="flex-1 bg-white rounded-2xl p-6 shadow hover:shadow-lg transition">
+            <h3 className="text-lg font-semibold mb-4">Sales Analytics</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={data}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Bar dataKey="sales" fill="#3D56FA" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Best Selling Products */}
+          <div className="flex-1 bg-white rounded-2xl p-6 shadow hover:shadow-lg transition">
+            <h3 className="text-lg font-semibold mb-4">
+              Best Selling Products
+            </h3>
+            <div className="overflow-y-auto max-h-96">{products}</div>
+          </div>
+        </div>
+
+        {/* Order Pie Chart and Recent Orders */}
+        <div className="flex flex-col lg:flex-row gap-4 mt-8">
+          {/* Pie Chart */}
+          <div className="w-full lg:w-1/3 bg-white rounded-2xl p-6 shadow hover:shadow-lg transition">
+            <h3 className="text-lg font-semibold mb-4">Order Status</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={data02}
+                  dataKey="value"
+                  innerRadius={60}
+                  outerRadius={100}
+                />
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="flex justify-between mt-4">
+              {[
+                { label: "Success", color: "#3D56FA", value: "79%" },
+                { label: "Pending", color: "#F7EC1B", value: "12%" },
+                { label: "Cancelled", color: "#F82A0D", value: "9%" },
+              ].map((status, i) => (
+                <div key={i} className="text-center">
+                  <div
+                    className={`h-4 w-4 rounded-full`}
+                    style={{ backgroundColor: status.color }}
+                  />
+                  <p className="text-sm">{status.label}</p>
+                  <p className="font-semibold">{status.value}</p>
+                </div>
               ))}
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={250} className="mt-12">
-            <BarChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-              barSize={20}
-            >
-              <XAxis
-                dataKey="name"
-                scale="point"
-                padding={{ left: 10, right: 10 }}
-              />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <CartesianGrid strokeDasharray="3 3" />
-              <Bar
-                dataKey="sales"
-                fill="#227BF2"
-                background={{ fill: "#eee" }}
-              />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
 
-        {/* Best Selling Products */}
-        <div className="flex-1 w-full bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 max-h-[350px] overflow-y-auto">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-lg font-semibold text-gray-800">
-              Best Selling Products
-            </h3>
-            <p className="text-sm cursor-pointer text-blue-500 hover:underline">
-              See all
-            </p>
-          </div>
-          <div>{products}</div>
-        </div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row justify-around items-center w-full space-y-5 lg:space-y-0 lg:space-x-5 px-4">
-        {/* Pie chart box */}
-        <div className="w-full lg:w-1/3 h-[400px] bg-white rounded-xl p-4">
-          <h3 className="text-start mt-1 text-xl">Order Status</h3>
-          <ResponsiveContainer width="100%" height={280}>
-            <PieChart>
-              <Pie
-                dataKey="value"
-                data={data02}
-                cx="50%" // Centering the pie horizontally
-                cy="50%" // Centering the pie vertically
-                innerRadius={50} // Increased inner radius
-                outerRadius={120} // Increased outer radius
-                fill="#227BF2"
-              />
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="flex items-center justify-between my-5 lg:my-0 w-full lg:w-4/5 mx-auto">
-            <div className="">
-              <p className="h-7 bg-[#3D56FA] w-8 text-center mx-auto"></p>
-              <p className="text-center text-sm">Success</p>
-              <span className="text-center text-base block text-[#3D56FA]">
-                79%
-              </span>
+          {/* Recent Orders */}
+          <div className="w-full lg:w-[70%]  bg-white rounded-xl p-4">
+            <div className="flex justify-between mb-2">
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-700 text-xl">Recent Orders</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-500">Sort By:</span>
+                <select className="bg-blue-100 py-1 px-2 rounded-lg">
+                  <option>Recent Orders</option>
+                  <option>Pending Orders</option>
+                  <option>Out of Stock</option>
+                  <option>Recently added products</option>
+                  <option>Delivered Items</option>
+                </select>
+              </div>
             </div>
-            <div className="">
-              <p className="h-7 bg-[#F7EC1B] w-8 text-center mx-auto"></p>
-              <p className="text-center text-sm">Pending</p>
-              <span className="text-center text-base block text-[#F7EC1B]">
-                12%
-              </span>
-            </div>
-            <div className="">
-              <p className="h-7 bg-[#F82A0D] w-8 text-center mx-auto"></p>
-              <p className="text-center text-sm">Canceled</p>
-              <span className="text-center text-base block text-[#F82A0D]">
-                9%
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Recent Orders */}
-        <div className="w-full lg:w-[70%]  bg-white rounded-xl p-4">
-          <div className="flex justify-between mb-2">
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-700 text-xl">Recent Orders</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-500">Sort By:</span>
-              <select className="bg-blue-100 py-1 px-2 rounded-lg">
-                <option>Recent Orders</option>
-                <option>Pending Orders</option>
-                <option>Out of Stock</option>
-                <option>Recently added products</option>
-                <option>Delivered Items</option>
-              </select>
-            </div>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="min-w-full table-auto border-collapse border border-gray-200">
-              <thead>
-                <tr>
-                  <th className="px-4 py-1 text-left">Order ID</th>
-                  <th className="px-4 py-1 text-left">Item</th>
-                  <th className="px-4 py-1 text-left">Date</th>
-                  <th className="px-4 py-1 text-left">Price</th>
-                  <th className="px-4 py-1 text-left">Category</th>
-                  <th className="px-4 py-1 text-left">Seller</th>
-                  <th className="px-4 py-1 text-left">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((order, index) => (
-                  <tr key={index} className="bg-white">
-                    <td className="px-4 py-[8px]">{order.id}</td>
-                    <td className="px-4 py-[8px]">{order.item}</td>
-                    <td className="px-4 py-[8px]">{order.date}</td>
-                    <td className="px-4 py-[8px]">{order.price}</td>
-                    <td className="px-4 py-[8px]">{order.category}</td>
-                    <td className="px-4 py-[8px]">{order.seller}</td>
-                    <td
-                      className={`px-4 py-1 ${
-                        order.status === "Pending"
-                          ? "text-yellow-500"
-                          : "text-blue-800"
-                      }`}
-                    >
-                      {order.status}
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="min-w-full table-auto border-collapse border border-gray-200">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-1 text-left">Order ID</th>
+                    <th className="px-4 py-1 text-left">Item</th>
+                    <th className="px-4 py-1 text-left">Date</th>
+                    <th className="px-4 py-1 text-left">Price</th>
+                    <th className="px-4 py-1 text-left">Category</th>
+                    <th className="px-4 py-1 text-left">Seller</th>
+                    <th className="px-4 py-1 text-left">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {orders.map((order, index) => (
+                    <tr key={index} className="bg-white">
+                      <td className="px-4 py-[8px]">{order.id}</td>
+                      <td className="px-4 py-[8px]">{order.item}</td>
+                      <td className="px-4 py-[8px]">{order.date}</td>
+                      <td className="px-4 py-[8px]">{order.price}</td>
+                      <td className="px-4 py-[8px]">{order.category}</td>
+                      <td className="px-4 py-[8px]">{order.seller}</td>
+                      <td
+                        className={`px-4 py-1 ${
+                          order.status === "Pending"
+                            ? "text-yellow-500"
+                            : "text-blue-800"
+                        }`}
+                      >
+                        {order.status}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </VendorLayout>
   );
 };
 

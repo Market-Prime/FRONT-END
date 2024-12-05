@@ -27,7 +27,7 @@ const navItems = [
   { icon: MessageCircle, label: "Messages", path: "/messages" },
 ];
 
-function Sidebar() {
+function DashNav() {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -104,4 +104,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default DashNav;

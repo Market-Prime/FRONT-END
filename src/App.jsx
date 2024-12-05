@@ -125,14 +125,15 @@ import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
 import AdminDashboard from "./pages/AdminDashboard/DashboardHome";
-import Layout from "../layout/AdminDashboardLayout";
+
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
+import VendorOrders from "../src/pages/VendorsPage/VendorOrders";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
-import VendorDashboard from "./pages/VendorsPage/VendorDashboard";
+
 import Product2 from "./pages/VendorsPage/Product2";
 import Content from "./pages/VendorsPage/Content";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -187,12 +188,11 @@ function AnimatedRoutes() {
           <Route path="/search" element={<SearchFilter />} />
           <Route path="/productdescription" element={<ProductDescription />} />
 
-          {/* Dashboard Route with nested routes */}
-          <Route path="/vendordashboard" element={<VendorDashboard />}>
-            <Route index element={<Content />} /> {/* Default content */}
-            <Route path="product" element={<Product2 />} />
-            <Route path="orders" element={<Orders />} />
-          </Route>
+          <Route path="/vendorDashboard" element={<Content />} />
+
+          <Route path="vendorDashboard/product" element={<Product2 />} />
+          <Route path="vendorDashboard/orders" element={<VendorOrders />} />
+          <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
@@ -202,9 +202,7 @@ function AnimatedRoutes() {
           />
           <Route path="/finalsection" element={<FinalSection />} />
           <Route path="/admindashboard" element={<AdminDashboard />} />
-          {/* Default content when no subpath is specified */}
-          {/* <Route index element={<AdminDashboard />} /> */}
-          {/* Nested paths */}
+
           <Route path="adminDashboard/product" element={<Product />} />
           <Route path="adminDashboard/orders" element={<Orders />} />
           <Route path="/account" element={<Accountmanagement />} />

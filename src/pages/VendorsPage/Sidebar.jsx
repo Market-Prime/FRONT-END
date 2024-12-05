@@ -8,96 +8,84 @@ import { HiUsers } from "react-icons/hi";
 import logo from "../../assets/Logo 1.png";
 
 const Sidebar = () => {
-  const location = useLocation(); // Get current location
-  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Function to toggle sidebar on mobile screens
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
-  // Navigation items
   const navItems = [
-    {
-      path: "/VendorDashboard",
-      label: "Dashboard",
-      icon: LuLayoutDashboard,
-    },
-    {
-      path: "/VendorDashboard/Product",
-      label: "Product",
-      icon: FaBoxes,
-    },
-    {
-      path: "/VendorDashboard/Orders",
-      label: "Orders",
-      icon: FaBoxes,
-    },
-    {
-      path: null, // Placeholder for non-link items
-      label: "Customers",
-      icon: HiUsers,
-    },
+    { path: "/VendorDashboard", label: "Dashboard", icon: LuLayoutDashboard },
+    { path: "/VendorDashboard/Product", label: "Product", icon: FaBoxes },
+    { path: "/VendorDashboard/Orders", label: "Orders", icon: FaBoxes },
+    { path: null, label: "Customers", icon: HiUsers },
   ];
 
   return (
-    <div className="flex relative">
-      {/* Toggle button for small screens */}
-      <button
-        className="lg:hidden p-3 text-blue-900 bg-white rounded-md fixed top-4 left-4 z-20 shadow-md"
-        onClick={toggleSidebar}
-      >
-        {isOpen ? "Close Sidebar" : "Open Sidebar"}
-      </button>
+    <aside
+      className={`bg-white text-blue-900 ${
+        isCollapsed ? "w-16" : "md:w-64 w-full"
+      } min-h-screen transition-all duration-300 flex flex-col shadow-lg`}
+    >
+      {/* Header Section */}
+      <div className="flex items-center justify-between px-4 py-4">
+        {!isCollapsed && (
+          <div className="md:flex flex flex-col items-center space-x-2 ">
+            <img src={logo} alt="Market Prime Logo" className="w-10" />
+            <h1 className="text-xl font-bold text-blue-900">MARKET PRIME</h1>
+          </div>
+        )}
+        <button
+          onClick={toggleSidebar}
+          className="text-blue-900 hover:bg-blue-100 rounded-lg p-2"
+        >
+          {isCollapsed ? (
+            <span className="text-lg">&#x2039;</span>
+          ) : (
+            <span className="text-lg">&#x203A;</span>
+          )}
+        </button>
+      </div>
 
-      {/* Sidebar container */}
-      <aside
-        className={`fixed top-0 left-0 w-72 bg-white h-screen p-4 transition-transform transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:relative lg:flex lg:flex-col`}
-      >
-        {/* Logo Section */}
-        <div className="flex items-center justify-center mt-9">
-          <img src={logo} alt="Market Prime Logo" className="w-14" />
-          <h1 className="text-xl font-bold text-blue-900 ml-2">
-            MARKET <br /> PRIME
-          </h1>
-        </div>
-
-        {/* Navigation Links */}
-        <div className="flex flex-col gap-5 items-start px-4 mt-10 text-[#002366] text-lg tracking-wide">
+      {/* Navigation Items */}
+      <nav className="flex-1">
+        <ul className="space-y-4 px-2">
           {navItems.map(({ path, label, icon: Icon }, index) => (
-            <Link
-              key={index}
-              to={path || "#"}
-              className={`flex w-full gap-4 items-center px-4 py-2 rounded-md cursor-pointer ${
-                location.pathname === path ? "bg-shopcolor text-white" : ""
-              }`}
-              onClick={path ? toggleSidebar : null} // Close sidebar on link click
-            >
-              <Icon
-                className={`text-xl ${
-                  location.pathname === path ? "text-white" : "text-[#002366]"
+            <li key={index}>
+              <Link
+                to={path || "#"}
+                className={`flex items-center space-x-3 p-2 rounded-lg transition-colors duration-200 ${
+                  location.pathname === path
+                    ? "bg-blue-700 text-white"
+                    : "hover:bg-blue-700 hover:text-white"
                 }`}
-              />
-              <span>{label}</span>
-            </Link>
+              >
+                <Icon className="h-6 w-6" />
+                {!isCollapsed && <span>{label}</span>}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
+      </nav>
 
-        {/* Footer Links */}
-        <div className="mt-auto flex flex-col px-4 gap-3">
-          <div className="flex gap-4 items-center px-2 py-2 cursor-pointer text-[#002366] hover:bg-gray-100 rounded-md">
-            <IoSettingsOutline className="text-2xl" />
-            <span>Settings</span>
-          </div>
-          <div className="flex gap-4 items-center px-2 py-2 cursor-pointer text-red-500 hover:bg-gray-100 rounded-md">
-            <RiLogoutCircleLine className="text-2xl" />
-            <span>Log Out</span>
-          </div>
-        </div>
-      </aside>
-    </div>
+      {/* Footer Section */}
+      <div className="space-y-2 px-2 pb-4">
+        <Link
+          to="/settings"
+          className={`flex items-center space-x-3 p-2 rounded-lg transition-colors duration-200 ${
+            location.pathname === "/settings"
+              ? "bg-blue-700 text-white"
+              : "hover:bg-blue-700 hover:text-white"
+          }`}
+        >
+          <IoSettingsOutline className="h-6 w-6" />
+          {!isCollapsed && <span>Settings</span>}
+        </Link>
+        <button className="flex items-center space-x-3 p-2 rounded-lg text-red-500 hover:bg-blue-700 hover:text-white transition-colors duration-200 w-full">
+          <RiLogoutCircleLine className="h-6 w-6" />
+          {!isCollapsed && <span>Logout</span>}
+        </button>
+      </div>
+    </aside>
   );
 };
 
