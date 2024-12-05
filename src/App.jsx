@@ -108,7 +108,7 @@
 // export default App;
 
 // New code
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
@@ -127,6 +127,7 @@ import PaymentConfirmation from "./pages/PaymentConfirmation";
 import DashboardHome from "./pages/AdminDashboard/DashboardHome";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
+import VendorDashboard from "../src/pages/VendorsPage/Content";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
 import VendorOrders from "../src/pages/VendorsPage/VendorOrders";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
@@ -146,8 +147,6 @@ import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 // import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 
 import "./styles/global.css";
-import AdminLayout1 from "./pages/AdminDashboard/layout/adminLayout1";
-import Managers from "./pages/AdminDashboard/Managers";
 
 function App() {
   useEffect(() => {
@@ -212,20 +211,14 @@ function AnimatedRoutes() {
             element={<VendorsVerifyEmail />}
           />
           <Route path="/finalsection" element={<FinalSection />} />
+          <Route path="/adminDashboard" element={<DashboardHome />} />
 
-          {/* <Route path="/admindashboard/product" element={<Product />} />
-          <Route path="/admindashboard/orders" element={<Orders />} /> */}
+          <Route path="/admindashboard/product" element={<Product />} />
+          <Route path="/admindashboard/orders" element={<Orders />} />
 
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-
-          <Route path="/admin" element={<AdminLayout1 />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="products" element={<Product />} />
-            <Route path="managers" element={<Managers />} />
-          </Route>
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route

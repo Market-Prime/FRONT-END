@@ -126,9 +126,9 @@ const Content = () => {
 
   return (
     <VendorLayout>
-      <main className="flex-1 bg-[#C1CFE3] px-4 lg:px-6 overflow-y-auto">
+      <main className="flex-1 bg-[#C1CFE3] px-4 lg:px-6 md:px-3 overflow-y-auto">
         {/* Statistics Overview */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {[
             { title: "Total Orders", count: "10720", icon: order_icon },
             { title: "Total Sales", count: "N1,800,309", icon: sales_icon },

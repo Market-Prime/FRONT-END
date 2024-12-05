@@ -3,6 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FiPlusCircle } from "react-icons/fi";
 import { OrderData } from "./ProductsData";
 import { CiMenuKebab } from "react-icons/ci";
+import Layout from "../../../layout/AdminDashboardLayout";
 
 const Orders = () => {
   const TableData = OrderData.map((item, i) => (
@@ -37,8 +38,8 @@ const Orders = () => {
   };
 
   return (
-    <div className="h-screen w-full flex">
-
+    <Layout>
+      <div className="h-screen w-full flex">
         {/* Main content */}
         <div className="bg-[#E6F7FF] w-6/6">
           {/* Filters */}
