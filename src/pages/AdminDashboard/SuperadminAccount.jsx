@@ -11,7 +11,6 @@ import axios from 'axios';
 const SuperadminAccount = () =>{
     const navigate = useNavigate();
 
-
     const [formdata, setformdata] = useState({
       psk:"",
       email:"",
@@ -56,7 +55,7 @@ const SuperadminAccount = () =>{
       
           // Redirect to Email Verification page after a delay
           setTimeout(() => {
-            navigate("/admin-confirm-account/:token");
+            navigate("/admin/login");
           }, 5000);
       
           console.log("Registration successful:", response.data);
@@ -91,11 +90,7 @@ const SuperadminAccount = () =>{
             alt="Market Prime Logo"
             className="w-14 mx-auto mb-4 rounded-xl"
           />{" "}
-          {/* Add your logo source */}
           <h2 className="text-2xl font-semibold">Setup your account</h2>
-          {/* <p className="text-gray-600 mt-2">
-            Enter your business details to create a Vendor's account
-          </p> */}
         </div>
         <form className="space-y-4">
           <div>

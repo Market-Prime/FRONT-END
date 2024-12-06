@@ -146,7 +146,14 @@ import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
 import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 // import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 
+
+
+
 import "./styles/global.css";
+import AdminLayout1 from "./pages/AdminDashboard/layout/adminLayout1";
+import Dashboard from "./pages/AdminDashboard/DashboardHome";
+import Managers from "./pages/AdminDashboard/Managers";
+
 
 function App() {
   useEffect(() => {
@@ -204,6 +211,7 @@ function AnimatedRoutes() {
             <Route path="orders" element={<Orders />} />
           </Route>
 
+
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
           <Route
@@ -211,20 +219,22 @@ function AnimatedRoutes() {
             element={<VendorsVerifyEmail />}
           />
           <Route path="/finalsection" element={<FinalSection />} />
-          <Route path="/adminDashboard" element={<DashboardHome />} />
-
-          <Route path="/admindashboard/product" element={<Product />} />
-          <Route path="/admindashboard/orders" element={<Orders />} />
-
           <Route path="/account" element={<Accountmanagement />} />
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin/verify-email/:token"
-            element={<AdminConfirmaccount />}
-          />
+          
+          {/* ------ Admin routes ----- */}
+          <Route path="/admin">
+            <Route index element={<Dashboard />} />
+            <Route path="managers" element={<Managers />} />
+
+            {/* ------ Auth routes for admin ----- */}
+            <Route path="create-super-admin" element={<SuperadminAccount />} /> 
+            <Route path="verify-email/:token" element={<AdminConfirmaccount />}/>
+            <Route path="login" element={<AdminLogin />} />
+          </Route>
+          
         </Routes>
       </AnimatePresence>
     </AuthProvider>

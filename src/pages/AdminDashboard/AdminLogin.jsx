@@ -52,14 +52,19 @@ const AdminLogin = () => {
         theme: "colored",
         style: {backgroundColor: "green"}
       }}`);
+
+      let redirectTo = "/admin";
+      const params = new URLSearchParams(
+        window.location.search
+      );
+      if (params.has("redirect"))
+        redirectTo = params.get("redirect");
       setTimeout(() => {
-        navigate("/AdminDashboard")
+        navigate(redirectTo);
       },5000);
       console.log("Login Successful", response.data);
     } catch (error) {
-      const errorMessage = error.response && error.response.data && error.response.data.detail
-        ? error.response.data.detail
-        : error.message;  
+      const errorMessage = error?.response?.data?.message || error.message;
 
         toast.error(errorMessage, {
           position: "top-right",
@@ -69,9 +74,8 @@ const AdminLogin = () => {
           pauseOnHover: true,
           draggable: true,
           theme: "colored",
-          style: { backgroundColor: "red" }, // Red background for errors
+          style: { backgroundColor: "red" },
         });  
-      console.error('Login failed:', errorMessage);
     }
   }
 

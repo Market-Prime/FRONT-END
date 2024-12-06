@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { Link } from "react-router-dom";
 import Layout from "../../../layout/AdminDashboardLayout";
+import AdminLayout1 from "./layout/adminLayout1";
 
 const Dashboard = () => {
   const orders = [
@@ -119,7 +120,7 @@ const Dashboard = () => {
   });
 
   return (
-    <Layout>
+    <AdminLayout1>
       <div className="h-screen w-full flex">
         <div className="flex justify-between relative">
           <div className="bg-[#E6F7FF] md:w-full w-[500px]">
@@ -447,7 +448,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </AdminLayout1>
   );
 };
 
