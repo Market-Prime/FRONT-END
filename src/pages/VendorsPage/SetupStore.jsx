@@ -1,41 +1,42 @@
 import { useState } from "react";
 import logo from "/src/assets/Logo 1.png";
-import { Link } from "react-router-dom";
-
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const VendorsAccount = () => {
+const SetupStore = () => {
   const navigate = useNavigate();
-  const [formdata, setformdata] = useState({
-    business_name: "",
-    email: "",
-    password: "",
-    confirm_password: "",
-    first_name: "",
-    last_name: "",
-    phone_number: "",
+
+  // State for form data
+  const [formData, setFormData] = useState({
+    bankName: "",
+    accountNumber: "",
+    accountHolderName: "",
+    bankCode: "",
+    bankType: "",
   });
 
+  // Handle input change
   const handleInputChange = (e) => {
-    setformdata({
-      ...formdata,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value, // Update the state with new input values
+    }));
   };
 
-  const submitVendor = async () => {
+  // Submit Store data
+  const submitStoreData = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
     try {
       const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/account/register/?type=vendor`,
-        formdata
+        `https://backend-server-0ddt.onrender.com/api/account/vendor/setup/store/`,
+        formData
       );
 
       toast.success(
-        response.data.message ||
-          "Registration Successful, check your email to confirm your account",
+        response.data.message || "Store details submission successful.",
         {
           position: "top-right",
           autoClose: 5000,
@@ -47,9 +48,11 @@ const VendorsAccount = () => {
           style: { backgroundColor: "green" },
         }
       );
+
+      // Navigate to confirmation page
       setTimeout(() => {
-        navigate("/vendor-email-confirmation/:token");
-      }, 5000);
+        navigate("/store-confirmation");
+      }, 3000);
     } catch (error) {
       const errorMessage =
         error.response && error.response.data && error.response.data.error
@@ -79,24 +82,24 @@ const VendorsAccount = () => {
             alt="Market Prime Logo"
             className="w-16 mx-auto mb-4 rounded-full shadow-md"
           />
-          <h2 className="text-3xl font-bold text-blue-800">Vendor Account</h2>
+          <h2 className="text-3xl font-bold text-blue-800">
+            Vendor Account Setup (Store Details)
+          </h2>
           <p className="text-gray-600 mt-2">
-            Enter your business details to create a Vendor's account.
+            Enter your business bank details to complete your setup.
           </p>
         </div>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={submitStoreData}>
           {[
-            { name: "business_name", label: "Business Name", type: "text" },
-            { name: "first_name", label: "First Name", type: "text" },
-            { name: "last_name", label: "Last Name", type: "text" },
-            { name: "email", label: "Email Address", type: "email" },
-            { name: "phone_number", label: "Phone Number", type: "text" },
-            { name: "password", label: "Password", type: "password" },
+            { name: "bankName", label: "Bank Name", type: "text" },
+            { name: "accountNumber", label: "Account Number", type: "text" },
             {
-              name: "confirm_password",
-              label: "Confirm Password",
-              type: "password",
+              name: "accountHolderName",
+              label: "Account Holder Name",
+              type: "text",
             },
+            { name: "bankCode", label: "Bank Code", type: "text" },
+            { name: "bankType", label: "Bank Type", type: "text" },
           ].map((field) => (
             <div key={field.name}>
               <label
@@ -109,33 +112,24 @@ const VendorsAccount = () => {
                 type={field.type}
                 name={field.name}
                 id={field.name}
+                value={formData[field.name]}
                 className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                placeholder={`Enter ${field.label.toLowerCase()}`}
-                onChange={handleInputChange}
+                onChange={handleInputChange} // Attach handleInputChange to the onChange event
+                required
               />
             </div>
           ))}
 
           <button
-            type="button"
-            onClick={submitVendor}
+            type="submit" // Change button type to submit
             className="w-full py-3 mt-6 text-white bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-lg transform transition-transform duration-300 hover:scale-105"
           >
-            Create Account
+            Submit Store Details
           </button>
-
-          <p className="text-center mt-4 text-gray-600">
-            Already have an account?{" "}
-            <Link to="/VendorsLogin">
-              <span className="text-blue-600 font-semibold hover:underline">
-                Sign in
-              </span>
-            </Link>
-          </p>
         </form>
       </div>
     </div>
   );
 };
 
-export default VendorsAccount;
+export default SetupStore;
