@@ -8,31 +8,57 @@ import { useNavigate } from "react-router-dom";
 const SetupStore = () => {
   const navigate = useNavigate();
 
-  // State for form data
+  // State for form data including the new fields
   const [formData, setFormData] = useState({
     bankName: "",
     accountNumber: "",
     accountHolderName: "",
     bankCode: "",
     bankType: "",
+    businessAddress: "",
+    businessDescription: "",
+    storeLogo: null,
+    storeSplashImage: null,
+    niches: "",
   });
 
-  // Handle input change
+  // Handle input change for text and file inputs
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value, // Update the state with new input values
+      [name]: value,
+    }));
+  };
+
+  // Handle file input changes
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files[0], // Store the first file from the file input
     }));
   };
 
   // Submit Store data
   const submitStoreData = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
+
+    // Prepare form data for submission
+    const formDataToSubmit = new FormData();
+    for (const key in formData) {
+      formDataToSubmit.append(key, formData[key]);
+    }
+
     try {
       const response = await axios.post(
         `https://backend-server-0ddt.onrender.com/api/account/vendor/setup/store/`,
-        formData
+        formDataToSubmit,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Use multipart/form-data for file uploads
+          },
+        }
       );
 
       toast.success(
@@ -86,11 +112,12 @@ const SetupStore = () => {
             Vendor Account Setup (Store Details)
           </h2>
           <p className="text-gray-600 mt-2">
-            Enter your business bank details to complete your setup.
+            Enter your business and bank details to complete your setup.
           </p>
         </div>
         <form className="space-y-6" onSubmit={submitStoreData}>
           {[
+            // Bank details
             { name: "bankName", label: "Bank Name", type: "text" },
             { name: "accountNumber", label: "Account Number", type: "text" },
             {
@@ -114,14 +141,106 @@ const SetupStore = () => {
                 id={field.name}
                 value={formData[field.name]}
                 className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                onChange={handleInputChange} // Attach handleInputChange to the onChange event
+                onChange={handleInputChange}
                 required
               />
             </div>
           ))}
 
+          {/* Business Address */}
+          <div>
+            <label
+              htmlFor="businessAddress"
+              className="block text-gray-700 font-semibold"
+            >
+              Business Address
+            </label>
+            <input
+              type="text"
+              name="businessAddress"
+              id="businessAddress"
+              value={formData.businessAddress}
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          {/* Business Description */}
+          <div>
+            <label
+              htmlFor="businessDescription"
+              className="block text-gray-700 font-semibold"
+            >
+              Business Description
+            </label>
+            <textarea
+              name="businessDescription"
+              id="businessDescription"
+              value={formData.businessDescription}
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          {/* Store Logo */}
+          <div>
+            <label
+              htmlFor="storeLogo"
+              className="block text-gray-700 font-semibold"
+            >
+              Store Logo
+            </label>
+            <input
+              type="file"
+              name="storeLogo"
+              id="storeLogo"
+              accept="image/*"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+
+          {/* Store Splash Image */}
+          <div>
+            <label
+              htmlFor="storeSplashImage"
+              className="block text-gray-700 font-semibold"
+            >
+              Store Splash Image
+            </label>
+            <input
+              type="file"
+              name="storeSplashImage"
+              id="storeSplashImage"
+              accept="image/*"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+
+          {/* Niches */}
+          <div>
+            <label
+              htmlFor="niches"
+              className="block text-gray-700 font-semibold"
+            >
+              Niches (comma separated)
+            </label>
+            <input
+              type="text"
+              name="niches"
+              id="niches"
+              value={formData.niches}
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
           <button
-            type="submit" // Change button type to submit
+            type="submit"
             className="w-full py-3 mt-6 text-white bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-lg transform transition-transform duration-300 hover:scale-105"
           >
             Submit Store Details
