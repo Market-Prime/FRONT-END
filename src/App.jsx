@@ -134,7 +134,8 @@ import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
 import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
-
+import SetupKYC from "./pages/VendorsPage/SetupKYC";
+import SetupStore from "./pages/VendorsPage/SetupStore";
 import Product2 from "./pages/VendorsPage/Product2";
 import Content from "./pages/VendorsPage/Content";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -214,10 +215,13 @@ function AnimatedRoutes() {
 
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
+          <Route path="/vendorSetupKYC" element={<SetupKYC />} />
+          <Route path="/vendorSetupStore" element={<SetupStore />} />
           <Route
             path="/vendorsverifiedemail"
             element={<VendorsVerifyEmail />}
           />
+
           <Route path="/finalsection" element={<FinalSection />} />
           <Route path="/account" element={<Accountmanagement />} />
 
