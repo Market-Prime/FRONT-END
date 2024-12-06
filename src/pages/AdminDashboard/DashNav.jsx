@@ -37,7 +37,7 @@ function DashNav() {
     <aside
       className={`bg-white text-blue-900 ${
         isCollapsed ? "w-16" : "w-64"
-      } min-h-screen transition-all duration-300 flex flex-col shadow-xl shadow-black`}
+      } min-h-screen transition-all duration-300 flex flex-col shadow-lg`}
     >
       {/* Header Section */}
       <div className="flex items-center justify-between px-4 py-4">
