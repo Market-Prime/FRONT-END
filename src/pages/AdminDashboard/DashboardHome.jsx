@@ -123,10 +123,10 @@ const Dashboard = () => {
     <AdminLayout1>
       <div className="h-screen w-full flex">
         <div className="flex justify-between relative">
-          <div className="bg-[#E6F7FF] md:w-full w-[500px]">
+          <div className="bg-[#E6F7FF] md:w-full w-[360px] px-4">
             <div className=" bg-[#E6F7FF]">
               {/* Analytics Card */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
                 <div className="h-[70%] w-full shadow-gray-400 shadow-xl border border-slate-300 bg-white rounded-3xl flex flex-col items-start justify-center p-10">
                   <div className="ml-7 flex flex-col items-start justify-center w-full">
                     <p className="text-xl">Total Orders</p>
@@ -222,29 +222,37 @@ const Dashboard = () => {
                 </div>
 
                 {/* Bar chart box */}
-                <div className="md:w-[49%] w-full py-0 bg-white rounded-xl">
-                  <div className="flex items-center justify-between w-full py-2 mt-2 px-10">
-                    <p className="w-1/2 text-xl">Sales Analytics</p>
-                    <div className="flex items-center justify-between w-1/2">
-                      <p className="text-xl">Daily</p>
-                      <p className="text-xl">Weekly</p>
-                      <p className="text-xl">Monthly</p>
-                      <p className="text-xl">Yearly</p>
+                <div className="md:w-[49%] w-full py-0 bg-white rounded-xl shadow-lg">
+                  <div className="flex items-center justify-between w-full py-4 mt-2 px-4 md:px-10 flex-wrap">
+                    <p className="w-full md:w-1/2 text-lg md:text-xl font-semibold mb-2 md:mb-0">
+                      Sales Analytics
+                    </p>
+                    <div className="flex items-center justify-between w-full md:w-1/2 space-x-2 md:space-x-4">
+                      <p className="text-sm md:text-lg cursor-pointer hover:text-blue-600">
+                        Daily
+                      </p>
+                      <p className="text-sm md:text-lg cursor-pointer hover:text-blue-600">
+                        Weekly
+                      </p>
+                      <p className="text-sm md:text-lg cursor-pointer hover:text-blue-600">
+                        Monthly
+                      </p>
+                      <p className="text-sm md:text-lg cursor-pointer hover:text-blue-600">
+                        Yearly
+                      </p>
                     </div>
                   </div>
                   <ResponsiveContainer
                     width="100%"
-                    height={400}
-                    className="mt-12"
+                    height={300} // Adjust for better responsiveness
+                    className="mt-6"
                   >
                     <BarChart
-                      width={500}
-                      height={300}
                       data={data}
                       margin={{
                         top: 5,
-                        right: 30,
-                        left: 20,
+                        right: 20,
+                        left: 10,
                         bottom: 5,
                       }}
                       barSize={20}
@@ -266,6 +274,7 @@ const Dashboard = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
+
                 {/* Best selling section */}
                 <div className="md:w-[24%] w-full bg-white rounded-xl">
                   <div className="flex items-center justify-between py-2 px-5">
