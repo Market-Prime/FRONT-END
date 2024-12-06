@@ -120,7 +120,7 @@ const Dashboard = () => {
   });
 
   return (
-    <AdminLayout1>
+    <Layout>
       <div className="h-screen w-full flex">
         <div className="flex justify-between relative">
           <div className="bg-[#E6F7FF] md:w-full w-[360px] px-4">
@@ -457,7 +457,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </AdminLayout1>
+    </Layout>
   );
 };
 
