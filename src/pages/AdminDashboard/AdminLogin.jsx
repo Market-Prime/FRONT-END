@@ -38,9 +38,8 @@ const AdminLogin = () => {
       },
       );
 
-      const token= response.data.access;
-      localStorage.setItem("authToken", token);
-      console.log("My token", token);
+      localStorage.setItem("accessToken", response.data?.access);
+      localStorage.setItem("refreshToken", response.data?.refresh)
       toast.success(`Login Successful: ${response.data.message || 'Welcome' , {
         position:"top-right",
         autoClose: 5000,

@@ -11,11 +11,11 @@ const ToastConfig = () => {
     return {
         success: {
             ..._default,
-            style: { backgroundColor: "green" },
+            style: { backgroundColor: "#017501" },
         },
         error: {
             ..._default,
-            style: { backgroundColor: "red" },
+            style: { backgroundColor: "#EA5454" },
         },
     };
 };

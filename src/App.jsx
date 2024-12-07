@@ -151,9 +151,12 @@ import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 
 
 import "./styles/global.css";
-import AdminLayout1 from "./pages/AdminDashboard/layout/adminLayout1";
+import "./styles/adminDashboard.css";
 import Dashboard from "./pages/AdminDashboard/DashboardHome";
 import Managers from "./pages/AdminDashboard/Managers";
+import ManagerDetails from "./pages/AdminDashboard/ManagerDetails";
+import Vendors from "./pages/AdminDashboard/Vendors";
+import VendorDetails from "./pages/AdminDashboard/VendorDetails";
 
 
 function App() {
@@ -231,7 +234,12 @@ function AnimatedRoutes() {
           {/* ------ Admin routes ----- */}
           <Route path="/admin">
             <Route index element={<Dashboard />} />
+
             <Route path="managers" element={<Managers />} />
+            <Route path="manager/:staff_id" element={<ManagerDetails />}/>
+
+            <Route path="vendors" element={<Vendors />} />
+            <Route path="vendor/:store_id" element={<VendorDetails />}/>
 
             {/* ------ Auth routes for admin ----- */}
             <Route path="create-super-admin" element={<SuperadminAccount />} /> 

@@ -1,60 +1,82 @@
 import { LuRefreshCw } from "react-icons/lu";
 import { IoMdAdd } from "react-icons/io";
 import ManagersListing from "./viewChunks/ManagersListing";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormModal from "./viewChunks/FormModal";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
-import AdminLayout1 from "./layout/adminLayout1";
-
-const dummy = [
-    {
-        first_name: "Eze",
-        last_name: "Theophilus",
-        staff_id: "MP-A-11091",
-        work_status: true,
-        profile_image: "https://picsum.photos/200",
-    },
-    {
-        first_name: "Chmod",
-        last_name: "Taedez",
-        staff_id: "MP-A-11092",
-        work_status: true,
-        profile_image: "https://picsum.photos/200",
-    },
-    {
-        first_name: "David",
-        last_name: "Akpan",
-        staff_id: "MP-A-11089",
-        work_status: true,
-        profile_image: "https://picsum.photos/200",
-    },
-    {
-        first_name: "Jeremy",
-        last_name: "Lawyer",
-        staff_id: "MP-A-11040",
-        work_status: false,
-        profile_image: "https://picsum.photos/200",
-    },
-    {
-        first_name: "David",
-        last_name: "Akpan",
-        staff_id: "MP-A-11089",
-        work_status: true,
-        profile_image: "https://picsum.photos/200",
-    },
-    {
-        first_name: "Jeremy",
-        last_name: "Lawyer",
-        staff_id: "MP-A-11040",
-        work_status: false,
-        profile_image: "https://picsum.photos/200",
-    },
-];
+import Layout from "../../../layout/AdminDashboardLayout";
+import ApiClient from "../../api/admin";
+import toastConfig from "../../helpers/react-toastConfig";
 
 const Managers = () => {
+    const [managersData, setManagersData] = useState([]);
+
+    const [currentManagerIdOnAction, setCurrentManagerIdOnAction] = useState();
+    const [currentManagerIdStatus, setCurrentManagerIdStatus] = useState(true);
+
+    const getManagers = () => {
+        ApiClient.getManagers()
+            .then((data) => {
+                setManagersData(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(() => {
+        ApiClient && getManagers();
+    }, [ApiClient]);
+
+    const createManager = () => {
+        ApiClient.createManager(formdata)
+            .then((data) => {
+                setCreateFormActive(false);
+                toast.success(data.message, toastConfig.success);
+                getManagers();
+            })
+            .catch((err) => {
+                toast.error(err.message || err, toastConfig.error);
+            });
+    };
+
+    const deleteManager = () => {
+        ApiClient.deleteManager(currentManagerIdOnAction)
+            .then((data) => {
+                console.log(data);
+                setDeleteModalActive(false);
+                toast.success(data.message, toastConfig.success);
+                getManagers();
+            })
+            .catch((err) => {
+                toast.error(err.message || err, toastConfig.error);
+            });
+    };
+
+    const toogleManagerState = () => {
+        ApiClient.toogleManagerStatus(
+            disableModalPSK,
+            currentManagerIdOnAction,
+            disableModalAction
+        )
+            .then((data) => {
+                console.log(data);
+                setDisableModalActive(false);
+                toast.success(data.message, toastConfig.success);
+                getManagers();
+            })
+            .catch((err) => {
+                toast.error(err.message || err, toastConfig.error);
+            });
+    };
+
     const [createFormActive, setCreateFormActive] = useState(false);
+    const [deleteModalActive, setDeleteModalActive] = useState(false);
+    const [disableModalActive, setDisableModalActive] = useState(false);
+    const [disableModalAction, setDisableModalAction] = useState(false); //false = disable, true=enable
+
+    const [disableModalPSK, setDisableModalPSK] = useState();
 
     const [formdata, setformdata] = useState({
         psk: "",
@@ -71,19 +93,17 @@ const Managers = () => {
         });
     };
 
-    const createManager = async () => {
-        try {
-            const response = await axios.post("");
-        } catch (error) {}
-    };
-
     return (
-        <AdminLayout1>
+        <Layout>
+            <ToastContainer />
             <div className="managers">
                 <div className="head flex flex-col gap-2 sticky top-0 z-10">
                     <h1>Managers</h1>
                     <div className="actions flex justify-end gap-4">
-                        <button className="action flex gap-1 p-2 items-center justify-between bg-sky-100 rounded-lg hover:bg-sky-200 transition-all">
+                        <button
+                            onClick={getManagers}
+                            className="action flex gap-1 p-2 items-center justify-between bg-sky-100 rounded-lg hover:bg-sky-200 transition-all"
+                        >
                             <LuRefreshCw />
                             <span>Refresh</span>
                         </button>
@@ -97,23 +117,18 @@ const Managers = () => {
                     </div>
                 </div>
                 <div className="flex flex-col gap-4 p-2 py-6">
-                    <div className="flex items-center justify-between px-6 py-2 bg-blue-700">
-                        <p className="font-bold text-sm text-white">
-                            Profile Image
-                        </p>
-                        <p className="font-bold text-sm text-white">Name</p>
-                        <p className="font-bold text-sm text-white">Staff-id</p>
-                        <p className="font-bold text-sm text-white">Status</p>
-                        <p className="font-bold text-sm text-white">Actions</p>
-                    </div>
-                    {dummy.map((data) => (
+                    {managersData.map((data) => (
                         <ManagersListing
-                            key={data.staff_id}
-                            first_name={data.first_name}
-                            last_name={data.last_name}
-                            profile_image={data.profile_image}
+                            key={data?.staff_id}
+                            first_name={data?.user?.first_name}
+                            last_name={data?.user?.last_name}
+                            profile_image={data.admin_img}
                             work_status={data.work_status}
                             staff_id={data.staff_id}
+                            setIdActive={setCurrentManagerIdOnAction}
+                            openDeleteModal={() => setDeleteModalActive(true)}
+                            setDisableAction={setDisableModalAction}
+                            openDisableModal={setDisableModalActive}
                         />
                     ))}
                 </div>
@@ -133,7 +148,7 @@ const Managers = () => {
                                         name="psk"
                                         className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                                         placeholder="Enter your PassKey"
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                                 <div>
@@ -145,7 +160,7 @@ const Managers = () => {
                                         name="first_name"
                                         className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                                         placeholder="Enter Manager's first name"
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
@@ -158,7 +173,7 @@ const Managers = () => {
                                         name="last_name"
                                         className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                                         placeholder="Enter Manager's last name"
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
@@ -171,7 +186,7 @@ const Managers = () => {
                                         name="email"
                                         className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                                         placeholder="Enter Manager's email address"
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
@@ -184,12 +199,12 @@ const Managers = () => {
                                         name="phone_number"
                                         className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                                         placeholder="Enter Manager's phone number"
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
 
                                 <Link
-                                    // onClick={submitAdmin}
+                                    onClick={createManager}
                                     to=""
                                     className="w-full py-3 mt-6 block text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
                                 >
@@ -199,8 +214,69 @@ const Managers = () => {
                         </div>
                     </FormModal>
                 )}
+                {deleteModalActive && (
+                    <FormModal close={() => setDeleteModalActive(false)}>
+                        <div className="py-4 px-2 bg-white rounded-md flex flex-col w-full max-w-lg shadow-lg sm:m-x-2">
+                            <h1 className="font-semibold text-center">
+                                Delete Manager:{" "}
+                                <em>{currentManagerIdOnAction}</em>
+                            </h1>
+                            <div className="flex items-center justify-around p-3 mt-4">
+                                <button
+                                    className="py-1 px-3 hover:shadow-md font-semibold rounded-md bg-red-600 text-gray-200"
+                                    onClick={deleteManager}
+                                >
+                                    Delete
+                                </button>
+                                <button
+                                    className="py-1 px-3 hover:shadow-md font-semibold rounded-md bg-gray-500 text-gray-200"
+                                    onClick={() => setDeleteModalActive(false)}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </FormModal>
+                )}
+                {disableModalActive && (
+                    <FormModal close={() => setDisableModalActive(false)}>
+                        <div className="py-4 px-2 bg-white rounded-md flex flex-col w-full max-w-lg shadow-lg sm:m-x-2">
+                            <h1 className="font-semibold text-center">
+                                {disableModalAction
+                                    ? "Enable Admin "
+                                    : "Disable Admin "}
+                                <em>{currentManagerIdOnAction}</em>
+                            </h1>
+
+                            <div>
+                                <label className="block text-gray-700">
+                                    PassKey
+                                </label>
+                                <input
+                                    type="text"
+                                    name="psk"
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    placeholder="Enter PassKey"
+                                    onChange={(e) => {
+                                        setDisableModalPSK(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            <div className="flex items-center justify-center mt-8">
+                                <button
+                                    className="py-2 px-6 bg-blue-600 rounded-md text-white font-semibold hover:shadow-lg hover:bg-blue-500"
+                                    onClick={toogleManagerState}
+                                >
+                                    {disableModalAction
+                                        ? "Enable Admin "
+                                        : "Disable Admin "}
+                                </button>
+                            </div>
+                        </div>
+                    </FormModal>
+                )}
             </div>
-        </AdminLayout1>
+        </Layout>
     );
 };
 

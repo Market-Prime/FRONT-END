@@ -1,9 +1,9 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
-import profile from "../../assets/Filtered-Images/profile-pic.png";
+import profile from "../../assets/admin-avatar.png";
 
-const Header = () => {
+const Header = ({staffId, name, image, type}) => {
   return (
     <div className="flex items-center justify-between bg-white p-3 shadow-md">
       {/* Search Bar */}
@@ -20,7 +20,7 @@ const Header = () => {
       <div className="flex items-center space-x-3">
         {/* Profile Icon */}
         <img
-          src={profile}
+          src={image || profile}
           alt="Profile"
           className="w-10 h-10 rounded-full object-cover sm:w-12 sm:h-12"
         />
@@ -28,9 +28,10 @@ const Header = () => {
         {/* Profile Details (hidden on small screens) */}
         <div className="hidden md:flex flex-col">
           <p className="flex text-lg font-medium items-center">
-            Akpan David <FaAngleDown className="ml-1 text-gray-600" />
+            {name} <FaAngleDown className="ml-1 text-gray-600" />
           </p>
-          <p className="text-sm text-blue-600 font-semibold">Super Admin</p>
+          <p className="text-sm text-blue-600 font-semibold">{type}</p>
+          <p className="text-sm text-blue-600 font-semibold">{staffId}</p>
         </div>
       </div>
     </div>
