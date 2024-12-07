@@ -1,0 +1,50 @@
+.admin-header{
+    min-height: 4rem;
+    z-index: 1;
+    width: calc(100% - 6rem);
+}
+.side-pane{
+    min-width: 6rem;
+}
+.side-pane .label{
+    display: none;
+}
+.side-pane:hover .label{
+    display: unset;
+}
+.admin-main{
+    width: 100%;
+    height: var(100% - 4rem);
+    overflow: scroll;
+    margin-top: 4.6rem;
+    overflow-x: hidden;
+    background-color: var(--bg_secondary);
+}
+.main-cont{
+    width: calc(100% - 6rem);
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.confirm-em{
+    height: 100vh;
+}
+
+
+.managers{
+
+}
+.managers .head {
+    background-color: var(--bg_color_primary);
+    padding: .5em;
+}
+.managers .head h1{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+.managers .action span{
+    font-weight: 600;
+    font-size: .9em;
+}

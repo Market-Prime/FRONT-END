@@ -108,7 +108,7 @@
 // export default App;
 
 // New code
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
@@ -124,16 +124,18 @@ import EmailConfirmation from "./pages/EmailConfirmation";
 import ProductDescription from "./pages/ProductDescription/ProductDescription";
 import PaymentModal from "./pages/PaymentModal";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
-import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import DashboardHome from "./pages/AdminDashboard/DashboardHome";
 import Product from "./pages/AdminDashboard/Product";
 import Orders from "./pages/AdminDashboard/Orders";
+import VendorDashboard from "../src/pages/VendorsPage/Content";
 import VendorsAccount from "./pages/VendorsPage/VendorsAccount";
+import VendorOrders from "../src/pages/VendorsPage/VendorOrders";
 import VendorsLogin from "./pages/VendorsPage/VendorsLogin";
-import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation"
+import Vendoremailconfirmation from "./pages/VendorsPage/Vendoremailconfirmation";
 import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
 import FinalSection from "./pages/VendorsPage/FinalSection";
-import VendorDashboard from "./pages/VendorsPage/VendorDashboard";
+import SetupKYC from "./pages/VendorsPage/SetupKYC";
+import SetupStore from "./pages/VendorsPage/SetupStore";
 import Product2 from "./pages/VendorsPage/Product2";
 import Content from "./pages/VendorsPage/Content";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -144,6 +146,8 @@ import SuperadminAccount from "./pages/AdminDashboard/SuperadminAccount";
 import AdminConfirmaccount from "./pages/AdminDashboard/AdminConfirmaccount";
 import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 // import VendorsVerifyEmail from "./pages/VendorsPage/VendorsVerifiedEmail";
+
+import "./styles/global.css";
 
 function App() {
   useEffect(() => {
@@ -175,6 +179,7 @@ function AnimatedRoutes() {
           <Route path="/virtualtryon" element={<VirtualTryOn />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
           <Route
             path="/email-confirmation/:token"
             element={<EmailConfirmation />}
@@ -202,11 +207,15 @@ function AnimatedRoutes() {
 
           <Route path="/vendorsaccount" element={<VendorsAccount />} />
           <Route path="/vendorslogin" element={<VendorsLogin />} />
+          <Route path="/vendorSetupKYC" element={<SetupKYC />} />
+          <Route path="/vendorSetupStore" element={<SetupStore />} />
           <Route
             path="/vendorsverifiedemail"
             element={<VendorsVerifyEmail />}
           />
+
           <Route path="/finalsection" element={<FinalSection />} />
+          <Route path="/adminDashboard" element={<DashboardHome />} />
 
           <Route path="/admindashboard/product" element={<Product />} />
           <Route path="/admindashboard/orders" element={<Orders />} />
@@ -215,11 +224,11 @@ function AnimatedRoutes() {
 
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          <Route path="/admindashboard" element={<AdminDashboardLayout />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="products" element={<Product />} />
-          </Route>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/verify-email/:token"
+            element={<AdminConfirmaccount />}
+          />
         </Routes>
       </AnimatePresence>
     </AuthProvider>
