@@ -101,14 +101,14 @@
 
 
 .add-more {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 15px;
   background-color: #007bff; /* Blue color */
   color: white;
   border: none;
   border-radius: 35px;
   cursor: pointer;
-  width: 50%; /* Adjust width as needed */
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center; /* Center the text vertically */
@@ -120,14 +120,14 @@
 }
 .checkout
  {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 15px;
   background-color: #072f5a; /* Blue color */
   color: white;
   border: none;
   border-radius: 35px;
   cursor: pointer;
-  width: 50%; /* Adjust width as needed */
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center; /* Center the text vertically */
