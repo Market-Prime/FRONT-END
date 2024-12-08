@@ -1,27 +1,57 @@
-import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Sidebar from "../src/pages/AdminDashboard/DashNav";
-import Navbar from "../src/pages/AdminDashboard/Header";
+import Header from "../src/pages/AdminDashboard/Header";
+import ApiClient from "../src/api/admin";
 
-const DashboardLayout = () => {
-  return (
-    <div className="flex h-screen">
-      {/* Sidebar - Responsive Width */}
-      <div className="lg:w-64 w-20 transition-all duration-300 bg-white z-10 lg:static fixed">
-        <Sidebar />
-      </div>
+function Layout({ children }) {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Navbar */}
-        <Navbar />
+    const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+    const [userDetails, setUserDetails] = useState(null);
 
-        {/* Scrollable Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-4">
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
-};
+    useEffect(() => {
+        const fetchData = () => {
+            ApiClient.loadProfile()
+                .then((data) => {
+                    setUserDetails(data);
+                })
+                .catch((error) => {
+                    console.log("Error: ", error);
+                });
+        };
+        ApiClient && fetchData();
+    }, [ApiClient]);
 
-export default DashboardLayout;
+    return (
+        <div className="flex h-screen bg-gray-100">
+            {/* Sidebar */}
+            <Sidebar isSuperAdmin={userDetails?.admin_class == 0} />
+
+            {/* Main Content Area */}
+            <div
+                className={`flex flex-col flex-1 overflow-hidden transition-all duration-300 ${
+                    isSidebarOpen ? "ml-64" : "ml-0 w-[70%]"
+                }`}
+            >
+                <Header
+                    onToggleSidebar={toggleSidebar}
+                    staffId={userDetails?.staff_id}
+                    type={
+                        userDetails?.admin_class == 0
+                            ? "Super Admin"
+                            : "Manager"
+                    }
+                    name={`${userDetails?.user?.last_name || "user"} ${
+                        userDetails?.user?.first_name || ""
+                    }`}
+                    image={userDetails?.admin_img}
+                />
+                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+                    {children}
+                </main>
+            </div>
+        </div>
+    );
+}
+
+export default Layout;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo 1.png";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
@@ -10,49 +9,48 @@ import { useAuth } from "../pages/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isLoggedIn, logout } = useAuth();
+
+  const [isScrolled, setIsScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
+  const navLinks = ["Home", "Men", "Women", "Collections"];
+  const dropdownLinks = isLoggedIn
+    ? [
+        { name: "My Account", path: "/account" },
+        { name: "Logout", action: logout },
+      ]
+    : [
+        { name: "Login", path: "/login" },
+        { name: "Register", path: "/signup" },
+      ];
 
-  const toggleSearchBox = () => {
-    setShowSearchBox(!showSearchBox);
-  };
+  // Toggle search box visibility
+  const toggleSearchBox = () => setShowSearchBox((prev) => !prev);
 
-  const handleSearchInput = (e) => {
-    setSearchQuery(e.target.value);
-  };
+  // Toggle modal for small screens
+  const toggleModal = () => setShowModal((prev) => !prev);
 
+  // Toggle user dropdown menu
+  const toggleUserDropdown = () => setShowUserDropdown((prev) => !prev);
+
+  // Handle search input and navigation
   const handleSearch = () => {
     console.log("Searching for:", searchQuery);
     navigate("/search");
   };
 
-  const [showUserDropdown, setShowUserDropdown] = useState(false);
-  const { isLoggedIn, logout } = useAuth();
-
-  const toggleUserDropdown = () => {
-    setShowUserDropdown(!showUserDropdown);
-  };
-
-  // Add scroll listener
+  // Listen for scroll events to toggle sticky navbar style
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -61,56 +59,54 @@ const Navbar = () => {
       <div
         className={`header ${
           isScrolled ? "bg-topdealbg shadow-2xl text-black" : "bg-transparent"
-        } fixed z-50 top-0 py-2 px-12 ml-0 flex items-center justify-between w-full transition-all duration-300`}
+        } fixed z-50 top-0 py-2 px-12 flex items-center justify-between w-full transition-all duration-300`}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center">
           <img src={logo} alt="MarketPrime Logo" className="h-14 rounded-xl" />
         </Link>
   
-        {/* Navbar Links for larger screens */}
-        <ul className="hidden lg:flex gap-12 text-2xl ml-10 font-bold font-small">
-          {["Home", "Men", "Women", "Collections"].map((item) => (
+        {/* Navbar Links (Desktop View) */}
+        <ul className="hidden lg:flex gap-12 text-2xl ml-10 font-bold">
+          {navLinks.map((link) => (
             <li
-              key={item}
+              key={link}
               className="cursor-pointer hover:text-blue-800 transition duration-300"
             >
-              {item}
+              {link}
             </li>
           ))}
         </ul>
   
         {/* Icons Section */}
         <div className="flex items-center gap-3">
-          {/* Search Icon and Box */}
-          <div className="relative flex items-center">
+          {/* Search Box */}
+          <div className="relative">
             <div
               className="h-12 w-12 flex items-center justify-center hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
               onClick={toggleSearchBox}
             >
-              <CiSearch className="text-3xl text-black font-bold" />
+              <CiSearch className="text-3xl text-black" />
             </div>
-  
-            {/* Search Box */}
             {showSearchBox && (
-              <div className="ml-4 flex items-center bg-white shadow-md rounded-full pl-4 pr-2 py-2 w-[400px] transition-all duration-300">
+              <div className="absolute top-14 right-0 bg-white shadow-md rounded-full pl-4 pr-2 py-2 w-[400px]">
                 <input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
-                  onChange={handleSearchInput}
-                  className="flex-grow p-2 border-none outline-none text-gray-600"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-grow p-2 outline-none text-gray-600"
                 />
                 <button
                   onClick={handleSearch}
-                  className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-600 transition duration-300"
+                  className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-600"
                 >
                   Go
                 </button>
               </div>
             )}
           </div>
-  
+
           {/* User Dropdown */}
           <div className="relative">
             <div
@@ -119,37 +115,32 @@ const Navbar = () => {
             >
               <AiOutlineUser className="text-2xl text-gray-600" />
             </div>
-  
             {showUserDropdown && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
                 <ul className="text-gray-700">
-                  {isLoggedIn ? (
-                    <>
-                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link to="/account">My Account</Link>
-                      </li>
+                  {dropdownLinks.map((link) =>
+                    link.path ? (
                       <li
+                        key={link.name}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                        onClick={logout}
                       >
-                        Logout
+                        <Link to={link.path}>{link.name}</Link>
                       </li>
-                    </>
-                  ) : (
-                    <>
-                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link to="/login">Login</Link>
+                    ) : (
+                      <li
+                        key={link.name}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={link.action}
+                      >
+                        {link.name}
                       </li>
-                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link to="/signup">Register</Link>
-                      </li>
-                    </>
+                    )
                   )}
                 </ul>
               </div>
             )}
           </div>
-  
+
           {/* Cart Icon */}
           <Link to="/cart">
             <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
@@ -157,18 +148,26 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
+
+        {/* Hamburger Menu for Mobile */}
+        <div
+          className="lg:hidden flex items-center justify-center h-12 w-12 hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
+          onClick={toggleModal}
+        >
+          <RxHamburgerMenu className="text-2xl text-black" />
+        </div>
       </div>
-  
-      {/* Dropdown Menu for small screens */}
+
+      {/* Dropdown Menu for Small Screens */}
       {showModal && (
         <div className="lg:hidden flex flex-col items-center bg-white py-6 shadow-md absolute top-[85px] w-full z-40">
           <ul className="flex flex-col gap-6 text-lg text-gray-700">
-            {["Men", "Women", "Shoes", "Bags & Belt", "Jewelries"].map((item) => (
+            {navLinks.map((link) => (
               <li
-                key={item}
+                key={link}
                 className="cursor-pointer hover:text-purple-600 transition duration-300"
               >
-                {item}
+                {link}
               </li>
             ))}
           </ul>

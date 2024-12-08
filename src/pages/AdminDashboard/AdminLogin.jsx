@@ -38,9 +38,8 @@ const AdminLogin = () => {
       },
       );
 
-      const token= response.data.access;
-      localStorage.setItem("authToken", token);
-      console.log("My token", token);
+      localStorage.setItem("accessToken", response.data?.access);
+      localStorage.setItem("refreshToken", response.data?.refresh)
       toast.success(`Login Successful: ${response.data.message || 'Welcome' , {
         position:"top-right",
         autoClose: 5000,
@@ -52,14 +51,19 @@ const AdminLogin = () => {
         theme: "colored",
         style: {backgroundColor: "green"}
       }}`);
+
+      let redirectTo = "/admin";
+      const params = new URLSearchParams(
+        window.location.search
+      );
+      if (params.has("redirect"))
+        redirectTo = params.get("redirect");
       setTimeout(() => {
-        navigate("/AdminDashboard")
+        navigate(redirectTo);
       },5000);
       console.log("Login Successful", response.data);
     } catch (error) {
-      const errorMessage = error.response && error.response.data && error.response.data.detail
-        ? error.response.data.detail
-        : error.message;  
+      const errorMessage = error?.response?.data?.message || error.message;
 
         toast.error(errorMessage, {
           position: "top-right",
@@ -69,9 +73,8 @@ const AdminLogin = () => {
           pauseOnHover: true,
           draggable: true,
           theme: "colored",
-          style: { backgroundColor: "red" }, // Red background for errors
+          style: { backgroundColor: "red" },
         });  
-      console.error('Login failed:', errorMessage);
     }
   }
 

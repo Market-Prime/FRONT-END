@@ -1,9 +1,10 @@
 import { useState } from "react";
+import Layout from "../../../layout/AdminDashboardLayout";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiPlusCircle } from "react-icons/fi";
-import { OrderData } from "./ProductsData";
+import { OrderData } from "../AdminDashboard/ProductsData";
 import { CiMenuKebab } from "react-icons/ci";
-import Layout from "../../../layout/AdminDashboardLayout";
+import VendorLayout from "../../../layout/VendorDashboardLayout";
 
 const Orders = () => {
   const TableData = OrderData.map((item, i) => (
@@ -38,8 +39,11 @@ const Orders = () => {
   };
 
   return (
-    <Layout>
+    <VendorLayout>
       <div className="h-screen w-full flex">
+        {/* Sidebar */}
+        {/* <DashNav isSidebarOpen={isSidebarOpen} /> */}
+
         {/* Main content */}
         <div className="bg-[#E6F7FF] w-6/6">
           {/* Filters */}
@@ -96,7 +100,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </VendorLayout>
   );
 };
 
