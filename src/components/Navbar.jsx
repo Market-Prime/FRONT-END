@@ -67,7 +67,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="MarketPrime Logo" className="h-14 rounded-xl" />
         </Link>
-
+  
         {/* Navbar Links for larger screens */}
         <ul className="hidden lg:flex gap-12 text-2xl ml-10 font-bold font-small">
           {["Home", "Men", "Women", "Collections"].map((item) => (
@@ -79,7 +79,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
+  
         {/* Icons Section */}
         <div className="flex items-center gap-3">
           {/* Search Icon and Box */}
@@ -90,7 +90,7 @@ const Navbar = () => {
             >
               <CiSearch className="text-3xl text-black font-bold" />
             </div>
-
+  
             {/* Search Box */}
             {showSearchBox && (
               <div className="ml-4 flex items-center bg-white shadow-md rounded-full pl-4 pr-2 py-2 w-[400px] transition-all duration-300">
@@ -110,69 +110,71 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
-            <div className="relative">
-              <div
-                className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
-                onClick={toggleUserDropdown}
-              >
-                <AiOutlineUser className="text-2xl text-gray-600" />
-              </div>
-
-          {showUserDropdown && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-              <ul className="text-gray-700">
-                {isLoggedIn ? (
-                  <>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/account">My Account</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={logout}>
-                      Logout
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                      <Link to="/signup">Register</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
+  
+          {/* User Dropdown */}
+          <div className="relative">
+            <div
+              className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300 cursor-pointer"
+              onClick={toggleUserDropdown}
+            >
+              <AiOutlineUser className="text-2xl text-gray-600" />
             </div>
-          )}
-        </div>
-            <Link to="/cart">
-              <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
-                <IoCartOutline className="text-2xl text-gray-600" />
+  
+            {showUserDropdown && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+                <ul className="text-gray-700">
+                  {isLoggedIn ? (
+                    <>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link to="/account">My Account</Link>
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={logout}
+                      >
+                        Logout
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link to="/login">Login</Link>
+                      </li>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link to="/signup">Register</Link>
+                      </li>
+                    </>
+                  )}
+                </ul>
               </div>
-            </Link>
+            )}
           </div>
+  
+          {/* Cart Icon */}
+          <Link to="/cart">
+            <div className="h-12 w-12 flex items-center justify-center bg-gray-100 hover:bg-gray-300 rounded-full transition duration-300">
+              <IoCartOutline className="text-2xl text-gray-600" />
+            </div>
+          </Link>
         </div>
       </div>
-
+  
       {/* Dropdown Menu for small screens */}
       {showModal && (
         <div className="lg:hidden flex flex-col items-center bg-white py-6 shadow-md absolute top-[85px] w-full z-40">
           <ul className="flex flex-col gap-6 text-lg text-gray-700">
-            {["Men", "Women", "Shoes", "Bags & Belt", "Jewelries"].map(
-              (item) => (
-                <li
-                  key={item}
-                  className="cursor-pointer hover:text-purple-600 transition duration-300"
-                >
-                  {item}
-                </li>
-              )
-            )}
+            {["Men", "Women", "Shoes", "Bags & Belt", "Jewelries"].map((item) => (
+              <li
+                key={item}
+                className="cursor-pointer hover:text-purple-600 transition duration-300"
+              >
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       )}
     </>
   );
-};
-
+}  
 export default Navbar;
