@@ -65,7 +65,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center">
           <img src={logo} alt="MarketPrime Logo" className="h-14 rounded-xl" />
         </Link>
-
+  
         {/* Navbar Links (Desktop View) */}
         <ul className="hidden lg:flex gap-12 text-2xl ml-10 font-bold">
           {navLinks.map((link) => (
@@ -77,7 +77,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
+  
         {/* Icons Section */}
         <div className="flex items-center gap-3">
           {/* Search Box */}
@@ -175,6 +175,5 @@ const Navbar = () => {
       )}
     </>
   );
-};
-
+}  
 export default Navbar;
