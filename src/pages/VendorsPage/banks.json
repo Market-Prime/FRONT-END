@@ -1,0 +1,197 @@
+[
+  {
+    "name": "Access Bank",
+    "code": "044",
+    "type": "Commercial"
+  },
+  {
+    "name": "Access Bank (Diamond)",
+    "code": "063",
+    "type": "Commercial"
+  },
+  {
+    "name": "Citibank Nigeria",
+    "code": "023",
+    "type": "Commercial"
+  },
+  {
+    "name": "Ecobank Nigeria",
+    "code": "050",
+    "type": "Commercial"
+  },
+  {
+    "name": "Fidelity Bank",
+    "code": "070",
+    "type": "Commercial"
+  },
+  {
+    "name": "First Bank of Nigeria",
+    "code": "011",
+    "type": "Commercial"
+  },
+  {
+    "name": "First City Monument Bank (FCMB)",
+    "code": "214",
+    "type": "Commercial"
+  },
+  {
+    "name": "Globus Bank",
+    "code": "00103",
+    "type": "Commercial"
+  },
+  {
+    "name": "Guaranty Trust Bank (GTBank)",
+    "code": "058",
+    "type": "Commercial"
+  },
+  {
+    "name": "Heritage Bank",
+    "code": "030",
+    "type": "Commercial"
+  },
+  {
+    "name": "Jaiz Bank",
+    "code": "301",
+    "type": "Commercial"
+  },
+  {
+    "name": "Keystone Bank",
+    "code": "082",
+    "type": "Commercial"
+  },
+  {
+    "name": "Parallex Bank",
+    "code": "526",
+    "type": "Commercial"
+  },
+  {
+    "name": "Polaris Bank",
+    "code": "076",
+    "type": "Commercial"
+  },
+  {
+    "name": "Providus Bank",
+    "code": "101",
+    "type": "Commercial"
+  },
+  {
+    "name": "Stanbic IBTC Bank",
+    "code": "221",
+    "type": "Commercial"
+  },
+  {
+    "name": "Standard Chartered Bank",
+    "code": "068",
+    "type": "Commercial"
+  },
+  {
+    "name": "Sterling Bank",
+    "code": "232",
+    "type": "Commercial"
+  },
+  {
+    "name": "SunTrust Bank",
+    "code": "100",
+    "type": "Commercial"
+  },
+  {
+    "name": "Union Bank of Nigeria",
+    "code": "032",
+    "type": "Commercial"
+  },
+  {
+    "name": "United Bank for Africa (UBA)",
+    "code": "033",
+    "type": "Commercial"
+  },
+  {
+    "name": "Unity Bank",
+    "code": "215",
+    "type": "Commercial"
+  },
+  {
+    "name": "Wema Bank",
+    "code": "035",
+    "type": "Commercial"
+  },
+  {
+    "name": "Zenith Bank",
+    "code": "057",
+    "type": "Commercial"
+  },
+  {
+    "name": "Gateway Mortgage Bank",
+    "code": "00112",
+    "type": "Mortgage"
+  },
+  {
+    "name": "Abuja Building Society",
+    "code": "00113",
+    "type": "Mortgage"
+  },
+  {
+    "name": "FBN Mortgage Limited",
+    "code": "00114",
+    "type": "Mortgage"
+  },
+  {
+    "name": "Page Financials",
+    "code": "00115",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Mutual Trust Microfinance Bank",
+    "code": "00116",
+    "type": "Microfinance"
+  },
+  {
+    "name": "VFD Microfinance Bank",
+    "code": "566",
+    "type": "Microfinance"
+  },
+  {
+    "name": "FinaTrust Microfinance Bank",
+    "code": "00117",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Paycom (Opay)",
+    "code": "305",
+    "type": "Payment"
+  },
+  {
+    "name": "PalmPay",
+    "code": "000008",
+    "type": "Payment"
+  },
+  {
+    "name": "Moniepoint MFB",
+    "code": "50515",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Kuda Bank",
+    "code": "50211",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Rubies MFB",
+    "code": "125",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Fairmoney Microfinance Bank",
+    "code": "51204",
+    "type": "Microfinance"
+  },
+  {
+    "name": "Mint Finex MFB",
+    "code": "00118",
+    "type": "Microfinance"
+  },
+  {
+    "name": "ALAT by Wema",
+    "code": "035A",
+    "type": "Digital"
+  }
+]
