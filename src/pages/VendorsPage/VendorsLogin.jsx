@@ -23,14 +23,12 @@ const VendorLogin = () => {
 
     try {
       const response = await axios.post(
-        `https://backend-server-0ddt.onrender.com/api/vendor/login`,
+        "https://backend-server-0ddt.onrender.com/api/account/login",
         { email, password }
       );
-
       localStorage.setItem("accessToken", response.data?.access);
       localStorage.setItem("refreshToken", response.data?.refresh);
-
-      toast.success(response.data?.message || "Login Successful", {
+      toast.success("Login Successful", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,

@@ -209,7 +209,7 @@ function AnimatedRoutes() {
           <Route path="/finalsection" element={<FinalSection />} />
 
           {/* Dashboard Route with nested routes */}
-          <Route path="/vendordashboard" element={<VendorDashboard />}>
+          <Route path="/vendordashboard">
             <Route index element={<Content />} /> {/* Default content */}
             <Route path="product" element={<Product2 />} />
             <Route path="orders" element={<Orders />} />
