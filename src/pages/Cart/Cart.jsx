@@ -153,13 +153,16 @@ const Cart = () => {
         
           </div>
         </div>
-        <button className="checkout" onClick={handleCheckout}>
+
+
+        <div className="flex items-center justify-between w-2/3 mx-auto">
+          <button className="checkout w-1/3" onClick={handleCheckout}>
               CHECKOUT (₦{totalAmount.toLocaleString()})
             </button>
-        <button className="add-more">
-          <img src={plusbtn} alt="" /> Add more items
-        </button>
-      
+          <button className="add-more">
+            <img src={plusbtn} alt="" /> Add more items
+          </button>
+        </div>
     </>
   );
 };

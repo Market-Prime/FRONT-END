@@ -32,7 +32,10 @@ const Vendors = () => {
                 <div className="head flex flex-col gap-2 sticky top-0 z-10">
                     <h1>Vendors</h1>
                     <div className="actions flex justify-end gap-4">
-                        <button className="action flex gap-1 p-2 items-center justify-between bg-sky-100 rounded-lg hover:bg-sky-200 transition-all">
+                        <button
+                            className="action flex gap-1 p-2 items-center justify-between bg-sky-100 rounded-lg hover:bg-sky-200 transition-all"
+                            onClick={getVendorsData}
+                        >
                             <LuRefreshCw />
                             <span>Refresh</span>
                         </button>
