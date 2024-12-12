@@ -1,0 +1,36 @@
+{
+    "name": "Channel",
+    "description": "Quality Men's Shirt",
+    "category": "Tops",
+    "price": 13000,
+    "base_image": "data:image/jpeg;base64,/9j/4AAQS...",
+    "images":  ["data:image/jpeg;base64,/9j/4AAQS...","data:image/jpeg;base64,/9j/4AAQS..."],
+    "variation_data": {
+        "key_1": {
+            "variations": {
+                "color": "red",
+                "size": "12"
+            },
+
+            "additional_price": 0,
+            "qty": 1
+        },
+        "key_2": {
+            "variations": {
+                "color": "blue",
+                "size": "15"
+            },
+
+            "additional_price": 500,
+            "qty": 4
+        },
+        "key_3": {
+            "variations": {
+                "size": "9"
+            },
+
+            "additional_price": 0,
+            "qty": "10"
+        }
+    }
+}

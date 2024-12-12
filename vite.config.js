@@ -14,4 +14,8 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"), // Define your alias for the 'src' folder
     },
   },
+  build: {
+    manifest: true,
+    outDir: "dist",
+  }
 });
