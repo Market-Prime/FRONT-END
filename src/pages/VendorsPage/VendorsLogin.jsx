@@ -35,6 +35,10 @@ const VendorsLogin = () => {
         theme: "colored",
         style: { backgroundColor: "green" },
       });
+
+      setTimeout(() => {
+        navigate("/vendordashboard")
+      },5000);
       // Redirect or handle successful login here
     } catch (error) {
       const errorMessage =
