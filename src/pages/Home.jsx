@@ -8,12 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInterval } from "react-use";
 import PropTypes from "prop-types";
 
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Slider from "react-slick"
-
-
+import Slider from "react-slick";
 
 // Slider settings
 const sliderSettings = {
@@ -47,7 +45,6 @@ const sliderSettings = {
   ],
 };
 export default function DynamicSlider() {
-
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("right");
@@ -60,11 +57,10 @@ export default function DynamicSlider() {
   useInterval(nextSlide, 5000);
 
   const slides = [
-    { src: "/public/images/VID-20241119-WA0175.mp4", },
-    { src: "/public/images/VID-20241119-WA0180.mp4",},
-    { src: "/public/images/VID-20241119-WA0189.mp4", }
-    ];
-  
+    { src: "/public/images/VID-20241119-WA0175.mp4" },
+    { src: "/public/images/VID-20241119-WA0180.mp4" },
+    { src: "/public/images/VID-20241119-WA0189.mp4" },
+  ];
 
   const directions = ["top", "bottom", "left", "right"];
 
@@ -79,7 +75,7 @@ export default function DynamicSlider() {
       <div className="absolute inset-0 w-full h-full">
         {/* Black transparent overlay */}
         {/* <div className="absolute inset-0 bg-black opacity-70 z-10"></div> */}
-  
+
         {/* Video */}
         <motion.video
           src={src}
@@ -87,7 +83,7 @@ export default function DynamicSlider() {
           style={{
             objectFit: "cover",
             minHeight: "100vh", // Ensures video covers full height
-            minWidth: "100vw",  // Ensures video covers full width
+            minWidth: "100vw", // Ensures video covers full width
           }}
           variants={slideVariants}
           initial="initial"
@@ -113,18 +109,15 @@ export default function DynamicSlider() {
       </div>
     );
   }
-  
-  
 
   Slide.propTypes = {
     src: PropTypes.string.isRequired,
     direction: PropTypes.oneOf(directions).isRequired,
   };
 
-
-  const productpage = () =>{
+  const productpage = () => {
     navigate("/ProductDescription");
-  }
+  };
 
   const topdeal = Topdealdata.map((item, i) => {
     return (
@@ -192,7 +185,6 @@ export default function DynamicSlider() {
     );
   });
 
-
   const bestseller = Best.map((item, i) => {
     return (
       <div
@@ -224,7 +216,7 @@ export default function DynamicSlider() {
     <div>
       <Navbar />
       {/* Hero Image */}
-      <div className="relative w-screen h-screen overflow-hidden">
+      <div className="relative w-[98vw] h-screen overflow-hidden">
         <AnimatePresence initial={false} mode="wait">
           <Slide
             key={currentIndex}
@@ -306,7 +298,11 @@ export default function DynamicSlider() {
 
       {/* Explore */}
       <div className="bg-topdealbg py-10 mt-5">
-        <p className="text-start text-4xl font-bold text-topdeal mb-5 px-5" data-aos="fade-right" data-aos-duration="2000">
+        <p
+          className="text-start text-4xl font-bold text-topdeal mb-5 px-5"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
           Explore more
         </p>
 
@@ -314,24 +310,26 @@ export default function DynamicSlider() {
         {explore}
         </div> */}
 
-
-          <Slider {...sliderSettings} className="2xl:px-5 xl:px-5 lg:px-10 md:px-10 sm:px-5 w-full mx-auto mt-10 overflow-hidden">
-        {ExploreData.map((items, i) => (
-          <div key={i} className="relative group mb-5 px-3">
-            <div className="h-full overflow-hidden rounded-md shadow-md">
-              <img
-                src={items.image}
-                alt={items.name}
-                className="w-full h-60 object-cover"
-              />
+        <Slider
+          {...sliderSettings}
+          className="2xl:px-5 xl:px-5 lg:px-10 md:px-10 sm:px-5 w-full mx-auto mt-10 overflow-hidden"
+        >
+          {ExploreData.map((items, i) => (
+            <div key={i} className="relative group mb-5 px-3">
+              <div className="h-full overflow-hidden rounded-md shadow-md">
+                <img
+                  src={items.image}
+                  alt={items.name}
+                  className="w-full h-60 object-cover"
+                />
+              </div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="text-white text-2xl">{items.name}</p>
+              </div>
             </div>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <p className="text-white text-2xl">{items.name}</p>
-            </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
       </div>
       {/* End of Explore */}
 
