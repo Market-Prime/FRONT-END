@@ -1,0 +1,159 @@
+@import "/public/static/fonts/satoshi/css/satoshi.css";
+
+:root {
+    --brand: #002366;
+    --brand900: #00091a;
+    --brand800: #001a4d;
+    --brand700: #002c80;
+    --brand600: #003db3;
+    --brand500: #004fe6;
+    --brand400: #1a68ff;
+    --brand300: #4d8aff;
+    --brand200: #80abff;
+    --brand100: #b3cdff;
+    --brand50: #e5eeff;
+
+    --surface: #ffffff;
+    --surface-secondary: #f0f0f0;
+
+    --neutral: #000000;
+    --neutral900: #0d0d0d;
+    --neutral800: #262626;
+    --neutral700: #404040;
+    --neutral600: #595959;
+    --neutral500: #737373;
+    --neutral400: #8c8c8c;
+    --neutral300: #a6a6a6;
+    --neutral200: #bfbfbf;
+    --neutral100: #d9d9d9;
+    --neutral50: #f2f2f2;
+
+    --red100: #ffe5e5;
+    --red200: #ffc4c4;
+    --red300: #ffa9a9;
+    --red400: #ea5454;
+    --red500: #cc2727;
+    --red600: #ab1111;
+    --red700: #7b0101;
+    --red800: #4f0000;
+    --red900: #330101;
+
+    --green100: #e4fde4;
+    --green200: #c2fcc2;
+    --green300: #8afd8a;
+    --green400: #4bed4b;
+    --green500: #23d223;
+    --green600: #0aa80a;
+    --green700: #017501;
+    --green800: #014f01;
+    --green900: #003300;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Satoshi-Regular";
+    outline: none;
+    color: var(--neutral900);
+    list-style-type: none;
+}
+
+.fnt-light {
+    font-family: "Satoshi-Light";
+}
+.fnt-light-italic {
+    font-family: "Satoshi-LightItalic";
+}
+.fnt-regular {
+    font-family: "Satoshi-Regular";
+}
+.fnt-italic {
+    font-family: "Satoshi-Italic";
+}
+.fnt-medium {
+    font-family: "Satoshi-Medium";
+}
+.fnt-medium-italic {
+    font-family: "Satoshi-MediumItalic";
+}
+.fnt-bold {
+    font-family: "Satoshi-Bold";
+}
+.fnt-bold-italic {
+    font-family: "Satoshi-BoldItalic";
+}
+.fnt-black {
+    font-family: "Satoshi-Black";
+}
+.fnt-black-italic {
+    font-family: "Satoshi-BlackItalic";
+}
+.fnt-variable {
+    font-family: "Satoshi-Variable";
+}
+.fnt-variable-italic {
+    font-family: "Satoshi-VariableItalic";
+}
+
+.flx {
+    display: flex;
+}
+.flx-col {
+    display: flex;
+    flex-direction: column;
+}
+.items-center {
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.justify-even {
+    justify-content: space-evenly;
+}
+.justify-around {
+    justify-content: space-around;
+}
+.brdls{
+    border: none;
+}
+.bgls{
+    background: none;
+}
+.hover-shadow:hover{
+    box-shadow: 0 2px 10px #11113117;
+}
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #c3c3c3 #dfe9eb10;
+}
+.scroll-bar::-webkit-scrollbar {
+    height: 3px;
+    width: 3px;
+}
+.scroll-bar::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: #dfe9eb;
+}
+
+.scroll-bar::-webkit-scrollbar-track:hover {
+    background-color: dfe9eb10;
+}
+.scroll-bar::-webkit-scrollbar-track:active {
+    background-color: #b8c0c2;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #c3c3c3;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
