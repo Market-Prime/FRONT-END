@@ -1,6 +1,75 @@
 <?php
 
-require_once "./includes/buildConfig.php";
+use Classes\BuildContentLoader;
+use Classes\Router;
+use Classes\Render;
+
+require_once __DIR__ . "/bootstrap.php";
+
+$render = new Render(__DIR__ . "/views", __DIR__ . "/cache");
+
+Router::serveDir(__DIR__ . "public");
+
+Router::new("GET", "/", function () use ($render): void {
+    $pageData = [
+        "categoriesData" => [
+            [
+                "id" => 1,
+                "name" => "Clothing",
+                "description" => "All kinds of clothing",
+                "sku_chunk" => "CL",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_ittt4f",
+                "parent" => null
+            ],
+            [
+                "id" => 2,
+                "name" => "Footwear",
+                "description" => "All kinds of clothing",
+                "sku_chunk" => "FT",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_zpzhnb",
+                "parent" => null
+            ],
+            [
+                "id" => 3,
+                "name" => "Accessories",
+                "description" => "All kinds of clothing",
+                "sku_chunk" => "ASC",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_hxf3rj",
+                "parent" => null
+            ],
+            [
+                "id" => 4,
+                "name" => "Traditional Attire",
+                "description" => "Nigerian traditional attire",
+                "sku_chunk" => "NTA",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_s8eq2n",
+                "parent" => null
+            ],
+            [
+                "id" => 5,
+                "name" => "Ankara",
+                "description" => "All tops",
+                "sku_chunk" => "ANK",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_maltzt",
+                "parent" => 4
+            ],
+            [
+                "id" => 6,
+                "name" => "Tops",
+                "description" => "All tops",
+                "sku_chunk" => "TP",
+                "image" => "https://res.cloudinary.com/dngmon5et/image/upload/v1/media/public/categories/avatar_nh8ftq",
+                "parent" => 1
+            ]
+        ]
+    ];
+
+
+
+
+    $render->render("home", ["pageData" => $pageData]);
+});
+
 
 $data = [
     "title" => "MarketPrime",
@@ -8,28 +77,8 @@ $data = [
 ];
 
 
-$host = $_SERVER['HTTP_HOST'];
-$parts = explode(".", $host);
-print_r($parts);
-$subdomain = count($parts);
+
+
+
+Router::matchRoute();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/Logo 1.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo htmlspecialchars($data['title']); ?></title>
-    <link rel="stylesheet" href="<?php echo "$BUILD_PATH/$cssMain" ?>">
-</head>
-
-<body>
-    <!-- <div id="root"></div> -->
-    <script>
-        window.__INITIAL_DATA__ = <?php echo json_encode($data); ?>;
-    </script>
-    <script type="module" src="<?php echo "$BUILD_PATH/$jsMain" ?>"></script>
-</body>
-
-</html>
