@@ -1,4 +1,13 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Satoshi-Regular";
+    outline: none;
+    color: var(--neutral900);
+    list-style-type: none;
+}
+body {
     padding-top: 5.5rem;
 }
 header {
@@ -38,15 +47,15 @@ nav {
 }
 .nav-flow {
     position: relative;
-    gap: .5em;
+    gap: 0.5em;
 }
-.nav-flow > i{
-    transition: .1s ease-in;
+.nav-flow > i {
+    transition: 0.1s ease-in;
 }
-.nav-flow:hover > i{
+.nav-flow:hover > i {
     transform: rotate(-180deg);
 }
-.nav-flow:hover .flow{
+.nav-flow:hover .flow {
     display: flex;
 }
 .nav-flow .flow {
@@ -68,10 +77,9 @@ nav {
     }
 }
 
-.nav-category-listing{
+.nav-category-listing {
     width: clamp(250px, 40vw, 700px);
 }
-
 
 .actions-container {
     gap: 1rem;

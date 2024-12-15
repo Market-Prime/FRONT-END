@@ -49,16 +49,6 @@
     --green900: #003300;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Satoshi-Regular";
-    outline: none;
-    color: var(--neutral900);
-    list-style-type: none;
-}
-
 .fnt-light {
     font-family: "Satoshi-Light";
 }
