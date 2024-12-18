@@ -251,6 +251,29 @@ Router::new("GET", "/", function () use ($render): void {
     $render->render("home", ["pageData" => $pageData]);
 });
 
+Router::new("GET", "/cart", function () use ($render): void {
+    try {
+        // $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
+        // This comment above is to fetch the real data of categories from the server but I commented it out to reduce load time
+        $categoriesData = [];
+
+    } catch (Exception $e) {
+        $categoriesData = json_decode("[]");
+
+    } finally {
+        Request::close();
+    }
+
+    $pageData = [
+        "categoriesData" => $categoriesData,
+        // add more page context here to be passed to the view
+    ];
+
+
+
+    $render->render("cart", ["pageData" => $pageData]);
+});
+
 
 $data = [
     "title" => "MarketPrime",

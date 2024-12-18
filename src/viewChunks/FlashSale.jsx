@@ -10,9 +10,6 @@ const FlashSaleListing = () => {
         }
     }, [window.__FLASH_SALE_DATA__]);
 
-    useEffect(() => {
-        console.log(FlashSaleData);
-    }, [FlashSaleData]);
 
     return (
         <>

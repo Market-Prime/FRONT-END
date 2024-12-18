@@ -153,42 +153,7 @@
                         Categories</span> <i class="fa fa-arrow-right fa-xs "></i></a>
             </div>
         </section>
-        <section class="for-the-season relative">
-            <div class="head flex flex-col gap-3">
-                <p class="fnt-integral">For The Season</p>
-                <p class="fnt-medium text-lg">Save up to 20% off!</p>
-            </div>
-            <div class="no-scrollbar content">
-                <div class="no-scrollbar flex gap-2" id="focr2119ta">
-                    <div class="fts-item flex shadow-md">
-                        <div class="img" style="background-image: url('/public/assets/images/p11.jpg')"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                    <div class="fts-item flex shadow-md">
-                        <div class="img"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="fts-cta flex items-center justify-center m-2">
-                <a href="">See Deals</a>
-            </div>
-            <img src="/public/assets/images/cmas1.png" alt="" class="absolute" id="cmas1">
-            <img src="/public/assets/images/cmas2.png" alt="" class="absolute" id="cmas2">
-        </section>
+        <section id="emttrye14559">{{-- csr --}}</section>
     </main>
 @endsection
 @section('data')
