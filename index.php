@@ -30,6 +30,12 @@ Router::new("GET", "/", function () use ($render): void {
 
     $render->render("home", ["pageData" => $pageData]);
 });
+Router::new("GET", "/", function () use ($render): void {
+
+
+
+    $render->render("cart", ["pageData" => $pageData]);
+});
 
 
 $data = [
