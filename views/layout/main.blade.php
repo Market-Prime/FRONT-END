@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,13 +18,15 @@
     </script>
 
     <title>Market Prime</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
     @yield('data')
     @include('partials.header')
     @yield('content')
-
+    @include('partials.footer')
     <script src="/public/assets/app.js"></script>
 </body>
 
