@@ -1,0 +1,12 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+ <main>
+ <div>Cart Page</div>
+ </main>
+<?php $this->stopSection(); ?>
+<?php $this->startSection('data'); ?>
+ <script></script>
+ <?php /* Use this place to pass data from page context to the DOM */ ?>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main', ['categories' => $pageData['categoriesData']]); } ?>

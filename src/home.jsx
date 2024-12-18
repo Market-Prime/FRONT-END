@@ -4,11 +4,13 @@ import "./styles/index.css";
 import NavCategoryFlow from "./viewChunks/NavCategoryFlow";
 import FlashSaleListing from "./viewChunks/FlashSale";
 import TopStores from "./viewChunks/TopStores";
+import Season from "./viewChunks/Season";
 
 const renderChunks = () => {
     const NavCategoryFlowContianer = document.getElementById("cat199an6rr2e");
     const FlashSalesContainer = document.getElementById("19233hAzQw4x");
     const TopStoresConTainer = document.getElementById("41XQnmpy47");
+    const SeasonContainer = document.getElementById("emttrye14559");
 
     if (NavCategoryFlowContianer) {
         ReactDOM.render(<NavCategoryFlow />, NavCategoryFlowContianer);
@@ -18,6 +20,9 @@ const renderChunks = () => {
     }
     if (TopStoresConTainer) {
         ReactDOM.render(<TopStores />, TopStoresConTainer);
+    }
+    if (SeasonContainer) {
+        ReactDOM.render(<Season />, SeasonContainer);
     }
 };
 

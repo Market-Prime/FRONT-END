@@ -10,9 +10,9 @@ const TopStores = () => {
         }
     }, [window.__TOP_STORES_DATA__]);
 
-    useEffect(() => {
-        console.log(TopStoresData);
-    }, [TopStoresData]);
+    // useEffect(() => {
+    //     console.log(TopStoresData);
+    // }, [TopStoresData]);
 
     return (
         <>

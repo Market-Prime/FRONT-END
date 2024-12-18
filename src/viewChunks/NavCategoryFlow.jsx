@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const NavCategoryFlow = () => {
-    console.log(window.__CATEGORIES_DATA__);
 
     const [rootCategoriesData, setRootCategoriesData] = useState([]);
     const [subCategoriesData, setSubCategoriesData] = useState([]);

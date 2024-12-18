@@ -1,0 +1,119 @@
+.for-the-season {
+    margin: 10em auto;
+}
+#cmas1 {
+    width: 16em;
+    top: -3em;
+    left: -9em;
+    z-index: -1;
+}
+#cmas2 {
+    width: 10em;
+    top: 5em;
+    right: 0em;
+    z-index: -1;
+    /* transform: rotate(45deg); */
+}
+.for-the-season .head {
+    text-align: center;
+}
+.for-the-season .head > p:nth-child(1) {
+    font-size: 4em;
+    color: #d6001c;
+}
+.for-the-season .head > p:nth-child(2) {
+    font-size: 1.1em;
+}
+.for-the-season .content {
+    margin-top: 4em;
+    width: 100%;
+    overflow-x: scroll;
+}
+#focr2119ta {
+    width: fit-content;
+    padding: 1em;
+}
+.fts-cta a {
+    padding: 0.4em 1em;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-image: url("/public/assets/images/cmas3.png");
+    background-size: contain;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--surface);
+    background-color: #ff1736;
+    border-radius: 1.3em;
+}
+.fts-item {
+    background-color: var(--neutral50);
+    border-radius: 0.75em;
+    width: 18em;
+    aspect-ratio: 1 / 1.3333;
+    overflow: hidden;
+    cursor: pointer;
+}
+.fts-item .img {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.fts-item .actions {
+    background-color: #11111192;
+    backdrop-filter: blur(3px);
+    visibility: hidden;
+    transition: visibility 0.1s ease-in;
+}
+.fts-item:hover .actions {
+    visibility: visible;
+}
+.fts-item .actions a {
+    background-color: #fc0d2d77;
+    padding: 0.5em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.fts-item .actions a i {
+    color: var(--surface-secondary) !important;
+}
+@media screen and (max-width: 768px) {
+    #cmas1 {
+        width: 12em;
+        top: -4em;
+        left: -8em;
+    }
+    #cmas2 {
+        width: 7em;
+    }
+    .for-the-season .head > p:nth-child(1) {
+        font-size: 3.2em;
+    }
+    .for-the-season .head > p:nth-child(2) {
+        font-size: 1em;
+    }
+    .fts-item {
+        width: 16em;
+    }
+}
+@media screen and (max-width: 600px) {
+    #cmas1 {
+        width: 12em;
+        top: -4em;
+        left: -7em;
+    }
+    #cmas2 {
+        width: 7em;
+        top: 4em;
+    }
+    .for-the-season .head > p:nth-child(1) {
+        font-size: 2em;
+    }
+    .for-the-season .head > p:nth-child(2) {
+        font-size: 0.9em;
+    }
+    .fts-item {
+        width: 14em;
+    }
+}
