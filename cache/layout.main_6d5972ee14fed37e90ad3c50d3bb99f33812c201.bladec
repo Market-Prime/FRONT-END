@@ -18,13 +18,15 @@
  </script>
 
  <title>Market Prime</title>
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ 
 </head>
 
 <body>
  <?php echo $this->yieldContent('data'); ?>
  <?php echo $this->runChild('partials.header'); ?>
  <?php echo $this->yieldContent('content'); ?>
-
+ <?php echo $this->runChild('partials.footer'); ?>
  <script src="/public/assets/app.js"></script>
 </body>
 

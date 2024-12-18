@@ -39,7 +39,7 @@
             <div class="head">
                 <p class="fnt-integral">Explore Top Stores</p>
             </div>
-            <div class="main flex overflow-x-scroll gap-4 scroll-bar" id="41XQnmpy47">{{-- csr --}}</div>
+            <div class="main flex overflow-x-scroll gap-4 no-scrollbar" id="41XQnmpy47">{{-- csr --}}</div>
         </section>
         <section class="check-out-categories">
             <p class="head fnt-integral text-center font-semibold">Trending Categories</p>
