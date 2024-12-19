@@ -34,23 +34,31 @@
             <button class="brdls bgls open-search-tab items-center justify-center"><i class="fa fa-search"></i></button>
         </div>
         <div class="user-center flx items-center">
-            <button class="flx items-center justify-center brdls bgls">
-                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
-                        stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-            <button class="flx items-center justify-center brdls bgls">
-                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="9" r="3" stroke="#1C274C" stroke-width="2" />
-                    <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="2" />
-                    <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
-                        stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                </svg>
-            </button>
+            <a href="" class="relative">
+                <button class="flx items-center justify-center brdls bgls">
+                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                            stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <span class="absolute text-xs fnt-integral" id="cart-counter">0</span>
+            </a>
+            <div class="relative user-dd-context">
+                <button class="flx items-center justify-center brdls bgls">
+                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="9" r="3" stroke="#1C274C" stroke-width="2" />
+                        <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="2" />
+                        <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
+                            stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </button>
+                <div class="absolute shadow-md rounded-md" id="nsri2xe">
+                    {{-- csr --}}
+                </div>
+            </div>
             <button class="flx items-center justify-center brdls bgls">
                 <svg width="20px" height="20px" viewBox="0 0 512 512" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

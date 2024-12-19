@@ -102,6 +102,11 @@ nav {
 .search-container input {
     width: 100%;
 }
+#cart-counter{
+    top: -.2em;
+    right: 0;
+    color: var(--brand500);
+}
 .user-center {
     padding: 0.5rem;
     border-radius: 0.5rem;
@@ -116,6 +121,23 @@ nav {
 }
 .user-center button:hover {
     background-color: var(--neutral50);
+}
+
+.user-dd-context{
+}
+.user-dd-context:hover #nsri2xe, .user-dd-context:focus-within #nsri2xe{
+    display: block;
+}
+#nsri2xe{
+    background-color: var(--brand50);
+    display: none;
+    top: 100%;
+    right: 0;
+    width: fit-content;
+    
+}
+#nsri2xe div *{
+    white-space: nowrap;
 }
 
 main.home {
