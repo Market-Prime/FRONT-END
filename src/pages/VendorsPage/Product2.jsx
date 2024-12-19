@@ -5,10 +5,13 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import DropdownWithAddOption from "./DropdownWithAddOption";
 import TagsInput from "./TagsInput";
 import VendorLayout from "../../../layout/VendorDashboardLayout";
+import axios from "axios";
 
 const Product2 = () => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [formCompleted, setFormCompleted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const fileInputRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -33,6 +36,19 @@ const Product2 = () => {
   const handleDeleteImage = (index) => {
     setUploadedImages((prev) => prev.filter((_, i) => i !== index));
   };
+
+  const categories = async (e) => {
+    // e.preventDefault();
+    setLoading(true);
+
+    try{
+      const responnse = await axios.get("https://backend-server-0ddt.onrender.com/api/categories/")
+    } catch {
+      const errorMessage = error?.response?.data?.message || error.message;
+
+    }
+    
+  }
 
   return (
     <VendorLayout>
@@ -70,10 +86,11 @@ const Product2 = () => {
               {/* Category and Sub-Category */}
               <div className="flex flex-col gap-2">
                 <label className="font-medium">Category</label>
-                <DropdownWithAddOption
-                  initialOptions={["Women", "Men", "Kids"]}
+                {/* <DropdownWithAddOption
+                initialOptions={categories}
+                  // initialOptions={["Women", "Men", "Kids"]}
                   onChange={handleFormCompletionCheck}
-                />
+                /> */}
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-medium">Sub-Category</label>
