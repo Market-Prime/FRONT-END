@@ -1,0 +1,244 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+ <main class="home flex-col items-center">
+ <section class="hero-main">
+
+ </section>
+ <section class="flash-sales">
+ <p class="head listing-head-1 fnt-integral">Flash sales</p>
+ <div class="listing-card" id="19233hAzQw4x"><?php /* csr */ ?></div>
+ <div class="end flx items-center justify-center px-2 my-4 mx-auto">
+ <a class="flex items-center gap-2 hover:underline" href="">
+ <span class="fnt-bold text-sm">See more</span><i class="fa fa-arrow-right fa-xs "></i>
+ </a>
+ </div>
+ </section>
+ <section class="dress-styles">
+ <div class="content flex flex-col">
+ <p class="head text-center fnt-integral">BROWSE BY DRESS STYLE</p>
+ <div class="main flex flex-col">
+ <div class="">
+ <a href="" class="no-decor w-full relative">
+ <p class="txt fnt-bold">Casual</p>
+ <img src="/public/assets/images/cax10.png" alt="" class="absolute top-0 right-0 h-full">
+ </a>
+ <a href="" class="no-decor w-full relative">
+ <p class="txt fnt-bold">Formal</p>
+ <img src="/public/assets/images/cax50.png" alt="" class="absolute top-0 right-0 h-full">
+ </a>
+ </div>
+ <div class="">
+ <a href="" class="no-decor w-full relative">
+ <p class="txt fnt-bold">Party</p>
+ <img src="/public/assets/images/cax30.png" alt="" class="absolute top-0 right-0 h-full">
+ </a>
+ <a href="" class="no-decor w-full relative">
+ <p class="txt fnt-bold">Gym</p>
+ <img src="/public/assets/images/cax90.png" alt="" class="absolute top-0 right-0 h-full">
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+ <section class="top-stores">
+ <div class="head">
+ <p class="fnt-integral">Explore Top Stores</p>
+ </div>
+ <div class="main flex overflow-x-scroll gap-4 no-scrollbar" id="41XQnmpy47"><?php /* csr */ ?></div>
+ </section>
+ <section class="check-out-categories">
+ <p class="head fnt-integral text-center font-semibold">Trending Categories</p>
+ <div class="main">
+ <div class="category-browser-item">
+ <p class="root">Clothing</p>
+ <ul>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Men's Wear</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Women's Wear</span></a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">T-Shirts & Polos</span>
+ </a>
+ </li>
+ <li><a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Dresses(Casual, Evening, Cocktail, Maxi)</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Hoodies & Jackets</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+ <div class="category-browser-item">
+ <p class="root">Footwear</p>
+ <ul>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Formal Shoes</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Casual Shoes (Sneakers, Loafers)</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Heels</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Sandals & Slippers</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Boots</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+ <div class="category-browser-item">
+ <p class="root">Accessories</p>
+ <ul>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Bags</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Luxury Watches</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Caps</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Eye Wear</span>
+ </a>
+ </li>
+ <li>
+ <a href="">
+ <img src="/public/assets/images/dr92.jpg" alt="">
+ <span href="">Jewelry</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+ </div>
+ <div class="end flx items-center justify-center px-2 my-4 mx-auto">
+ <a class="flex items-center gap-2 hover:underline" href=""><span class="fnt-bold text-sm">Browse
+ Categories</span> <i class="fa fa-arrow-right fa-xs "></i></a>
+ </div>
+ </section>
+ <section id="emttrye14559"><?php /* csr */ ?></section>
+ <section class="flash-sales">
+ <p class="head listing-head-1 fnt-integral">New Arrivals</p>
+ <div class="listing-card" id="46889dretr"><?php /* csr */ ?></div>
+ <div class="end flx items-center justify-center px-2 my-4 mx-auto">
+ <a class="flex items-center gap-2 hover:underline" href="">
+ <span class="fnt-bold text-sm">See more</span><i class="fa fa-arrow-right fa-xs "></i>
+ </a>
+ </div>
+ </section>
+ <section class="outfit-matches">
+ <p class="head fnt-integral text-center font-semibold">Outfit Matches</p>
+ <div class="content flex flex-col gap-2">
+ <div class="chunk">
+ <p class="pre fnt-bold">Trending</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+ <div class="item">
+
+ </div>
+ </div>
+ </div>
+ <div class="chunk">
+ <p class="pre fnt-bold">Casual</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+
+ </div>
+ </div>
+ <div class="chunk">
+ <p class="pre fnt-bold">Office</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <section class="virtual-tryon relative">
+ <img src="/public/assets/images/468g10.png" class="absolute" id="vtry1" />
+ <img src="/public/assets/images/ryb1.png" class="absolute" id="vtry2" />
+ <p class="head fnt-integral text-center font-bold">Experience the Future of Fashion with Augmented Reality
+ Virtual Try On</p>
+
+ <div class="features">
+ <p class="pre fnt-medium">Step into the world of effortless shopping and discover how your favorite outfits
+ look on you before you buy! Our state-of-the-art Augmented Reality (AR) Virtual Try-On feature lets you:
+ </p>
+ <ul>
+ <li><strong>See it to believe it:</strong> Visualize clothes on your body in real-time using your
+ smartphone or device. No guesswork—just accurate fits and styles tailored for you.</li>
+ <li><strong>Mix & Match:</strong> Experiment with different combinations of tops, bottoms, and
+ accessories to create your perfect look.</li>
+ <li><strong>Shop confidently:</strong> Say goodbye to the uncertainty of online shopping. Know exactly
+ how each outfit complements your unique style and body type.</li>
+ <li><strong>Easy to Use:</strong> Activate the virtual try-on with a simple click, align your camera,
+ and watch as your chosen outfit comes to life on you.</li>
+ </ul>
+ </div>
+
+ <div class="end flex flex-col items-center gap-2">
+ <p class="pre">From casual wear to elegant evening attire, embrace the convenience and excitement of
+ trying before buying—all from the comfort of your home. Ready to redefine your shopping experience?</p>
+ <span class="fnt-medium">Coming soon!</span>
+ <a href="" class="p-1 hover:underline">Learn More</a>
+ </div>
+ </section>
+
+ <section class="ctv relative flex items-center">
+ <div class="content relative flex-1">
+ <p class="fnt-integral">Join our marketplace and connect with customers eager to discover your products.</p>
+ <a href="" class="fnt-medium hover:shadow-lg">Get started - it's free</a>
+ </div>
+ <img src="/public/assets/images/ctv001.png" alt="" id="ctv1"/>
+ </section>
+
+ </main>
+<?php $this->stopSection(); ?>
+<?php $this->startSection('data'); ?>
+ <script>
+ window.__FLASH_SALE_DATA__ = <?php echo json_encode($pageData['flashSaleData'], 15, 512); ?>;
+ window.__TOP_STORES_DATA__ = <?php echo json_encode($pageData['topStoresData'], 15, 512); ?>;
+ </script>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main', ['categories' => $pageData['categoriesData']]); } ?>
