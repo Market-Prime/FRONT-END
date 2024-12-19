@@ -7,8 +7,8 @@
     color: var(--neutral900);
     list-style-type: none;
 }
-.pl1-tag{
-    font-size: .6em !important;
+.pl1-tag {
+    font-size: 0.6em !important;
 }
 body {
     padding-top: 5rem;
@@ -192,23 +192,23 @@ main.home {
     color: var(--surface);
     font-size: 1.5em;
 }
-.top-stores .main{
-    padding: 2em .5em;
+.top-stores .main {
+    padding: 2em 0.5em;
     background-color: var(--brand50);
 }
-.check-out-categories{
+.check-out-categories {
     margin: 4em auto;
 }
-.check-out-categories > .head{
+.check-out-categories > .head {
     font-size: 1.5em;
 }
-.check-out-categories .main{
+.check-out-categories .main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
     padding: 2em;
 }
-.category-browser-item{
+.category-browser-item {
     padding: 1em;
     border: 1px solid var(--neutral200);
     border-radius: 1em;
@@ -216,38 +216,123 @@ main.home {
     flex-direction: column;
     gap: 1em;
 }
-.category-browser-item .root{
+.category-browser-item .root {
     font-size: 1em;
     font-weight: 700;
 }
-.category-browser-item img{
+.category-browser-item img {
     border-radius: 50%;
     width: 2.5em;
     height: 2.5em;
 }
-.category-browser-item ul{
+.category-browser-item ul {
     display: flex;
     flex-direction: column;
-    gap: .5em;
+    gap: 0.5em;
 }
-.category-browser-item li a{
+.category-browser-item li a {
     display: flex;
     align-items: center;
-    gap: .75em;
+    gap: 0.75em;
 }
-.category-browser-item li span{
-    font-family: 'Satoshi-Bold';
-    font-size: .85em;
+.category-browser-item li span {
+    font-family: "Satoshi-Bold";
+    font-size: 0.85em;
     color: var(--neutral700);
 }
-.category-browser-item li a:hover{
+.category-browser-item li a:hover {
     text-decoration: underline;
 }
-/* .check-out-categories .end a{
-    
-} */
 
+.outfit-matches {
+    margin: 4em auto;
+}
 
+.outfit-matches > .head {
+    font-size: 2em;
+    background-color: var(--neutral100);
+    padding: 1em;
+}
+.outfit-matches .content {
+}
+.outfit-matches .chunk .pre {
+    padding: 0.35em 0.5em;
+    background-color: var(--neutral900);
+    color: var(--surface-secondary);
+    font-size: 0.8em;
+}
+.outfit-matches .matches {
+    padding: 1em;
+}
+
+.virtual-tryon {
+    margin: 15em auto;
+    width: 100%;
+}
+#vtry1 {
+    width: 25em;
+    z-index: -1;
+    top: -12em;
+    left: -3em;
+}
+#vtry2 {
+    width: 15em;
+    z-index: -1;
+    top: 15em;
+    right: 0em;
+}
+.virtual-tryon > .head {
+    color: var(--brand600);
+    width: 70%;
+    margin: 0.2em auto;
+    font-size: 2em;
+}
+.virtual-tryon .features {
+    padding: 3em 10em;
+}
+.virtual-tryon .features .pre {
+    font-size: 1.2em;
+}
+.virtual-tryon .features ul {
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+.virtual-tryon .end {
+    padding: 0.5em 4em;
+}
+.virtual-tryon span {
+    padding: 1em;
+    background-color: var(--brand);
+    color: var(--surface);
+}
+
+.ctv{
+    background-color: var(--brand50);
+    padding-top: 2em;
+}
+.ctv .content {
+    padding: 2em;
+    width: 80%;
+}
+.ctv .content p{
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+}
+.ctv .content a{
+    padding: .8em;
+    background-color: var(--brand800);
+    color: var(--surface);
+
+}
+#ctv1 {
+    width: 18em;
+    right: 0;
+    bottom: 0;
+}
+
+footer {
+    font-family: "Satoshi-Regular" !important;
+}
 
 @media screen and (max-width: 1024px) {
     header {
@@ -317,7 +402,45 @@ main.home {
     .dress-styles .txt {
         font-size: 1em;
     }
-    
+    .virtual-tryon {
+        margin: 14em auto;
+    }
+    #vtry1 {
+        width: 20em;
+        top: -10em;
+        left: -5em;
+    }
+    #vtry2 {
+        width: 15em;
+        top: 17em;
+    }
+    .virtual-tryon > .head {
+        width: 85%;
+        font-size: 1.9em;
+    }
+    .virtual-tryon .features {
+        padding: 3em;
+    }
+    .virtual-tryon .features .pre {
+        font-size: 1em;
+    }
+    .virtual-tryon .features ul {
+        margin-top: 2em;
+        font-size: .9em;
+    }
+    .virtual-tryon span {
+        padding: .8em;
+    }
+    .ctv .content {
+        padding: 1em;
+    }
+    .ctv .content p{
+        font-size: 1.2em;
+        margin-bottom: 1em;
+    }
+    #ctv1 {
+        width: 12em;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -396,12 +519,62 @@ main.home {
     .dress-styles .txt {
         font-size: 1.3em;
     }
-    .check-out-categories .main{
+    .check-out-categories .main {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 1em;
         padding: 2em;
     }
+
+    .virtual-tryon {
+        margin: 10em auto;
+    }
+    #vtry1 {
+        width: 17em;
+        top: -5em;
+        left: -5em;
+    }
+    #vtry2 {
+        width: 12em;
+        top: 15em;
+    }
+    .virtual-tryon > .head {
+        width: 95%;
+        font-size: 1.3em;
+    }
+    .virtual-tryon .features {
+        padding: 2em;
+    }
+    .virtual-tryon .features .pre {
+        font-size: .95em;
+    }
+    .virtual-tryon .features ul {
+        font-size: .85em;
+    }
+    .virtual-tryon .end {
+        padding: 0.5em 3em;
+    }
+    .ctv{
+        flex-direction: column;
+        gap: 1em;
+    }
+    .ctv .content {
+        width: 100%;
+    }
+    .ctv .content p{
+        font-size: 1em;
+        margin-bottom: 2em;
+    }
+    .ctv .content a{
+        padding: .75em;
+    }
+    #ctv1 {
+        /* width: 18em; */
+        right: 0;
+        bottom: 0;
+        position: relative;
+    }
+    
 }
 
 @keyframes fade-opacity-in {

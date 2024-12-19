@@ -1,5 +1,5 @@
 .for-the-season {
-    margin: 10em auto;
+    margin: 14em auto;
 }
 #cmas1 {
     width: 16em;
@@ -63,11 +63,11 @@
 .fts-item .actions {
     background-color: #11111192;
     backdrop-filter: blur(3px);
-    visibility: hidden;
-    transition: visibility 0.1s ease-in;
+    transition: 0.3s ease-in;
+    opacity: 0;
 }
 .fts-item:hover .actions {
-    visibility: visible;
+    opacity: 1;
 }
 .fts-item .actions a {
     background-color: #fc0d2d77;

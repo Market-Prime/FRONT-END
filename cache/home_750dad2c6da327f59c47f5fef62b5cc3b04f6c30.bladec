@@ -7,6 +7,11 @@
  <section class="flash-sales">
  <p class="head listing-head-1 fnt-integral">Flash sales</p>
  <div class="listing-card" id="19233hAzQw4x"><?php /* csr */ ?></div>
+ <div class="end flx items-center justify-center px-2 my-4 mx-auto">
+ <a class="flex items-center gap-2 hover:underline" href="">
+ <span class="fnt-bold text-sm">See more</span><i class="fa fa-arrow-right fa-xs "></i>
+ </a>
+ </div>
  </section>
  <section class="dress-styles">
  <div class="content flex flex-col">
@@ -154,6 +159,79 @@
  </div>
  </section>
  <section id="emttrye14559"><?php /* csr */ ?></section>
+ <section class="flash-sales">
+ <p class="head listing-head-1 fnt-integral">New Arrivals</p>
+ <div class="listing-card" id="46889dretr"><?php /* csr */ ?></div>
+ <div class="end flx items-center justify-center px-2 my-4 mx-auto">
+ <a class="flex items-center gap-2 hover:underline" href="">
+ <span class="fnt-bold text-sm">See more</span><i class="fa fa-arrow-right fa-xs "></i>
+ </a>
+ </div>
+ </section>
+ <section class="outfit-matches">
+ <p class="head fnt-integral text-center font-semibold">Outfit Matches</p>
+ <div class="content flex flex-col gap-2">
+ <div class="chunk">
+ <p class="pre fnt-bold">Trending</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+ <div class="item">
+
+ </div>
+ </div>
+ </div>
+ <div class="chunk">
+ <p class="pre fnt-bold">Casual</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+
+ </div>
+ </div>
+ <div class="chunk">
+ <p class="pre fnt-bold">Office</p>
+ <div class="matches flex overflow-x-scroll gap-4 no-scrollbar">
+
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <section class="virtual-tryon relative">
+ <img src="/public/assets/images/468g10.png" class="absolute" id="vtry1" />
+ <img src="/public/assets/images/ryb1.png" class="absolute" id="vtry2" />
+ <p class="head fnt-integral text-center font-bold">Experience the Future of Fashion with Augmented Reality
+ Virtual Try On</p>
+
+ <div class="features">
+ <p class="pre fnt-medium">Step into the world of effortless shopping and discover how your favorite outfits
+ look on you before you buy! Our state-of-the-art Augmented Reality (AR) Virtual Try-On feature lets you:
+ </p>
+ <ul>
+ <li><strong>See it to believe it:</strong> Visualize clothes on your body in real-time using your
+ smartphone or device. No guesswork—just accurate fits and styles tailored for you.</li>
+ <li><strong>Mix & Match:</strong> Experiment with different combinations of tops, bottoms, and
+ accessories to create your perfect look.</li>
+ <li><strong>Shop confidently:</strong> Say goodbye to the uncertainty of online shopping. Know exactly
+ how each outfit complements your unique style and body type.</li>
+ <li><strong>Easy to Use:</strong> Activate the virtual try-on with a simple click, align your camera,
+ and watch as your chosen outfit comes to life on you.</li>
+ </ul>
+ </div>
+
+ <div class="end flex flex-col items-center gap-2">
+ <p class="pre">From casual wear to elegant evening attire, embrace the convenience and excitement of
+ trying before buying—all from the comfort of your home. Ready to redefine your shopping experience?</p>
+ <span class="fnt-medium">Coming soon!</span>
+ <a href="" class="p-1 hover:underline">Learn More</a>
+ </div>
+ </section>
+
+ <section class="ctv relative flex items-center">
+ <div class="content relative flex-1">
+ <p class="fnt-integral">Join our marketplace and connect with customers eager to discover your products.</p>
+ <a href="" class="fnt-medium hover:shadow-lg">Get started - it's free</a>
+ </div>
+ <img src="/public/assets/images/ctv001.png" alt="" id="ctv1"/>
+ </section>
+
  </main>
 <?php $this->stopSection(); ?>
 <?php $this->startSection('data'); ?>
