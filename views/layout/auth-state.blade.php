@@ -12,22 +12,17 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/public/static/css/all.css">
     <link rel="stylesheet" href="/public/static/css/style.css">
-    <link rel="stylesheet" href="/public/assets/season.css">
-
-    <script>
-        window.__CATEGORIES_DATA__ = @json($categories);
-    </script>
-
     <title>Market Prime</title>
-
 </head>
 
-<body class="main">
-    @yield('data')
-    @include('partials.auth-modal')
-    @include('partials.header')
-    @yield('content')
-    @include('partials.footer')
+<body class="auth">
+    @include('partials.header-auth')
+    <main class="auth-main flx-col justify-center items-center">
+        <div class="auth-container flx-col items-center">
+            @yield('content')
+        </div>
+    </main>
+    @include('partials.footer-auth')
     <script src="/public/assets/app.js"></script>
     <script src="/public/static/js/core.js"></script>
 </body>

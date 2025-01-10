@@ -188,7 +188,7 @@ Router::new("GET", "/", function () use ($render): void {
             "publish_status" => false,
             "publish_date" => null,
             "created_at" => "2024-12-11T22:35:15.358825+01:00",
-            "flash_deal" => [["name" => "Mega weekend sale", "type" => 0],["name" => "50% off clearance sale", "type" => 0],]
+            "flash_deal" => [["name" => "Mega weekend sale", "type" => 0], ["name" => "50% off clearance sale", "type" => 0],]
         ],
         [
             "id" => 71,
@@ -225,13 +225,8 @@ Router::new("GET", "/", function () use ($render): void {
             "flash_deal" => [["name" => "Exclusive deal: Limited stock", "type" => 0],]
         ],
     ];
-
-
-
-
     try {
-        // $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
-        $categoriesData = [];
+        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
 
     } catch (Exception $e) {
         $categoriesData = json_decode("[]");
@@ -253,9 +248,7 @@ Router::new("GET", "/", function () use ($render): void {
 
 Router::new("GET", "/cart", function () use ($render): void {
     try {
-        // $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
-        // This comment above is to fetch the real data of categories from the server but I commented it out to reduce load time
-        $categoriesData = [];
+        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
 
     } catch (Exception $e) {
         $categoriesData = json_decode("[]");
@@ -274,11 +267,44 @@ Router::new("GET", "/cart", function () use ($render): void {
     $render->render("cart", ["pageData" => $pageData]);
 });
 
+Router::new("GET", "/product-detail", function () use ($render): void {
+    try {
+        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
 
-$data = [
-    "title" => "MarketPrime",
-    "initialContent" => "This content was preloaded by PHP",
-];
+    } catch (Exception $e) {
+        $categoriesData = json_decode("[]");
+
+    } finally {
+        Request::close();
+    }
+
+    if (!isset($_GET['p-id']))
+        return;
+    $pid = $_GET['p-id'];
+    try {
+        $productData = json_decode(Request::Get(endPoint: "products/$pid/"));
+    } catch (Exception $e) {
+        return;
+    } finally {
+        Request::close();
+    }
+    $pageData = [
+        "categoriesData" => $categoriesData,
+        "productData" => $productData
+    ];
+    $render->render("product-detail", ["pageData" => $pageData]);
+});
+
+Router::new("GET", "/account/login", function () use ($render): void {
+    $render->render("login");
+});
+Router::new("GET", "/account/register", function () use ($render): void {
+    $render->render("register");
+});
+Router::new("GET", "/account/confirm-email/:token", function ($token) use ($render): void {
+    $render->render("confirm-email", ["confirmationToken" => $token]);
+});
+
 
 
 

@@ -78,11 +78,11 @@
  <div class="flex flex-col md:flex-row justify-between items-center border-t py-4 px-5 bg-gray-100">
  <p>MARKETPRIME &copy; 2024-2030, All Rights Reserved</p>
  <div class="flex space-x-4">
- <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" class="h-8">
+ <?php /* <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" class="h-8">
  <img src="https://via.placeholder.com/50x30?text=Mastercard" alt="Mastercard" class="h-8">
  <img src="https://via.placeholder.com/50x30?text=PayPal" alt="PayPal" class="h-8">
  <img src="https://via.placeholder.com/50x30?text=ApplePay" alt="Apple Pay" class="h-8">
- <img src="https://via.placeholder.com/50x30?text=GooglePay" alt="Google Pay" class="h-8">
+ <img src="https://via.placeholder.com/50x30?text=GooglePay" alt="Google Pay" class="h-8"> */ ?>
  </div>
  </div>
 </footer>

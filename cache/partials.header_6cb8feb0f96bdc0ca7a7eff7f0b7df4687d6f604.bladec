@@ -1,5 +1,4 @@
-<header class="flx items-center justify-between">
-
+<header class="main flx items-center justify-between">
  <div class="org-id flx items-center">
  <button class="open-m-nav items-center justify-center"><i class="fa fa-bars"></i></button>
  <img src="/public/static/images/logo.png" alt="">
@@ -34,7 +33,7 @@
  <button class="brdls bgls open-search-tab items-center justify-center"><i class="fa fa-search"></i></button>
  </div>
  <div class="user-center flx items-center">
- <a href="" class="relative">
+ <a href="/cart" class="relative">
  <button class="flx items-center justify-center brdls bgls">
  <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
  xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +42,9 @@
  stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
  </svg>
  </button>
- <span class="absolute text-xs fnt-integral" id="cart-counter">0</span>
+ <span class="absolute text-xs fnt-bold" id="cart-counter">
+ <?php /* csr */ ?>
+ </span>
  </a>
  <div class="relative user-dd-context">
  <button class="flx items-center justify-center brdls bgls">

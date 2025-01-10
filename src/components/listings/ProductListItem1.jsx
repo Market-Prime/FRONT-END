@@ -5,7 +5,7 @@ import RenderStars from "../RatingStarsGenerator";
 const ProductListItem1 = ({ data }) => {
     return (
         <a
-            href={`/product/details/${data.name}`}
+            href={`/product-detail?p-id=${data.id}`}
             className="p-1 hover:shadow-md"
         >
             <div className="flex flex-col pl1">

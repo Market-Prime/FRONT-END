@@ -10,7 +10,6 @@ const HeaderUserIconDropDown = () => {
 
     useEffect(() => {
         const handleUpdate = () => {
-            console.log("User Auth State: ", window.__mp_user_xhrse_isTrue);
             setIsLoggedIn(window.__mp_user_xhrse_isTrue);
             setMpxIsSet(true);
         };
@@ -27,17 +26,26 @@ const HeaderUserIconDropDown = () => {
             {mpxisSet ? (
                 isLoggedIn ? (
                     <div className="flex flex-col w-full gap-2">
-                        <a href="" className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2">
+                        <a
+                            href=""
+                            className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2"
+                        >
                             <MdOutlineManageAccounts />
                             <span className="font-bold text-sm">
                                 My account
                             </span>
                         </a>
-                        <a href="" className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2">
+                        <a
+                            href=""
+                            className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2"
+                        >
                             <HiHashtag />
                             <span className="font-bold text-sm">My orders</span>
                         </a>
-                        <a href="" className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2">
+                        <a
+                            href=""
+                            className="flex gap-2 items-center hover:shadow-md hover:text-gray-700 py-1 px-2"
+                        >
                             <CiLogout />
                             <span className="font-bold text-sm">Logout</span>
                         </a>
@@ -45,8 +53,12 @@ const HeaderUserIconDropDown = () => {
                 ) : (
                     <div className="flex flex-col w-full gap-2">
                         <a
-                            className="flex gap-2 items-center font-bold text-sm hover:shadow-md hover:text-gray-700 py-1 px-2"
-                            href="/account/login"
+                            className="flex gap-2 items-center font-bold text-sm hover:shadow-md py-1 px-2 cursor-pointer "
+                            id="open-auth-modal"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                $("#auth-modal-cont").css("display", "flex");
+                            }}
                         >
                             Login
                         </a>

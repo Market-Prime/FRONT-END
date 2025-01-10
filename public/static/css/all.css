@@ -130,6 +130,9 @@
 .justify-around {
     justify-content: space-around;
 }
+.justify-end {
+    justify-content: flex-end;
+}
 .brdls {
     border: none;
 }
