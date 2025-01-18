@@ -1,7 +1,62 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection('content'); ?>
  <main class="home flex-col items-center">
- <section class="hero-main">
+ <section class="hero-main" id="25432ggh"><?php /* csr */ ?>
+ 
+
+ <div class="slider">
+ <div class="slides">
+ <div class="slide"><img src="/public/static/images/adbanner1.png" alt="Adbanner1"></div>
+ <div class="slide"><img src="/public/static/images/adbanner2.png" alt="Adbanner2"></div>
+ 
+ </div>
+ <div class="navigation">
+ <button id="prev">&#10094;</button>
+ <button id="next">&#10095;</button>
+ </div>
+ <div class="indicators">
+ <span class="indicator active" data-index="0"></span>
+ <span class="indicator" data-index="1"></span>
+ <span class="indicator" data-index="2"></span>
+ </div>
+ </div>
+
+ <script>
+ const slides = document.querySelector('.slides');
+ const slide = document.querySelectorAll('.slide');
+ const prev = document.getElementById('prev');
+ const next = document.getElementById('next');
+ const indicators = document.querySelectorAll('.indicator');
+ let currentIndex = 0;
+
+ function updateSlider() {
+ slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+ indicators.forEach((indicator, index) => {
+ indicator.classList.toggle('active', index === currentIndex);
+ });
+ }
+
+ prev.addEventListener('click', () => {
+ currentIndex = (currentIndex > 0) ? currentIndex - 1 : slide.length - 1;
+ updateSlider();
+ });
+
+ next.addEventListener('click', () => {
+ currentIndex = (currentIndex < slide.length - 1) ? currentIndex + 1 : 0;
+ updateSlider();
+ });
+
+ indicators.forEach(indicator => {
+ indicator.addEventListener('click', () => {
+ currentIndex = parseInt(indicator.getAttribute('data-index'));
+ updateSlider();
+ });
+ });
+ </script>
+
+
+
+
 
  </section>
  <section class="flash-sales">
