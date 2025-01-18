@@ -151,7 +151,34 @@ const ApiController = () => {
                 });
                 return response.data;
             } catch (error) {
-                throw extractErrorMessage(err);
+                throw extractErrorMessage(error);
+            }
+        },
+        deleteCartItem: async (pid) => {
+            try {
+                const response = await apiClient.delete(
+                    `/account/carts/?pid=${pid}`,
+                    {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    }
+                );
+                return response.data;
+            } catch (error) {
+                throw extractErrorMessage(error);
+            }
+        },
+        getProductItem: async (id) => {
+            try {
+                const response = await apiClient.get(`/product-item/${id}/`, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
+                return response.data;
+            } catch (error) {
+                throw extractErrorMessage(error);
             }
         },
     };

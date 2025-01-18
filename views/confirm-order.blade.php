@@ -1,6 +1,8 @@
 @extends('layout.main', ['categories' => $pageData['categoriesData']])
 @section('content')
-    <section id="hres214"></section>
+    <section id="hme19255">
+            
+    </section>
 @endsection
 
 @section('data')

@@ -16,7 +16,6 @@ const initDB = async () => {
 
 export const getOffCarts = async () => {
     const db = await initDB();
-
     return await db.getAll(offCartObjectStore);
 };
 
@@ -39,4 +38,9 @@ export const getCartCount = async () => {
 export const clearOffCarts = async () => {
     const db = await initDB();
     await db.clear(offCartObjectStore);
+};
+
+export const deleteOffCartItem = async (productItem) => {
+    const db = await initDB();
+    await db.delete(offCartObjectStore, productItem);
 };

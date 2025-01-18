@@ -16,9 +16,19 @@ const LoginForm = () => {
                 localStorage.setItem("refreshToken", data.refresh);
                 setMessage([true, "Login Sucessful. Please wait"]);
 
+                const currentPath = window.location.pathname;
+                if (
+                    !(
+                        currentPath == "/account/login" ||
+                        currentPath == "/account/login/"
+                    )
+                ) {
+                    return window.location.reload();
+                }
                 let redirectTo = "/";
                 const params = new URLSearchParams(window.location.search);
                 if (params.has("redirect")) redirectTo = params.get("redirect");
+
                 setTimeout(() => {
                     window.location.href = redirectTo;
                 }, 300);

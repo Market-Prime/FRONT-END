@@ -92,16 +92,14 @@ const ProductDetail = () => {
     const addItemsToCart = async () => {
         const preparedData = selectedItems.map((item) => ({
             product_item: item.product_item,
-            qty: item.qty,
+            qty: productHasNoVariation ? noVariationNumberToAdd : item.qty,
         }));
         if (window.__mp_user_xhrse_isTrue) {
             await ApiClient.addItemsToCart({ items: preparedData })
                 .then(async (data) => {
                     await refreshCart();
                 })
-                .catch((err) => {
-                    
-                });
+                .catch((err) => {});
         } else {
             await setOffCartItem(preparedData);
             await refreshCart();
@@ -188,18 +186,29 @@ const ProductDetail = () => {
                                     disabled={noVariationNumberToAdd <= 0}
                                     onClick={() => {
                                         if (noVariationNumberToAdd > 0)
-                                            setNoVariationNumberToAdd(noVariationNumberToAdd - 1);
+                                            setNoVariationNumberToAdd(
+                                                noVariationNumberToAdd - 1
+                                            );
                                     }}
                                 >
                                     <i className="fa fa-minus fa-sm"></i>
                                 </button>
-                                <span className="num">{noVariationNumberToAdd}</span>
+                                <span className="num">
+                                    {noVariationNumberToAdd}
+                                </span>
                                 <button
                                     className="brdls flx items-center justify-center"
-                                    disabled={noVariationNumberToAdd >= items[0].qty}
+                                    disabled={
+                                        noVariationNumberToAdd >= items[0].qty
+                                    }
                                     onClick={() => {
-                                        if (noVariationNumberToAdd <= items[0].qty)
-                                            setNoVariationNumberToAdd(noVariationNumberToAdd + 1);
+                                        if (
+                                            noVariationNumberToAdd <=
+                                            items[0].qty
+                                        )
+                                            setNoVariationNumberToAdd(
+                                                noVariationNumberToAdd + 1
+                                            );
                                     }}
                                 >
                                     <i className="fa fa-plus fa-sm"></i>

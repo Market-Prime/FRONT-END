@@ -266,6 +266,23 @@ Router::new("GET", "/cart", function () use ($render): void {
 
     $render->render("cart", ["pageData" => $pageData]);
 });
+Router::new("GET", "/confirm-order", function () use ($render): void {
+    try {
+        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
+
+    } catch (Exception $e) {
+        $categoriesData = json_decode("[]");
+
+    } finally {
+        Request::close();
+    }
+
+    $pageData = [
+        "categoriesData" => $categoriesData,
+        // add more page context here to be passed to the view
+    ];
+    $render->render("confirm-order", ["pageData" => $pageData]);
+});
 
 Router::new("GET", "/product-detail", function () use ($render): void {
     try {
