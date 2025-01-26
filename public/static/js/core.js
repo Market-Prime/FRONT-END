@@ -13,3 +13,10 @@ $("#auth-pswd-toogle").on("click", () => {
 $("#close-auth-modal-btn").on("click", () => {
     $("#auth-modal-cont").css("display", "none");
 });
+
+$("#open-m-nav").on("click", () => {
+    $("#m-nav").removeClass("close").addClass("open");
+});
+$("#close-m-nav").on("click", () => {
+    $("#m-nav").removeClass("open").addClass("close");
+});

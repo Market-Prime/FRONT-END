@@ -1,16 +1,16 @@
 <header class="main flx items-center justify-between">
     <div class="org-id flx items-center">
-        <button class="open-m-nav items-center justify-center"><i class="fa fa-bars"></i></button>
+        <button class="open-m-nav items-center justify-center" id="open-m-nav"><i class="fa fa-bars"></i></button>
         <img src="/public/static/images/logo.png" alt="">
         <p class="fnt-black">Market Prime</p>
     </div>
-    <nav class="items-center">
+    <nav class="items-center" id="m-nav">
         <ul class="nav-list flx items-center justify-between">
             <li class="nav-item nav-flow flex items-center">
                 <span class="fnt-medium">Categories</span>
                 <i class="fa fa-angle-down"></i>
                 <div class="flow nav-category-listing" id="cat199an6rr2e">
-
+                    {{-- csr --}}
                 </div>
             </li>
             <li class="nav-item flex items-center hover-shadow">
@@ -23,6 +23,8 @@
                 <a href="#" class="fnt-medium">Virtual Try-on</a>
             </li>
         </ul>
+        <button class="close-m-nav flx items-center justify-center absolute" id="close-m-nav"><i
+                class="fa fa-close fa-lg"></i></button>
     </nav>
     <div class="actions-container flx items-center justify-between">
         <div class="relative search-context">

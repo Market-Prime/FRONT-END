@@ -92,6 +92,9 @@ nav {
 .nav-category-listing {
     width: clamp(250px, 40vw, 700px);
 }
+.close-m-nav {
+    display: none;
+}
 
 .actions-container {
     gap: 0.5rem;
@@ -159,7 +162,6 @@ main.home {
     margin: auto;
 }
 .hero-main {
-   
 }
 .slider {
     position: relative;
@@ -1425,53 +1427,62 @@ footer {
     }
 
     nav {
-        display: none;
         z-index: 19;
         position: fixed;
-        top: 0;
+        top: -100vh;
         left: 0;
         width: 100vw;
         height: 100vh !important;
         background-color: var(--surface);
+        align-items: flex-start !important;
+        justify-content: flex-start;
+    }
+    nav.open {
+        animation: slide-in 0.2s ease-in forwards;
+    }
+    nav.close {
+        animation: slide-out 0.1s ease forwards;
     }
     .nav-list {
         gap: 1rem;
-        font-size: 0.8rem;
+        font-size: 1.2rem;
+        flex-direction: column;
+        padding: 1em;
+        align-items: start !important;
     }
     .nav-item {
-        padding: 0.2em;
-    }
-    .nav-item:hover {
-        cursor: pointer;
+        padding: 0.1em;
     }
     .nav-flow {
-        position: relative;
-        gap: 0.5em;
+        flex-direction: column;
+        align-items: start !important;
     }
-    .nav-flow > i {
-        transition: 0.1s ease-in;
-    }
-    .nav-flow:hover > i {
-        transform: rotate(-180deg);
-    }
-    .nav-flow:hover .flow {
-        display: flex;
+    .nav-flow i {
+        display: none;
     }
     .nav-flow .flow {
         padding: 1em;
-        background-color: var(--surface-secondary);
-        position: absolute;
-        top: 100%;
-        left: 50%x;
-        opacity: 0;
-        animation: fade-opacity-in 0.3s ease-in forwards;
-        display: none;
+        background-color: var(--surface);
+        position: static;
+        opacity: 1;
+        display: flex;
     }
 
     .nav-category-listing {
-        width: clamp(250px, 40vw, 700px);
+        width: 100% !important;
     }
-
+    .nav-category-listing .head {
+        flex-direction: column !important;
+        align-items: start !important;
+    }
+    .nav-category-listing .body {
+        display: none !important;
+    }
+    .close-m-nav {
+        display: flex;
+        top: 2em;
+        right: 2em;
+    }
     .flash-sales {
         margin: 2rem auto;
     }
@@ -1583,5 +1594,23 @@ footer {
     }
     to {
         opacity: 1;
+    }
+}
+@keyframes slide-in {
+    from {
+        top: -100vh;
+        /* opacity: 0; */
+    }
+    to {
+        top: 0;
+        /* opacity: 1; */
+    }
+}
+@keyframes slide-out {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100vh;
     }
 }

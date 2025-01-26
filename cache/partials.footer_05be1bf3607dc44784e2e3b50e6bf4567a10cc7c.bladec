@@ -70,11 +70,11 @@
  <div class="footer-bottom">
  <p>MARKETPRIME &copy; 2024-2030, All Rights Reserved</p>
  <div class="payment-icons">
- <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" />
+ <?php /* <img src="https://via.placeholder.com/50x30?text=VISA" alt="Visa" />
  <img src="https://via.placeholder.com/50x30?text=Mastercard" alt="Mastercard" />
  <img src="https://via.placeholder.com/50x30?text=PayPal" alt="PayPal" />
  <img src="https://via.placeholder.com/50x30?text=ApplePay" alt="Apple Pay" />
- <img src="https://via.placeholder.com/50x30?text=GooglePay" alt="Google Pay" />
+ <img src="https://via.placeholder.com/50x30?text=GooglePay" alt="Google Pay" /> */ ?>
  </div>
  </div>
 </footer>

@@ -112,7 +112,7 @@ const ProductDetail = () => {
             setItems(window.__CURRENT_PRODUCT__?.items);
             setImages([
                 window.__CURRENT_PRODUCT__?.product.base_image,
-                ...window.__CURRENT_PRODUCT__?.images,
+                ...window.__CURRENT_PRODUCT__?.images?.image,
             ]);
         }
     }, [window.__CURRENT_PRODUCT__]);
