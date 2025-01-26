@@ -112,7 +112,7 @@ const ProductDetail = () => {
             setItems(window.__CURRENT_PRODUCT__?.items);
             setImages([
                 window.__CURRENT_PRODUCT__?.product.base_image,
-                ...window.__CURRENT_PRODUCT__?.images?.image,
+                ...window.__CURRENT_PRODUCT__?.images,
             ]);
         }
     }, [window.__CURRENT_PRODUCT__]);
@@ -142,7 +142,9 @@ const ProductDetail = () => {
                                     selectedImage == i && "active"
                                 }`}
                                 style={{
-                                    backgroundImage: `url('${item}')`,
+                                    backgroundImage: `url('${
+                                        item?.image || item
+                                    }')`,
                                 }}
                                 key={i}
                                 onClick={() => {
@@ -156,7 +158,10 @@ const ProductDetail = () => {
                     <div
                         className="m-img"
                         style={{
-                            backgroundImage: `url('${images[selectedImage]}')`,
+                            backgroundImage: `url('${
+                                images[selectedImage]?.image ||
+                                images[selectedImage]
+                            }')`,
                         }}
                     ></div>
                 </div>
