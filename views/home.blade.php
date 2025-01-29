@@ -51,6 +51,7 @@
                 currentIndex = parseInt(indicator.getAttribute('data-index'));
                 updateSlider();
             });
+            setInterval(nextSlide, 3000);
         });
     </script>
 
