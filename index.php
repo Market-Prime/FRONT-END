@@ -1,11 +1,12 @@
 <?php
 
-use Classes\BuildContentLoader;
-use Classes\Router;
-use Classes\Render;
-use Classes\Request;
+use Core\Classes\BuildContentLoader;
+use Core\Classes\Router;
+use Core\Classes\Render;
+use Core\Classes\Request;
 
-require_once __DIR__ . "/bootstrap.php";
+
+require_once __DIR__ . "/core/bootstrap.php";
 
 $render = new Render(__DIR__ . "/views", __DIR__ . "/cache");
 
@@ -32,11 +33,9 @@ Router::new("GET", "/", function () use ($render): void {
         "flashSaleData" => $flashSaleData,
         "topStoresData" => $topStores,
     ];
-
-
-
     $render->render("home", ["pageData" => $pageData]);
 });
+
 
 Router::new("GET", "/cart", function () use ($render): void {
     try {

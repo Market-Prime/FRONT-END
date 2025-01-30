@@ -1,7 +1,6 @@
 <?php
 
-namespace Classes;
-
+namespace Core\Classes;
 use eftec\bladeone\BladeOne;
 
 class Render

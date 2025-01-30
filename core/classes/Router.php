@@ -1,7 +1,6 @@
 <?php
 
-namespace Classes;
-
+namespace Core\Classes;
 class Router
 {
     protected static $routes = [];

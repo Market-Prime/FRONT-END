@@ -1,6 +1,5 @@
 <?php
-namespace Classes;
-
+namespace Core\Classes;
 class EnvLoader
 {
     public static function loadEnv($file): void

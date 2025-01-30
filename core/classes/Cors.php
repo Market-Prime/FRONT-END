@@ -1,7 +1,7 @@
 <?php
 
-namespace Classes;
 
+namespace Core\Classes;
 class Cors
 {
     public static function enable(): void

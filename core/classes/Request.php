@@ -1,7 +1,6 @@
 <?php
 
-namespace Classes;
-
+namespace Core\Classes;
 class Request
 {
     private static $ch = null;

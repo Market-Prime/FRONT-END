@@ -1,6 +1,7 @@
 <?php
 
-namespace Classes;
+// namespace Classes;
+namespace Core\Classes;
 
 class BuildContentLoader
 {
