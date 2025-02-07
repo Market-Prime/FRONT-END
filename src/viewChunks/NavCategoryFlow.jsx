@@ -8,12 +8,8 @@ const NavCategoryFlow = () => {
 
     useEffect(() => {
         if (window.__CATEGORIES_DATA__) {
-            const _rootCatData = window.__CATEGORIES_DATA__.filter(
-                (item) => !item?.parent
-            );
-            const _subCatData = window.__CATEGORIES_DATA__.filter(
-                (item) => item?.parent
-            );
+            const _rootCatData = window.__CATEGORIES_DATA__.root;
+            const _subCatData = window.__CATEGORIES_DATA__.sub;
             setRootCategoriesData(_rootCatData);
             setSubCategoriesData(_subCatData);
         }

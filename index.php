@@ -1,9 +1,8 @@
 <?php
 
-use Core\Classes\BuildContentLoader;
 use Core\Classes\Router;
 use Core\Classes\Render;
-use Core\Classes\Request;
+use Core\Api\PageContentLoader;
 
 
 require_once __DIR__ . "/core/bootstrap.php";
@@ -16,18 +15,10 @@ Router::new("GET", "/", function () use ($render): void {
     $topStores = [
     ];
 
-    $flashSaleData = [    
+    $flashSaleData = [
     ];
-    try {
-        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
 
-    } catch (Exception $e) {
-        $categoriesData = json_decode("[]");
-
-    } finally {
-        Request::close();
-    }
-
+    $categoriesData = PageContentLoader::LoadCategories();
     $pageData = [
         "categoriesData" => $categoriesData,
         "flashSaleData" => $flashSaleData,
@@ -36,72 +27,46 @@ Router::new("GET", "/", function () use ($render): void {
     $render->render("home", ["pageData" => $pageData]);
 });
 
+Router::new("GET","/categories", function () use ($render): void {
+    $categoriesData = PageContentLoader::LoadCategories();
+    $pageData = [
+        "categoriesData" => $categoriesData,
+    ];
+    $render->render("categories", ["pageData" => $pageData]);
+});
+
 
 Router::new("GET", "/cart", function () use ($render): void {
-    try {
-        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
-
-    } catch (Exception $e) {
-        $categoriesData = json_decode("[]");
-
-    } finally {
-        Request::close();
-    }
-
+    $categoriesData = PageContentLoader::LoadCategories();
     $pageData = [
         "categoriesData" => $categoriesData,
-        // add more page context here to be passed to the view
     ];
-
-
-
     $render->render("cart", ["pageData" => $pageData]);
 });
+
 Router::new("GET", "/confirm-order", function () use ($render): void {
-    try {
-        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
-
-    } catch (Exception $e) {
-        $categoriesData = json_decode("[]");
-
-    } finally {
-        Request::close();
-    }
-
+    $categoriesData = PageContentLoader::LoadCategories();
     $pageData = [
         "categoriesData" => $categoriesData,
-        // add more page context here to be passed to the view
     ];
     $render->render("confirm-order", ["pageData" => $pageData]);
 });
 
 Router::new("GET", "/product-detail", function () use ($render): void {
-    try {
-        $categoriesData = json_decode(Request::Get(endPoint: 'categories/'));
-
-    } catch (Exception $e) {
-        $categoriesData = json_decode("[]");
-
-    } finally {
-        Request::close();
-    }
-
+    $categoriesData = PageContentLoader::LoadCategories();
+    
     if (!isset($_GET['p-id']))
         return;
     $pid = $_GET['p-id'];
-    try {
-        $productData = json_decode(Request::Get(endPoint: "products/$pid/"));
-    } catch (Exception $e) {
-        return;
-    } finally {
-        Request::close();
-    }
+    $productData = PageContentLoader::GetProductDetails($pid);
+
     $pageData = [
         "categoriesData" => $categoriesData,
         "productData" => $productData
     ];
     $render->render("product-detail", ["pageData" => $pageData]);
 });
+
 
 Router::new("GET", "/account/login", function () use ($render): void {
     $render->render("login");
@@ -112,8 +77,6 @@ Router::new("GET", "/account/register", function () use ($render): void {
 Router::new("GET", "/account/confirm-email/:token", function ($token) use ($render): void {
     $render->render("confirm-email", ["confirmationToken" => $token]);
 });
-
-
 
 
 
